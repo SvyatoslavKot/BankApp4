@@ -7,6 +7,12 @@ import com.company.bankOffice.Staff;
 import java.util.HashMap;
 
 public class CreditManager extends Staff {
+
+
+    public CreditManager(String name, int age, String position) {
+        super(name, age, position);
+    }
+
     HashMap<String,String> informMap = new HashMap<>();
 
     private CreditAccount creditAccount = new CreditAccount();

@@ -4,6 +4,10 @@ import com.company.Client;
 import com.company.bankOffice.Staff;
 
 public class ManagerCustomerService extends Staff {
+    public ManagerCustomerService(String name, int age, String position) {
+        super(name, age, position);
+    }
+
     public void writtenRequestToTheBank(Client client, String a){
 
         if (a.equals("Юредическое лицо")){
