@@ -21,20 +21,14 @@ public class Main {
         MobilBank mobilBank = new MobilBank("Сбербанк");
 
         ClientBilder clientBilder = new ClientBilder();
-        clientBilder.bildMobilBankChatBot(mobilBank,clientSergei);
+       // clientBilder.bildMobilBankChatBot(mobilBank,clientSergei);
         SelfTerminal terminal1 = clientBilder.bildSelfServiceTerminal(bankSber,clientSergei);
         SelfTerminal terminal2 = clientBilder.bildSelfServiceTerminal(bankSber,clientAnna);
 
         CreditManager creditManager = terminal1.getCreditManager(clientSergei);
         CreditAccount creditAccountSergei = creditManager.getCreditAccount(clientSergei,bankSber);
         creditAccountSergei.openCredit(clientSergei,"Потребительсикй", bankSber);
-        creditAccountSergei.openCredit(clientSergei,"Ипотека", bankSber);
 
-        CreditManager creditManager2 = terminal2.getCreditManager(clientSergei);
-        CreditAccount creditAccountAnna = creditManager2.getCreditAccount(clientSergei,bankSber);
-
-        creditAccountAnna.openCredit(clientAnna, "Автокредит", bankSber);
-        creditAccountAnna.openCredit(clientAnna, "Ипотека", bankSber);
 
         bankSber.viewClientList();
 
