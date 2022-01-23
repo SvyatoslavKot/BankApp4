@@ -1,15 +1,17 @@
 package com.company.bankOffice;
 
-
+import com.company.builder.BankOfficeBuilder;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class BankOffice {
     private String nameBank;
+    private final BankOfficeBuilder bankOfficeBuilder;
 
     public BankOffice(String nameBank) {
         this.nameBank = nameBank;
+        this.bankOfficeBuilder = new BankOfficeBuilder();
     }
 
     public void setNameBank(String nameBank) {
@@ -48,5 +50,7 @@ public class BankOffice {
         return clientBankList;
     }
 
-
+    public BankOfficeBuilder getBankOfficeBuilder() {
+        return bankOfficeBuilder;
+    }
 }

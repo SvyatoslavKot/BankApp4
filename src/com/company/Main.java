@@ -5,7 +5,7 @@ import com.company.bankOffice.BankOffice;
 import com.company.bankOffice.SelfTerminal;
 import com.company.bankOffice.creditDepartment.CreditAccount;
 import com.company.bankOffice.creditDepartment.CreditManager;
-import com.company.bilder.ClientBilder;
+import com.company.builder.ClientBuilder;
 import com.company.mobilBank.MobilBank;
 
 public class Main {
@@ -20,10 +20,10 @@ public class Main {
         BankCentralOffice bankCentralOffice = new BankCentralOffice("Сбербанк");
         MobilBank mobilBank = new MobilBank("Сбербанк");
 
-        ClientBilder clientBilder = new ClientBilder();
-        clientBilder.bildMobilBankChatBot(mobilBank,clientSergei);
-        SelfTerminal terminal1 = clientBilder.bildSelfServiceTerminal(bankSber,clientSergei);
-        SelfTerminal terminal2 = clientBilder.bildSelfServiceTerminal(bankSber,clientAnna);
+        ClientBuilder clientBilder = new ClientBuilder();
+        clientBilder.buildMobilBankChatBot(mobilBank,clientSergei);
+        SelfTerminal terminal1 = clientBilder.buildSelfServiceTerminal(bankSber,clientSergei);
+        SelfTerminal terminal2 = clientBilder.buildSelfServiceTerminal(bankSber,clientAnna);
 
         CreditManager creditManager = terminal1.getCreditManager(clientSergei);
         CreditAccount creditAccountSergei = creditManager.getCreditAccount(clientSergei,bankSber);
