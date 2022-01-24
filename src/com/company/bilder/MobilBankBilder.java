@@ -33,9 +33,10 @@ public class MobilBankBilder {
         return mobilBankInsurance;
     }
 
-    public void bildMobilBankChatBot(MobilBank mobilBank, Client client) {
+    public MobilBankChatBot bildMobilBankChatBot(MobilBank mobilBank, Client client) {
         System.out.println(client.getName() + " открыл чат с чатБотомв " + mobilBank.getNameBank());
         MobilBankChatBot chatBot = new MobilBankChatBot(client);
+        return chatBot;
     }
 
 }
