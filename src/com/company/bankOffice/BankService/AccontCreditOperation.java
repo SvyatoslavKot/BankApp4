@@ -1,4 +1,4 @@
-package com.company.bankOffice;
+package com.company.bankOffice.BankService;
 
 import com.company.Client;
 import com.company.bankOffice.creditDepartment.CreditAccount;
