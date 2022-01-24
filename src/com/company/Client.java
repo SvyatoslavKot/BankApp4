@@ -46,6 +46,7 @@ public class Client {
     }
 
     public void viewCreditAccount (){
+
         System.out.println("-----Список кредитов"+" " + getName() +"-----");
         for (Map.Entry viewList: getCreditListClient().entrySet()){
 
