@@ -2,6 +2,7 @@ package com.company.bankOffice.accountManagementDepartment;
 
 
 import com.company.Client;
+import com.company.bankOffice.BankOffice;
 import com.company.service.GenerateAccountNumber;
 
 public class DebitAccountModel extends  DebitAccount{
@@ -15,12 +16,12 @@ public class DebitAccountModel extends  DebitAccount{
 
 
     @Override
-    void openDebitAccount(Client client, String nameAccount, int moneyInAccount, int term) {
+    void openDebitAccount(Client client, BankOffice bankOffice) {
         this.nameAccount = nameAccount;
         this.accountNumber = generateAccountNumber.accountNumber();
         this.moneyInAccount = moneyInAccount;
         this.openingDate = openingDate;
-        this.creditTerm = term;
+        this.creditTerm = 24;
 
         client.getDebitAccount().put(this.accountNumber, this.nameAccount);
 

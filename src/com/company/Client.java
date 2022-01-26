@@ -2,13 +2,16 @@ package com.company;
 
 
 
+import com.company.bankOffice.BankOffice;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Client {
+public class Client implements Comparable{
     private String name;
     private String lastName;
+    private String id;
     private int age;
     private int income;
     private int cash;
@@ -20,7 +23,13 @@ public class Client {
     HashMap<String,String> creditListClient = new HashMap<>();
     HashMap<String,String> debitAccount = new HashMap<>();
 
-
+    public Client(String name,String id, int income, int cash, String passport) {
+        this.name = name;
+        this.id = id;
+        this.income = income;
+        this.cash = cash;
+        this.passport = passport;
+    }
     public Client() {
         System.out.println("Ведите имя клиент.");
         String nameScan = scanner.nextLine();
@@ -44,6 +53,7 @@ public class Client {
         //this.income = incomeScan;
         //this.cash = cashScan;
     }
+
 
     public void viewCreditAccount (){
 
@@ -74,6 +84,15 @@ public class Client {
     public String getName() {
         return name;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getLastName() {
         return lastName;
     }
@@ -102,5 +121,10 @@ public class Client {
 
     public HashMap<String, String> getDebitAccount() {
         return debitAccount;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }

@@ -24,9 +24,12 @@ public class CreditAccount {
 
     CreditModel credit = new CreditModel();
     Scanner scanner = new Scanner(System.in);
-    public void openCredit(Client client , String creditType, BankOffice bankOffice){
-        switch (creditType) {
-            case "Потребительсикй":
+    public void openCredit(Client client , BankOffice bankOffice){
+        System.out.println(client.getName() + " ввведи тип кредита \n" +
+                "1 - Потребительсикий/ 2 - Автокредит/ 3- Ипотека");
+        String type = scanner.nextLine();
+        switch (type) {
+            case "1":
                 System.out.println(client.getName() + " ввведи желаемую ссуму займа по потребительскому кредиту :");
                 int sum = scanner.nextInt();
                 if (sum < 50000){
@@ -44,7 +47,7 @@ public class CreditAccount {
                 }else {
                     System.out.println("Для вас нет подходящих предложение потребительского кредита.");
                 }break;
-            case "Автокредит" :
+            case "2" :
                 System.out.println(client.getName() + " ввведи желаемую ссуму займа по автокредиту :");
                 int sum1 = scanner.nextInt();
                 if (sum1 < 100000){
@@ -62,7 +65,7 @@ public class CreditAccount {
                 }else {
                     System.out.println("Для вас нет подходящих предложение потребительского кредита.");
                 }break;
-            case "Ипотека" :
+            case "3" :
                 System.out.println(client.getName() + " ввведи желаемую ссуму займа по ипотеке :");
                 int sum2 = scanner.nextInt();
                 if (sum2 < 1000000){

@@ -23,7 +23,7 @@ public class MobilBankChatBot extends JFrame implements ActionListener {
     SimpleAttributeSet botStyle;
 
 
-    public  MobilBankChatBot(Client client){
+    public  MobilBankChatBot(){
         setTitle(TITLE_OF_PROGRAM);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setBounds(START_LOCAL,START_LOCAL,WINDOW_WIDTH,WINDOW_HEIGHT);
@@ -50,7 +50,7 @@ public class MobilBankChatBot extends JFrame implements ActionListener {
         add(BorderLayout.SOUTH, botPanel);
         setVisible(true);
 
-        simpleBot = new SimpleBot(client);
+        simpleBot = new SimpleBot();
     }
 
 

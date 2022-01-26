@@ -2,38 +2,43 @@ package com.company;
 
 import com.company.bankCentralOffice.BankCentralOffice;
 import com.company.bankOffice.BankOffice;
-import com.company.bankOffice.SelfTerminal;
-import com.company.bankOffice.creditDepartment.CreditAccount;
-import com.company.bankOffice.creditDepartment.CreditDepartment;
-import com.company.bankOffice.creditDepartment.CreditManager;
-
-import com.company.bilder.BankBilder;
-import com.company.bilder.MobilBankBilder;
 import com.company.mobilBank.MobilBank;
-import com.company.mobilBank.chatBot.MobilBankChatBot;
 
 public class Main {
 
+
     public static void main(String[] args) {
 
+        Client clientSergei = new Client("Сергей ","23",50000,500000,"7676 875434");
+        Client clientAnna = new Client("Anna ","28",52000,540000,"7676 434234");
+        Client clientOlga = new Client("Olga ","441",44000,505500,"7676 85652");
+        Client clientEgor = new Client("Egor ","431",45000,505600,"7676 42414");
+
+        BankOffice bankSber = new BankOffice("Sber");
+        MobilBank mobilBankSber = new MobilBank(bankSber);
+        BankCentralOffice bankCentralOffice = new BankCentralOffice("Sber");
+        String tic = bankCentralOffice.getTerminal1().getTicketToInsurance(clientAnna,bankCentralOffice.getInsuranceDepartment());
 
 
-        Client clientSergei = new Client();
-        Client clientAnna = new Client();
-        BankOffice bankSber = new BankOffice("Сбербанк");
-        BankCentralOffice bankCentralOffice = new BankCentralOffice("Сбербанк");
-        MobilBank mobilBank = new MobilBank("Сбербанк");
-        BankBilder bankBilder = new BankBilder();
-        MobilBankBilder mobilBankBilder = new MobilBankBilder();
+
+        String tikeckSergei = bankSber.getTerminal1().getTicketToCredit(clientAnna,bankSber.getCreditDepartment());
+        String tikeckAnna = bankSber.getTerminal2().getTicketToCredit(clientAnna,bankSber.getCreditDepartment());
+        String tikeckOlga = bankSber.getTerminal1().getTicketToCredit(clientOlga,bankSber.getCreditDepartment());
+        String ticketOlga2 = bankSber.getTerminal2().getTicketToAccount(clientOlga,bankSber.getAccountManagerDepartment());
+        String tic1 = bankSber.getTerminal1().getTicketToInsurance(clientEgor,bankSber.getInsuranceDepartment());
+        String tic2 = bankSber.getTerminal2().getTicketToCredit(clientSergei,bankSber.getCreditDepartment());
 
 
-        SelfTerminal terminal = bankBilder.bildSelfServiceTerminal(bankSber,clientAnna);
-        CreditDepartment creditDepartment = terminal.getCreditDepartment();
-        System.out.println("Работает: " + creditDepartment.getCreditPersonal().get(0).getName());
-        MobilBankChatBot bot = mobilBankBilder.bildMobilBankChatBot(mobilBank,clientSergei);
-        bankSber.viewClientList();
+        bankSber.getCreditDepartment().startWork(bankSber);
+        bankSber.getCreditDepartment().startWork(bankSber);
+        bankSber.getCreditDepartment().startWork(bankSber);
+        bankSber.getCreditDepartment().startWork(bankSber);
 
-        clientSergei.viewCreditAccount();
-        clientAnna.viewCreditAccount();
+        mobilBankSber.openMobilBankChatBot();
+
+
+
+
     }
+
 }

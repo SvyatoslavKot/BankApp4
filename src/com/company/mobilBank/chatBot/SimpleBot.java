@@ -40,15 +40,15 @@ public class SimpleBot {
         put("name", "Зовите меня Борис");
 
     }};
-    Client clientThis;
+
     Pattern pattern;
     Random random;
     Date date;
 
-    public SimpleBot(Client client){
+    public SimpleBot(){
         random  =new Random();
         date =new Date();
-        clientThis = client;
+
 
     }
 

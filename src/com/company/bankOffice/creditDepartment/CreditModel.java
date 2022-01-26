@@ -6,19 +6,22 @@ import com.company.service.GenerateAccountNumber;
 import com.company.bankOffice.BankOffice;
 import com.company.service.ClientService;
 
+import java.util.Date;
+
 
 public class CreditModel extends Credits{
     private String creditName;
     private String accountNumber;
     private int amount;
     private double ptc;
-    private String openingDate;
+    private Date openingDate;
     private int creditTerm;
     private double paymentMonth;
 
     GenerateAccountNumber generateAccountNumber = new GenerateAccountNumber();
     CreditCalculationPayment payment = new CreditCalculationPayment();
     ClientService clientService  = new ClientService();
+    Date date = new Date();
 
     public void openCredit(String creditName, Client client, int sum, BankOffice bankOffice, double ptc, int creditTerm ) {
 
@@ -26,7 +29,7 @@ public class CreditModel extends Credits{
         this.accountNumber = generateAccountNumber.accountNumber();
         this.amount = sum;
         this.ptc = ptc;
-        this.openingDate = openingDate;
+        this.openingDate = date;
         this.creditTerm = creditTerm;
         this.paymentMonth = payment.calc(this.amount,this.ptc,this.creditTerm);
 
@@ -41,7 +44,7 @@ public class CreditModel extends Credits{
                 "\nсрок кредита: " + this.creditTerm + " мес." +
                 "\nдата открытия: " + openingDate +
                 "\nпроцентная ставка: " + this.ptc +
-                "\nсумма задолности: " + amount +
+                "\nсумма займа: " + amount +
                 "\nсумма ежемесячного платежа: " + String.format("%.2f", paymentMonth) + " руб." +
                 "\n____________________________________________");
     }

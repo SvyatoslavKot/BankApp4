@@ -23,20 +23,4 @@ public class CreditManager extends Staff {
         System.out.println("Принята заявка на оформление кредитного счёта в " + bankOffice.getNameBank() + "от клиента " + client.getLastName()  + " " + client.getName());
         return creditAccount;
     }
-
-    public void infoCredit (String str){
-        informMap.put("Потребительский","\nСрок займа от 100 000 руб.\nСрок до 5 лет\nПроецентная ставка от 9.9%");
-        informMap.put("Автокредит","\nСрок займа от 300 000 руб.\nСрок до 5 лет\nПроецентная ставка от 8.9%");
-
-        if (str.equals("Потребительский")){
-            System.out.println(listClientHashMap.containsKey("Потребительский"));
-        }else if (str.equals("Автокредит")){
-            System.out.println(listClientHashMap.containsKey("Автокредит"));
-        }
-
     }
-
-
-
-
-}

@@ -5,9 +5,9 @@ import com.company.bankOffice.Staff;
 
 public class InsuranceAgent extends Staff {
 
-    public InsuranceAgent(String name, int age, String position, Insurance insurance) {
+    public InsuranceAgent(String name, int age, String position) {
         super(name, age, position);
-        this.insurance = insurance;
+
     }
 
     private Insurance insurance = new Insurance();

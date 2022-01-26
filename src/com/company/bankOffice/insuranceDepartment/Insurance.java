@@ -7,14 +7,15 @@ public class Insurance {
     private int priceInsurance;
 
     public Insurance() {
-        ;
+
     }
 
-    public void insuranceType1() {
+    public Insurance openInsuranceType1() {
         this.nameInsurance = "nameInsurance1";
         this.dateInsurance = "dateInsurance";
         this.timeInsurance = "timeInsurance";
         this.priceInsurance = 5000;
+        return openInsuranceType1();
     }
     public void insuranceType2() {
         this.nameInsurance = "nameInsurance2";
