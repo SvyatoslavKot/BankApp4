@@ -20,14 +20,13 @@ public class InsuranceDepartment {
     PriorityQueue<String> tickets  =new PriorityQueue<>();
 
     public InsuranceDepartment startWork (BankOffice bankOffice){
-        if (tickets.size() >= 0 ){
-
-            Client client = clientById(tickets.poll());
-
-            Insurance insurance = new Insurance();
-            insurance.openInsuranceType1();
-            System.out.println(client.getName());
-
+        if (tickets.size()!= 0){
+            for (int i = 0;i <= tickets.size(); i++ ){
+                Client client = clientById(tickets.poll());
+                Insurance insurance = new Insurance();
+                insurance.openInsuranceType1();
+                System.out.println(client.getName());
+            }
         }
         return null;
     }

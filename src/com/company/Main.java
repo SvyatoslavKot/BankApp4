@@ -13,28 +13,23 @@ public class Main {
         Client clientAnna = new Client("Anna ","28",52000,540000,"7676 434234");
         Client clientOlga = new Client("Olga ","441",44000,505500,"7676 85652");
         Client clientEgor = new Client("Egor ","431",45000,505600,"7676 42414");
+        Client clientUriy = new Client("Ura ","491",49000,500600,"7676 09843");
 
         BankOffice bankSber = new BankOffice("Sber");
         MobilBank mobilBankSber = new MobilBank(bankSber);
         BankCentralOffice bankCentralOffice = new BankCentralOffice("Sber");
-        String tic = bankCentralOffice.getTerminal1().getTicketToInsurance(clientAnna,bankCentralOffice.getInsuranceDepartment());
+       // String tic = bankSber.getTerminal1().getTicketToInsurance(clientAnna,bankSber.getInsuranceDepartment());
+        String tic1 = bankSber.getTerminal1().getTicketToAccount(clientSergei,bankSber.getAccountManagerDepartment());
+        String tic2 = bankSber.getTerminal1().getTicketToCredit(clientOlga,bankSber.getCreditDepartment());
+        String tic3 = bankSber.getTerminal1().getTicketToCredit(clientEgor,bankSber.getCreditDepartment());
+        String tic4 = bankSber.getTerminal1().getTicketToAccount(clientUriy,bankSber.getAccountManagerDepartment());
 
 
-
-        String tikeckSergei = bankSber.getTerminal1().getTicketToCredit(clientAnna,bankSber.getCreditDepartment());
-        String tikeckAnna = bankSber.getTerminal2().getTicketToCredit(clientAnna,bankSber.getCreditDepartment());
-        String tikeckOlga = bankSber.getTerminal1().getTicketToCredit(clientOlga,bankSber.getCreditDepartment());
-        String ticketOlga2 = bankSber.getTerminal2().getTicketToAccount(clientOlga,bankSber.getAccountManagerDepartment());
-        String tic1 = bankSber.getTerminal1().getTicketToInsurance(clientEgor,bankSber.getInsuranceDepartment());
-        String tic2 = bankSber.getTerminal2().getTicketToCredit(clientSergei,bankSber.getCreditDepartment());
-
-
-        bankSber.getCreditDepartment().startWork(bankSber);
-        bankSber.getCreditDepartment().startWork(bankSber);
-        bankSber.getCreditDepartment().startWork(bankSber);
+        bankSber.getAccountManagerDepartment().startWork(bankSber);
+        bankSber.getInsuranceDepartment().startWork(bankSber);
         bankSber.getCreditDepartment().startWork(bankSber);
 
-        mobilBankSber.openMobilBankChatBot();
+
 
 
 

@@ -19,12 +19,13 @@ public class AccountManagerDepartment {
     PriorityQueue<String> tickets  =new PriorityQueue<>();
 
     public AccountManagerDepartment startWork (BankOffice bankOffice){
-        if (tickets.size() >= 0 ){
-            Client client = clientById(tickets.poll());
-
-            DebitAccountModel debitAccountModel = new DebitAccountModel();
-            debitAccountModel.openDebitAccount(client,bankOffice);
-            System.out.println(client.getName());
+        if (tickets.size()!=0){
+            for (int i = 0;i <= tickets.size(); i++ ){
+                Client client = clientById(tickets.poll());
+                DebitAccountModel debitAccountModel = new DebitAccountModel();
+                debitAccountModel.openDebitAccount(client,bankOffice);
+                System.out.println(client.getName());
+            }
         }
         return null;
     }

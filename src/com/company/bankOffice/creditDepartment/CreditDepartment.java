@@ -16,17 +16,16 @@ public class CreditDepartment  {
         }
     };
     PriorityQueue<Client> clients = new PriorityQueue<>();
-    PriorityQueue<String> tickets  =new PriorityQueue<>();
+    PriorityQueue<String> tickets  = new PriorityQueue<>();
 
     public CreditAccount startWork (BankOffice bankOffice){
-        if (tickets.size() >= 0 ){
-
+        if (tickets.size()!=0){
+            for (int i = 0;i <= tickets.size(); i++ ) {
                 Client client = clientById(tickets.poll());
-
-           CreditAccount creditAccount = new CreditAccount();
-           creditAccount.openCredit(client,bankOffice);
-           System.out.println(client.getName());
-
+                CreditAccount creditAccount = new CreditAccount();
+                creditAccount.openCredit(client, bankOffice);
+                System.out.println(client.getName());
+            }
         }
         return null;
     }
