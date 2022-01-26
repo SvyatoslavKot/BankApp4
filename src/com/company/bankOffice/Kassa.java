@@ -1,6 +1,7 @@
 package com.company.bankOffice;
 
 import com.company.Client;
+import com.company.bankOffice.BankService.PaymentOperation;
 import com.company.service.ClientService;
 
 public class Kassa implements PaymentOperation {

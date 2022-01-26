@@ -1,6 +1,9 @@
 package com.company.bankOffice;
 
 import com.company.Client;
+import com.company.bankOffice.BankService.AccontCreditOperation;
+import com.company.bankOffice.BankService.AccountDebitOperation;
+import com.company.bankOffice.BankService.PaymentOperation;
 import com.company.bankOffice.accountManagementDepartment.DebitAccountModel;
 import com.company.bankOffice.creditDepartment.CreditAccount;
 import com.company.service.ClientService;

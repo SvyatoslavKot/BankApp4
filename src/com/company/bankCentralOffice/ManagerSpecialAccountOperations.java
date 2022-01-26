@@ -8,6 +8,11 @@ import com.company.service.ClientService;
 import com.company.service.DebitAccountService;
 
 public class ManagerSpecialAccountOperations extends Staff {
+    public ManagerSpecialAccountOperations(String name, int age, String position) {
+        super(name, age, position);
+        this.clientService = clientService;
+    }
+
     ClientService clientService = new ClientService();
     DebitAccountService debitAccountService = new DebitAccountService();
 
