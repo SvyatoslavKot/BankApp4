@@ -16,12 +16,12 @@ public class AccountManagerDepartment {
     };
 
     PriorityQueue<Client> clients = new PriorityQueue<>();
-    PriorityQueue<String> tickets  =new PriorityQueue<>();
+    ArrayList<String> tickets  =new ArrayList<>();
 
     public AccountManagerDepartment startWork (BankOffice bankOffice){
         if (tickets.size()!=0){
-            for (int i = 0;i <= tickets.size(); i++ ){
-                Client client = clientById(tickets.poll());
+            for (int i = 0;i < tickets.size(); i++ ){
+                Client client = clientById(tickets.get(i));
                 DebitAccountModel debitAccountModel = new DebitAccountModel();
                 debitAccountModel.openDebitAccount(client,bankOffice);
                 System.out.println(client.getName());
@@ -46,7 +46,7 @@ public class AccountManagerDepartment {
         return clients;
     }
 
-    public PriorityQueue<String> getTickets() {
+    public ArrayList<String> getTickets() {
         return tickets;
     }
 }

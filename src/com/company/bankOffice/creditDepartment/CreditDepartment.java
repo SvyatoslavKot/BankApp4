@@ -9,22 +9,21 @@ import java.util.ArrayList;
 import java.util.EmptyStackException;
 import java.util.PriorityQueue;
 
-public class CreditDepartment  {
-    ArrayList<CreditManager> creditPersonal = new ArrayList<>() {
+public class CreditDepartment{
+
+        ArrayList<CreditManager> creditPersonal = new ArrayList<>() {
         {
             add(new CreditManager("Олег",22,"Стажер"));
         }
     };
-    PriorityQueue<Client> clients = new PriorityQueue<>();
-    PriorityQueue<String> tickets  = new PriorityQueue<>();
-
+   private PriorityQueue<Client> clients = new PriorityQueue<>();
+   private ArrayList<String> tickets  = new ArrayList<>();
     public CreditAccount startWork (BankOffice bankOffice){
         if (tickets.size()!=0){
-            for (int i = 0;i <= tickets.size(); i++ ) {
-                Client client = clientById(tickets.poll());
+            for (int i = 0;i < tickets.size();i++) {
+                Client client = clientById(tickets.get(i));
                 CreditAccount creditAccount = new CreditAccount();
                 creditAccount.openCredit(client, bankOffice);
-                System.out.println(client.getName());
             }
         }
         return null;
@@ -46,7 +45,9 @@ public class CreditDepartment  {
         return clients;
     }
 
-    public PriorityQueue<String> getTickets() {
+    public ArrayList<String> getTickets() {
         return tickets;
     }
+
 }
+

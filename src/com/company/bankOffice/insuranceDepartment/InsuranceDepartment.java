@@ -17,12 +17,12 @@ public class InsuranceDepartment {
         }
     };
     PriorityQueue<Client> clients = new PriorityQueue<>();
-    PriorityQueue<String> tickets  =new PriorityQueue<>();
+    ArrayList<String> tickets  =new ArrayList<>();
 
     public InsuranceDepartment startWork (BankOffice bankOffice){
         if (tickets.size()!= 0){
-            for (int i = 0;i <= tickets.size(); i++ ){
-                Client client = clientById(tickets.poll());
+            for (int i = 0;i < tickets.size(); i++ ){
+                Client client = clientById(tickets.get(i));
                 Insurance insurance = new Insurance();
                 insurance.openInsuranceType1();
                 System.out.println(client.getName());
@@ -47,7 +47,7 @@ public class InsuranceDepartment {
         return clients;
     }
 
-    public PriorityQueue<String> getTickets() {
+    public ArrayList<String> getTickets() {
         return tickets;
     }
 }

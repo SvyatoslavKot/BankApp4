@@ -4,7 +4,7 @@ import com.company.bankCentralOffice.BankCentralOffice;
 import com.company.bankOffice.BankOffice;
 import com.company.mobilBank.MobilBank;
 
-public class Main {
+public class Main extends Thread {
 
 
     public static void main(String[] args) {
@@ -18,22 +18,19 @@ public class Main {
         BankOffice bankSber = new BankOffice("Sber");
         MobilBank mobilBankSber = new MobilBank(bankSber);
         BankCentralOffice bankCentralOffice = new BankCentralOffice("Sber");
+
        // String tic = bankSber.getTerminal1().getTicketToInsurance(clientAnna,bankSber.getInsuranceDepartment());
         String tic1 = bankSber.getTerminal1().getTicketToAccount(clientSergei,bankSber.getAccountManagerDepartment());
         String tic2 = bankSber.getTerminal1().getTicketToCredit(clientOlga,bankSber.getCreditDepartment());
         String tic3 = bankSber.getTerminal1().getTicketToCredit(clientEgor,bankSber.getCreditDepartment());
+        String tic5 = bankSber.getTerminal1().getTicketToCredit(clientAnna,bankSber.getCreditDepartment());
+        String tic6 = bankSber.getTerminal1().getTicketToCredit(clientUriy,bankSber.getCreditDepartment());
         String tic4 = bankSber.getTerminal1().getTicketToAccount(clientUriy,bankSber.getAccountManagerDepartment());
 
 
         bankSber.getAccountManagerDepartment().startWork(bankSber);
         bankSber.getInsuranceDepartment().startWork(bankSber);
         bankSber.getCreditDepartment().startWork(bankSber);
-
-
-
-
-
-
     }
 
 }
