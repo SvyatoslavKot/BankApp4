@@ -34,6 +34,7 @@ public class CreditAccount {
                 int sum = scanner.nextInt();
                 if (sum < 50000){
                     System.out.println(client.getName()+ " мы можем предложить вам кредитную карту.");
+                    credit.openCreditCard("Кредитная карта", client, sum, bankOffice, 18.9);
                 }else if (sum > 50000 && sum <= 100000 ){
                     credit.openCredit("Потребительский 100",client, sum,bankOffice,17.9,12);
                 }else if (sum > 100000 && sum <= 200000 ){
@@ -52,6 +53,7 @@ public class CreditAccount {
                 int sum1 = scanner.nextInt();
                 if (sum1 < 100000){
                     System.out.println(client.getName()+ " мы можем предложить вам кредитную карту.");
+                    credit.openCreditCard("Кредитная карта", client, sum1, bankOffice, 18.9);
                 }else if (sum1 > 100000 && sum1 <= 300000 ){
                     credit.openCredit("Авто 300",client, sum1,bankOffice,17.9,12);
                 }else if (sum1 > 300000 && sum1 <= 500000 ){

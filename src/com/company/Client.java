@@ -22,6 +22,7 @@ public class Client implements Comparable{
     //WaitingInLine waitingInLine = new WaitingInLine();
     HashMap<String,String> creditListClient = new HashMap<>();
     HashMap<String,String> debitAccount = new HashMap<>();
+    HashMap<String,String> listOfAccounts = new HashMap<>();
 
     public Client(String name,String id, int income, int cash, String passport) {
         this.name = name;
@@ -62,19 +63,28 @@ public class Client implements Comparable{
 
             System.out.println(
                     "\nНомер кредитного счёта: " + viewList.getKey() +
-                            "\nНазвания кредита: " + viewList.getValue());
+                    "\nНазвания кредита: " + viewList.getValue() + "\n");
         }
     }
     public void viewDebitAccount (){
         System.out.println("-----Список дебетовых счетов"+" " + getName() +"-----");
-        for (Map.Entry viewList: getCreditListClient().entrySet()){
+        for (Map.Entry viewList: getDebitAccount().entrySet()){
 
             System.out.println(
                     "\nНомер дебетого счёта: " + viewList.getKey() +
-                            "\nНазвания счёта: " + viewList.getValue());
+                    "\nНазвания счёта: " + viewList.getValue() + "\n" );
         }
     }
 
+    public void viewListOfAccounts (){
+        System.out.println("-----Список счетов клиента"+" " + getName() +"-----");
+        for (Map.Entry viewList: getListOfAccounts().entrySet()){
+
+            System.out.println(
+                    "\nНомер счёта: " + viewList.getKey() +
+                    "\nНазвание счёта: " + viewList.getValue() + "\n" );
+        }
+    }
 
 
 
@@ -121,6 +131,10 @@ public class Client implements Comparable{
 
     public HashMap<String, String> getDebitAccount() {
         return debitAccount;
+    }
+
+    public HashMap<String, String> getListOfAccounts() {
+        return listOfAccounts;
     }
 
     @Override
