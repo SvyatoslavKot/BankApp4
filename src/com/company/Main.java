@@ -2,12 +2,13 @@ package com.company;
 
 import com.company.bankCentralOffice.BankCentralOffice;
 import com.company.bankOffice.BankOffice;
+import com.company.bankOffice.creditDepartment.CreditDepartment;
 import com.company.mobilBank.MobilBank;
 
-public class Main extends Thread {
+public  class  Main extends Thread {
 
 
-    public static void main(String[] args) {
+    public synchronized  static void main(String[] args) {
 
         Client clientSergei = new Client("Сергей ","23",50000,500000,"7676 875434");
         Client clientAnna = new Client("Anna ","28",52000,540000,"7676 434234");
@@ -28,9 +29,13 @@ public class Main extends Thread {
         String tic4 = bankSber.getTerminal1().getTicketToAccount(clientUriy,bankSber.getAccountManagerDepartment());
 
 
+        bankSber.getCreditDepartment().start();
         bankSber.getAccountManagerDepartment().startWork(bankSber);
         bankSber.getInsuranceDepartment().startWork(bankSber);
-        bankSber.getCreditDepartment().startWork(bankSber);
+
+
+        System.out.println(bankSber.getCreditDepartment().getClients().size());
+
     }
 
 }
