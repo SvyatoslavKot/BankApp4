@@ -26,7 +26,7 @@ public class BankOffice {
         this.terminal2 = new SelfTerminal();
         this.atm = new Atm();
         this.kassa = new Kassa();
-        this.creditDepartment  = new CreditDepartment();
+        this.creditDepartment  = new CreditDepartment(this);
         this.insuranceDepartment = new InsuranceDepartment();
         this.accountManagerDepartment = new AccountManagerDepartment();
         }

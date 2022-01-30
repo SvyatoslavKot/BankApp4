@@ -27,7 +27,7 @@ public class Main {
 
         bankSber.getAccountManagerDepartment().startWork(bankSber);
         bankSber.getInsuranceDepartment().startWork(bankSber);
-        bankSber.getCreditDepartment().startWork(bankSber);
+        bankSber.getCreditDepartment().start();
 
 
 
