@@ -86,7 +86,7 @@ public class CreditAccount {
                     System.out.println("Для вас нет подходящих предложений");
                 }break;
 
-            default: System.out.print("Неверная операция");
+            default: System.out.println("Неверная операция");
         }
     }
     public int putMoneyOnCreditAmount( int money){

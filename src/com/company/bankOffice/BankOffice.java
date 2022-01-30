@@ -20,9 +20,6 @@ public class BankOffice {
     InsuranceDepartment insuranceDepartment;
     AccountManagerDepartment accountManagerDepartment;
 
-    HashMap<String,String> creditClientList = new HashMap<>();
-    HashMap<String,String> clientBankList = new HashMap<>();
-
     public BankOffice(String nameBank) {
         this.nameBank = nameBank;
         this.terminal1 = new SelfTerminal();
@@ -33,26 +30,6 @@ public class BankOffice {
         this.insuranceDepartment = new InsuranceDepartment();
         this.accountManagerDepartment = new AccountManagerDepartment();
         }
-
-    public void viewClientList (){
-        System.out.println("-----Список Клиентов-----");
-        for (Map.Entry viewList: getClientBankList().entrySet()){
-
-            System.out.println(
-                    "\nНомер паспорта: " + viewList.getKey() +
-                            "\nИмя клиента: " + viewList.getValue());
-        }
-
-    }
-    public void viewCreditClientList (){
-        System.out.println("-----Список Оформленных кредитов-----");
-        for (Map.Entry viewList: getCreditClientList().entrySet()){
-
-            System.out.println(
-                    "\nНомер кредитного счёта: " + viewList.getKey() +
-                            "\nИмя клиента: " + viewList.getValue());
-        }
-    }
 
     public Atm getAtm() {
         return atm;
@@ -89,6 +66,29 @@ public class BankOffice {
         return nameBank;
     }
 
+
+
+    public void viewClientList (){
+        System.out.println("-----Список Клиентов-----");
+        for (Map.Entry viewList: getCreditClientList().entrySet()){
+
+            System.out.println(
+                    "\nНомер паспорта: " + viewList.getKey() +
+                            "\nИмя клиента: " + viewList.getValue());
+        }
+
+    }
+    public void viewCreditClientList (){
+        System.out.println("-----Список Оформленных кредитов-----");
+        for (Map.Entry viewList: getCreditClientList().entrySet()){
+
+            System.out.println(
+                    "\nНомер кредитного счёта: " + viewList.getKey() +
+                            "\nИмя клиента: " + viewList.getValue());
+        }
+    }
+    HashMap<String,String> creditClientList = new HashMap<>();
+    HashMap<String,String> clientBankList = new HashMap<>();
     public HashMap<String, String> getCreditClientList() {
         return creditClientList;
     }

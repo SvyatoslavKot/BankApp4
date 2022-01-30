@@ -29,10 +29,7 @@ public class Main {
         bankSber.getInsuranceDepartment().startWork(bankSber);
         bankSber.getCreditDepartment().startWork(bankSber);
 
-        //bankSber.viewClientList();
-        //clientEgor.viewListOfAccounts();
-        //clientUriy.viewListOfAccounts();
-        //clientSergei.viewListOfAccounts();
+
 
 
 
