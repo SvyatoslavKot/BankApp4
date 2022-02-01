@@ -11,7 +11,6 @@ import java.util.Map;
 
 public class BankOffice {
     private String nameBank;
-
     Atm atm;
     Kassa kassa;
     SelfTerminal terminal1;
@@ -19,7 +18,6 @@ public class BankOffice {
     CreditDepartment creditDepartment;
     InsuranceDepartment insuranceDepartment;
     AccountManagerDepartment accountManagerDepartment;
-
     public BankOffice(String nameBank) {
         this.nameBank = nameBank;
         this.terminal1 = new SelfTerminal();
@@ -28,7 +26,7 @@ public class BankOffice {
         this.kassa = new Kassa();
         this.creditDepartment  = new CreditDepartment(this);
         this.insuranceDepartment = new InsuranceDepartment();
-        this.accountManagerDepartment = new AccountManagerDepartment();
+        this.accountManagerDepartment = new AccountManagerDepartment(this);
         }
 
     public Atm getAtm() {
@@ -87,6 +85,7 @@ public class BankOffice {
                             "\nИмя клиента: " + viewList.getValue());
         }
     }
+
     HashMap<String,String> creditClientList = new HashMap<>();
     HashMap<String,String> clientBankList = new HashMap<>();
     public HashMap<String, String> getCreditClientList() {

@@ -25,7 +25,7 @@ public class CreditDepartment extends Thread {
    private PriorityQueue<Client> clients = new PriorityQueue<>();
    private ArrayList<String> tickets  = new ArrayList<>();
 
-   /*public CreditAccount startWork  (){
+   public CreditAccount startWork  (){
         if (tickets.size()!=0){
             for (int i = 0;i < tickets.size();i++) {
                 Client client = clientById(tickets.get(i));
@@ -34,8 +34,8 @@ public class CreditDepartment extends Thread {
             }
         }
         return null;
-    }*/
-   @Override
+    }
+   /*@Override
    public synchronized void run() {
            if (tickets.size()!=0){
                for (int i = 0;i < tickets.size();i++) {
@@ -53,7 +53,7 @@ public class CreditDepartment extends Thread {
                                    " обслуживает клиента");
            }
            }
-   }
+   }*/
 
     private Client clientById(String id){
         for(Client currentClient : clients){

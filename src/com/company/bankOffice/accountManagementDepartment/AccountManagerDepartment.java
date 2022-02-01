@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 public class AccountManagerDepartment {
+    BankOffice bankOffice;
+    public AccountManagerDepartment (BankOffice bankOffice){
+        this.bankOffice = bankOffice;
+    }
+
     ArrayList<AccountManeger> accountPersonal = new ArrayList<>() {
         {
             add(new AccountManeger("Игорь", 26, "Менеджер по работе со счетами"));
@@ -22,8 +27,8 @@ public class AccountManagerDepartment {
         if (tickets.size()!=0){
             for (int i = 0;i < tickets.size(); i++ ){
                 Client client = clientById(tickets.get(i));
-                DebitAccountModel debitAccountModel = new DebitAccountModel();
-                debitAccountModel.openDebitAccount(client,bankOffice);
+                DebitOpenAccount debitOpenAccount = new DebitOpenAccount();
+                debitOpenAccount.openDebit(client, bankOffice);
                 System.out.println(client.getName());
             }
         }

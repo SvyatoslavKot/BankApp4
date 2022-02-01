@@ -14,17 +14,21 @@ public class DebitAccountModel extends  DebitAccount{
     private int moneyInAccount;
     private Date openingDate;
     private int creditTerm;
+    private int payment;
+    private double cashBack;
 
     private GenerateAccountNumber generateAccountNumber = new GenerateAccountNumber();
 
 
     @Override
-    void openDebitAccount(Client client, BankOffice bankOffice) {
-        this.nameAccount = "Дебетовый счет";
+    void openDebitAccount(String nameCredit,int sum,int term, Client client, BankOffice bankOffice, int payment, double cashBack) {
+        this.nameAccount = nameCredit;
         this.accountNumber = generateAccountNumber.accountNumber();
-        this.moneyInAccount = moneyInAccount;
+        this.moneyInAccount = sum;
         this.openingDate = new Date();
-        this.creditTerm = 24;
+        this.creditTerm = term;
+        this.payment = payment;
+        this.cashBack = cashBack;
 
         bankOffice.getClientBankList().put(client.getPassport(),client.getName());
         client.getDebitAccount().put(this.accountNumber, this.nameAccount);
@@ -37,6 +41,8 @@ public class DebitAccountModel extends  DebitAccount{
                 "\nдата открытия: " + dateFormat.format(openingDate) +
                 "\nсроком: "+ creditTerm +" мес."+
                 "\nбаланс счёта: "+ moneyInAccount+
+                "\nежемесчная плата за обслуживание: "+ payment +
+                "\ncashBack по карте: " + cashBack +
                 "\n____________________________________________");
     }
 
