@@ -11,7 +11,4 @@ public interface AccountDebitOperation {
     void paymentCreditDebit(Client client, DebitAccountModel debitAccount, CreditAccount creditAccount, int money);
     void moneyTransfer(Client client, DebitAccountModel debitAccountSender, DebitAccountModel debitAccountAddressee, int money);
 
-
-
-
 }

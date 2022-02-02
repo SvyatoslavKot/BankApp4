@@ -10,7 +10,7 @@ import java.util.Date;
 public class InsuranceModel extends Insurance {
     private String nameInsurance;
     private int insuranceValue;
-    private int price;
+    private double price;
     private int term;
     private Date openDate;
     private String insuranceNumber;
@@ -18,8 +18,8 @@ public class InsuranceModel extends Insurance {
 
     private GenerateAccountNumber generateAccountNumber = new GenerateAccountNumber();
     @Override
-    public void openInsurance(Client client, BankOffice bankOffice,String nameInsurance, int insuranceValue, int price, int term){
-        this.nameInsurance = nameInsurance;
+    public void openInsurance(Client client, BankOffice bankOffice, int insuranceValue, double price, int term){
+        this.nameInsurance = "Страхование";
         this.insuranceNumber = generateAccountNumber.accountNumber();
         this.price = price;
         this.term = term;
@@ -49,7 +49,7 @@ public class InsuranceModel extends Insurance {
         return insuranceValue;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 

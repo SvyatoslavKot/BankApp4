@@ -18,9 +18,7 @@ public class Client implements Comparable {
     private int cash;
     private String passport;
     private boolean bankAccount = false;
-
     Scanner scanner = new Scanner(System.in);
-    //WaitingInLine waitingInLine = new WaitingInLine();
     HashMap<String,String> creditListClient = new HashMap<>();
     HashMap<String,String> debitAccount = new HashMap<>();
     HashMap<String,String> listOfAccounts = new HashMap<>();

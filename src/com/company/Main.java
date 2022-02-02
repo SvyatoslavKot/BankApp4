@@ -20,8 +20,6 @@ public class Main {
         MobilBank mobilBankSber = new MobilBank(bankSber);
         BankCentralOffice bankCentralOffice = new BankCentralOffice("Sber");
 
-
-
         String tic1 = bankSber.getTerminal1().getTicketToAccount(clientSergei,bankSber);
         String tic2 = bankSber.getTerminal1().getTicketToCredit(clientOlga,bankSber);
         String tic3 = bankSber.getTerminal1().getTicketToCredit(clientEgor,bankSber);
@@ -31,19 +29,12 @@ public class Main {
 
        bankSber.getInsuranceDepartment().startWork(bankSber);
 
-
         String tic7 = bankSber.getTerminal1().getTicketToInsurance(clientUriy, bankSber);
         String tic8 = bankSber.getTerminal1().getTicketToInsurance(clientOlga, bankSber);
 
         bankSber.getInsuranceDepartment().startWork(bankSber);
         bankSber.getAccountManagerDepartment().startWork(bankSber);
         bankSber.getCreditDepartment().startWork();
-
-
-
-
-
-
 
     }
 
