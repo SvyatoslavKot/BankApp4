@@ -6,9 +6,10 @@ import com.company.bankOffice.BankOffice;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Scanner;
 
-public class Client implements Comparable{
+public class Client implements Comparable {
     private String name;
     private String lastName;
     private String id;
@@ -135,6 +136,19 @@ public class Client implements Comparable{
 
     public HashMap<String, String> getListOfAccounts() {
         return listOfAccounts;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Client)) return false;
+        Client client = (Client) o;
+        return id.equals(client.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     @Override

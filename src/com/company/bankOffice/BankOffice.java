@@ -2,6 +2,7 @@ package com.company.bankOffice;
 
 
 
+import com.company.bankOffice.BankService.BankCollections;
 import com.company.bankOffice.accountManagementDepartment.AccountManagerDepartment;
 import com.company.bankOffice.creditDepartment.CreditDepartment;
 import com.company.bankOffice.insuranceDepartment.InsuranceDepartment;
@@ -18,6 +19,7 @@ public class BankOffice {
     CreditDepartment creditDepartment;
     InsuranceDepartment insuranceDepartment;
     AccountManagerDepartment accountManagerDepartment;
+    BankCollections bankCollections = new BankCollections();
     public BankOffice(String nameBank) {
         this.nameBank = nameBank;
         this.terminal1 = new SelfTerminal();
@@ -55,6 +57,10 @@ public class BankOffice {
 
     public AccountManagerDepartment getAccountManagerDepartment() {
         return accountManagerDepartment;
+    }
+
+    public BankCollections getBankCollections() {
+        return bankCollections;
     }
 
     public void setNameBank(String nameBank) {

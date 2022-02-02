@@ -2,6 +2,7 @@ package com.company;
 
 import com.company.bankCentralOffice.BankCentralOffice;
 import com.company.bankOffice.BankOffice;
+import com.company.bankOffice.insuranceDepartment.InsuranceOpen;
 import com.company.mobilBank.MobilBank;
 
 public class Main {
@@ -23,10 +24,17 @@ public class Main {
         String tic2 = bankSber.getTerminal1().getTicketToCredit(clientOlga,bankSber.getCreditDepartment());
         String tic3 = bankSber.getTerminal1().getTicketToCredit(clientEgor,bankSber.getCreditDepartment());
         String tic4 = bankSber.getTerminal1().getTicketToAccount(clientUriy,bankSber.getAccountManagerDepartment());
+        String tic9 = bankSber.getTerminal1().getTicketToInsurance(clientAnna, bankSber);
+        String tic6 = bankSber.getTerminal1().getTicketToInsurance(clientUriy, bankSber);
+
+       bankSber.getInsuranceDepartment().startWork(bankSber);
 
 
-        bankSber.getAccountManagerDepartment().startWork(bankSber);
+        String tic7 = bankSber.getTerminal1().getTicketToInsurance(clientUriy, bankSber);
+        String tic8 = bankSber.getTerminal1().getTicketToInsurance(clientOlga, bankSber);
+
         bankSber.getInsuranceDepartment().startWork(bankSber);
+       // bankSber.getInsuranceDepartment().startWork(bankSber);
         bankSber.getCreditDepartment().startWork();
 
 

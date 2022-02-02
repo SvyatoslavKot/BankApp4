@@ -18,7 +18,7 @@ public class InsuranceModel extends Insurance {
 
     private GenerateAccountNumber generateAccountNumber = new GenerateAccountNumber();
     @Override
-    void openInsurance(Client client, BankOffice bankOffice,String nameInsurance, int insuranceValue, int price, int term){
+    public void openInsurance(Client client, BankOffice bankOffice,String nameInsurance, int insuranceValue, int price, int term){
         this.nameInsurance = nameInsurance;
         this.insuranceNumber = generateAccountNumber.accountNumber();
         this.price = price;

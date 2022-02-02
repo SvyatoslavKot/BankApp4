@@ -1,6 +1,6 @@
 package com.company.mobilBank;
 
-import com.company.bankOffice.insuranceDepartment.Insurance;
+import com.company.bankOffice.insuranceDepartment.InsuranceModel;
 
-public class MobilBankInsurance extends Insurance {
+public class MobilBankInsurance extends InsuranceModel {
 }
