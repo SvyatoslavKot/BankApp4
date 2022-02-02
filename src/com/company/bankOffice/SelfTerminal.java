@@ -13,19 +13,19 @@ import com.company.bankOffice.insuranceDepartment.InsuranceDepartment;
 
 public class SelfTerminal {
     int counter;
-    public String getTicketToCredit (Client client, CreditDepartment creditDepartment){
+    public String getTicketToCredit (Client client, BankOffice bankOffice){
         counter = counter + 1;
         String numberOfTikcet = "C-"+ counter;
-        creditDepartment.getClients().add(client);
-        creditDepartment.getTickets().add(client.getId());
+        bankOffice.getBankCollections().getClientHashMap().put(client.getId(),client);
+        bankOffice.getCreditDepartment().getTickets().add(client.getId());
         System.out.println("Создан клиент с талонном: " + numberOfTikcet);
        return numberOfTikcet;
     }
-    public String getTicketToAccount (Client client, AccountManagerDepartment accountDepartment){
+    public String getTicketToAccount (Client client, BankOffice bankOffice){
         counter = counter + 1;
         String numberOfTikcet = "A-"+ counter;
-        accountDepartment.getClients().add(client);
-        accountDepartment.getTickets().add(client.getId());
+        bankOffice.getBankCollections().getClientHashMap().put(client.getId(),client);
+        bankOffice.getAccountManagerDepartment().getTickets().add(client.getId());
         System.out.println("Создан клиент с талонном: " + numberOfTikcet);
         return numberOfTikcet;
     }

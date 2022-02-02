@@ -23,6 +23,7 @@ public class CreditModel extends Credits{
     private Date cardOpeningDate;
     private String cardCreditName;
     private int cardAmount;
+    private String idHolder;
 
     GenerateAccountNumber generateAccountNumber = new GenerateAccountNumber();
     CreditCalculationPayment payment = new CreditCalculationPayment();
@@ -38,6 +39,7 @@ public class CreditModel extends Credits{
         this.openingDate = new Date();
         this.creditTerm = creditTerm;
         this.paymentMonth = payment.calc(this.amount,this.ptc,this.creditTerm);
+        this.idHolder = client.getId();
 
         clientService.takeCash(amount,client);
 

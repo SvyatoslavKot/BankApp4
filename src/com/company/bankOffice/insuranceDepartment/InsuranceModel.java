@@ -37,8 +37,35 @@ public class InsuranceModel extends Insurance {
                 "\nстраховая сумма: " + this.insuranceValue +
                 "\n____________________________________________");
 
+        bankOffice.getBankCollections().getInsurensList().add(this);
+
     }
 
+    public String getNameInsurance() {
+        return nameInsurance;
+    }
 
+    public int getInsuranceValue() {
+        return insuranceValue;
+    }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public int getTerm() {
+        return term;
+    }
+
+    public Date getOpenDate() {
+        return openDate;
+    }
+
+    public String getInsuranceNumber() {
+        return insuranceNumber;
+    }
+
+    public String getClientId() {
+        return clientId;
+    }
 }

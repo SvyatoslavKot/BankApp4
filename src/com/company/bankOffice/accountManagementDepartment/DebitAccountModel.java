@@ -16,10 +16,9 @@ public class DebitAccountModel extends  DebitAccount{
     private int creditTerm;
     private int payment;
     private double cashBack;
+    private String idHolder;
 
     private GenerateAccountNumber generateAccountNumber = new GenerateAccountNumber();
-
-
     @Override
     void openDebitAccount(String nameCredit,int sum,int term, Client client, BankOffice bankOffice, int payment, double cashBack) {
         this.nameAccount = nameCredit;
@@ -29,6 +28,7 @@ public class DebitAccountModel extends  DebitAccount{
         this.creditTerm = term;
         this.payment = payment;
         this.cashBack = cashBack;
+        this.idHolder = client.getId();
 
         bankOffice.getClientBankList().put(client.getPassport(),client.getName());
         client.getDebitAccount().put(this.accountNumber, this.nameAccount);
@@ -45,9 +45,6 @@ public class DebitAccountModel extends  DebitAccount{
                 "\ncashBack по карте: " + cashBack +
                 "\n____________________________________________");
     }
-
-
-
 
     public int getMoneyInAccount() {
         return moneyInAccount;

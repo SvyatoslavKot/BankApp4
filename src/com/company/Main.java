@@ -19,11 +19,13 @@ public class Main {
         BankOffice bankSber = new BankOffice("Sber");
         MobilBank mobilBankSber = new MobilBank(bankSber);
         BankCentralOffice bankCentralOffice = new BankCentralOffice("Sber");
-       // String tic = bankSber.getTerminal1().getTicketToInsurance(clientAnna,bankSber.getInsuranceDepartment());
-        String tic1 = bankSber.getTerminal1().getTicketToAccount(clientSergei,bankSber.getAccountManagerDepartment());
-        String tic2 = bankSber.getTerminal1().getTicketToCredit(clientOlga,bankSber.getCreditDepartment());
-        String tic3 = bankSber.getTerminal1().getTicketToCredit(clientEgor,bankSber.getCreditDepartment());
-        String tic4 = bankSber.getTerminal1().getTicketToAccount(clientUriy,bankSber.getAccountManagerDepartment());
+
+
+
+        String tic1 = bankSber.getTerminal1().getTicketToAccount(clientSergei,bankSber);
+        String tic2 = bankSber.getTerminal1().getTicketToCredit(clientOlga,bankSber);
+        String tic3 = bankSber.getTerminal1().getTicketToCredit(clientEgor,bankSber);
+        String tic4 = bankSber.getTerminal1().getTicketToAccount(clientUriy,bankSber);
         String tic9 = bankSber.getTerminal1().getTicketToInsurance(clientAnna, bankSber);
         String tic6 = bankSber.getTerminal1().getTicketToInsurance(clientUriy, bankSber);
 
@@ -34,8 +36,9 @@ public class Main {
         String tic8 = bankSber.getTerminal1().getTicketToInsurance(clientOlga, bankSber);
 
         bankSber.getInsuranceDepartment().startWork(bankSber);
-       // bankSber.getInsuranceDepartment().startWork(bankSber);
+        bankSber.getAccountManagerDepartment().startWork(bankSber);
         bankSber.getCreditDepartment().startWork();
+
 
 
 
