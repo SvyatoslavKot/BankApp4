@@ -9,7 +9,9 @@ public class InsuranceOpen {
     Scanner scanner = new Scanner(System.in);
     InsuranceModel insuranceModel = new InsuranceModel();
 
+
     public void openInsurance (Client client, BankOffice bankOffice){
+
         System.out.println("Введите страховую сумму");
         int value  = scanner.nextInt();
         System.out.println("Введите желаемый срок страхования до 12 месяцев:");
@@ -17,17 +19,22 @@ public class InsuranceOpen {
         double price = 0;
         if (term < 1){
            price = (value / 1000 )* 0.2 ;
-        }else if (term>1 & term <3 ){
+            insuranceModel.openInsurance(client,bankOffice, value,price,term);
+        }else if (term>1 && term <3 ){
             price= (value / 1000) * 0.4;
-        }else  if (term > 3 & term < 6) {
+            insuranceModel.openInsurance(client,bankOffice, value,price,term);
+        }else  if (term > 3 && term < 6) {
             price = (value / 1000) * 0.6;
-        }else  if (term > 6 & term < 9) {
+            insuranceModel.openInsurance(client,bankOffice, value,price,term);
+        }else  if (term > 6 && term < 9) {
             price = (value / 1000) * 0.6;
-        }else if (term > 9 & term <= 12) {
+            insuranceModel.openInsurance(client,bankOffice, value,price,term);
+        }else if (term > 9 && term <= 12) {
             price = value / 1000;
+            insuranceModel.openInsurance(client,bankOffice, value,price,term);
         }else {
             System.out.println("Неверная операция.");
         }
-        insuranceModel.openInsurance(client,bankOffice, value,price,term);
+
     }
 }

@@ -17,12 +17,10 @@ public class CreditDepartment{
     };
    private ArrayDeque<String> tickets  = new ArrayDeque<>();
    public CreditAccount startWork  (){
-        if (tickets.size()!=0){
-            for (int i = 0;i < tickets.size();i++) {
-                Client client = bankOffice.getBankCollections().getClientHashMap().get(tickets.pollLast());
+        while (tickets.size()!=0) {
+                Client client = bankOffice.getBankCollections().getClientHashMap().get(tickets.pollFirst());
                 CreditAccount creditAccount = new CreditAccount();
                 creditAccount.openCredit(client, bankOffice);
-            }
         }
         return null;
     }

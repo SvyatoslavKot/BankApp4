@@ -2,6 +2,7 @@ package com.company;
 
 import com.company.bankCentralOffice.BankCentralOffice;
 import com.company.bankOffice.BankOffice;
+import com.company.bankOffice.insuranceDepartment.InsuranceAgent;
 import com.company.bankOffice.insuranceDepartment.InsuranceOpen;
 import com.company.mobilBank.MobilBank;
 
@@ -24,17 +25,15 @@ public class Main {
         String tic2 = bankSber.getTerminal1().getTicketToCredit(clientOlga,bankSber);
         String tic3 = bankSber.getTerminal1().getTicketToCredit(clientEgor,bankSber);
         String tic4 = bankSber.getTerminal1().getTicketToAccount(clientUriy,bankSber);
-        String tic9 = bankSber.getTerminal1().getTicketToInsurance(clientAnna, bankSber);
-        String tic6 = bankSber.getTerminal1().getTicketToInsurance(clientUriy, bankSber);
-
-       bankSber.getInsuranceDepartment().startWork(bankSber);
-
-        String tic7 = bankSber.getTerminal1().getTicketToInsurance(clientUriy, bankSber);
-        String tic8 = bankSber.getTerminal1().getTicketToInsurance(clientOlga, bankSber);
-
-        bankSber.getInsuranceDepartment().startWork(bankSber);
-        bankSber.getAccountManagerDepartment().startWork(bankSber);
+        String tic5 = bankSber.getTerminal1().getTicketToInsurance(clientSergei,bankSber);
+        String tic6 = bankSber.getTerminal1().getTicketToInsurance(clientSergei,bankSber);
+        bankSber.getInsuranceDepartment().startWork();
+        bankSber.getAccountManagerDepartment().startWork();
         bankSber.getCreditDepartment().startWork();
+
+        InsuranceAgent agent = bankSber.getInsuranceDepartment().getInsuranceAgents().get(0);
+
+        bankSber.getBankCollections().sourceInsurence(clientSergei);
 
     }
 

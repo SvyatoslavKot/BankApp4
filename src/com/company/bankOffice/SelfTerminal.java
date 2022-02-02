@@ -17,7 +17,7 @@ public class SelfTerminal {
         counter = counter + 1;
         String numberOfTikcet = "C-"+ counter;
         bankOffice.getBankCollections().getClientHashMap().put(client.getId(),client);
-        bankOffice.getCreditDepartment().getTickets().add(client.getId());
+        bankOffice.getCreditDepartment().getTickets().addLast(client.getId());
         System.out.println("Создан клиент с талонном: " + numberOfTikcet);
        return numberOfTikcet;
     }
@@ -25,7 +25,7 @@ public class SelfTerminal {
         counter = counter + 1;
         String numberOfTikcet = "A-"+ counter;
         bankOffice.getBankCollections().getClientHashMap().put(client.getId(),client);
-        bankOffice.getAccountManagerDepartment().getTickets().add(client.getId());
+        bankOffice.getAccountManagerDepartment().getTickets().addLast(client.getId());
         System.out.println("Создан клиент с талонном: " + numberOfTikcet);
         return numberOfTikcet;
     }
@@ -33,7 +33,7 @@ public class SelfTerminal {
         counter = counter + 1;
         String numberOfTikcet = "I-"+ counter;
         bankOffice.getBankCollections().getClientHashMap().put(client.getId(),client);
-        bankOffice.getInsuranceDepartment().getTickets().addFirst(client.getId());
+        bankOffice.getInsuranceDepartment().getTickets().addLast(client.getId());
         System.out.println("Создан клиент с талонном: " + numberOfTikcet);
         return numberOfTikcet;
     }

@@ -21,14 +21,12 @@ public class AccountManagerDepartment {
         }
     };
     ArrayDeque<String> tickets  =new ArrayDeque<>();
-    public AccountManagerDepartment startWork (BankOffice bankOffice){
-        if (tickets.size()!=0){
-            for (int i = 0;i < tickets.size(); i++ ){
-                Client client = bankOffice.getBankCollections().clientHashMap.get(tickets.pollLast());
+    public AccountManagerDepartment startWork (){
+        while (tickets.size()!=0){
+                Client client = bankOffice.getBankCollections().clientHashMap.get(tickets.pollFirst());
                 DebitOpenAccount debitOpenAccount = new DebitOpenAccount();
                 debitOpenAccount.openDebit(client, bankOffice);
                 System.out.println(client.getName());
-            }
         }
         return null;
     }

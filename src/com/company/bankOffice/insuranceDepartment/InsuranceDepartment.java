@@ -14,6 +14,12 @@ import java.util.LinkedList;
 import java.util.PriorityQueue;
 
 public class InsuranceDepartment {
+    BankOffice bankOffice;
+
+    public InsuranceDepartment(BankOffice bankOffice) {
+        this.bankOffice = bankOffice;
+    }
+
     ArrayList<InsuranceAgent> insuranceAgents = new ArrayList<>() {
         {
             add(new InsuranceAgent(" Игорь" , 33, "Страховой Агент"));
@@ -21,14 +27,11 @@ public class InsuranceDepartment {
     };
     ArrayDeque<String> tickets  = new ArrayDeque<>();
 
-    public InsuranceOpen startWork (BankOffice bankOffice){
-        if(tickets.size()!=0){
-            for(int i =0;i <= tickets.size(); i++) {
-                Client client = bankOffice.getBankCollections().getClientHashMap().get(tickets.pollLast());
-
+    public InsuranceOpen startWork (){
+        while (tickets.size()!=0){
+                Client client = bankOffice.getBankCollections().getClientHashMap().get(tickets.pollFirst());
                 InsuranceOpen insuranceOpen = new InsuranceOpen();
                 insuranceOpen.openInsurance(client, bankOffice);
-            }
         }
         return null;
     }
