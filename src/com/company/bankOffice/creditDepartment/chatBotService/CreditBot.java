@@ -1,16 +1,13 @@
-package com.company.bankOffice.creditDepartment;
-
+package com.company.bankOffice.creditDepartment.chatBotService;
 import com.company.Client;
 import com.company.service.CreditCalculationPayment;
 import com.company.service.GenerateAccountNumber;
 import com.company.bankOffice.BankOffice;
 import com.company.service.ClientService;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-
-public class CreditModel extends Credits{
+import com.company.bankOffice.creditDepartment.Credits;
+public class CreditBot extends Credits{
     private String creditName;
     private String accountNumber;
     private int amount;
@@ -30,40 +27,42 @@ public class CreditModel extends Credits{
     ClientService clientService  = new ClientService();
     //Date date = new Date();
 
-    public void openCredit(String creditName, Client client, int sum, BankOffice bankOffice, double ptc, int creditTerm ) {
+    @Override
+    public void openCredit(String creditName, Client a, int sum, BankOffice bankOffice, double ptc, int creditTerm) {
 
-        this.creditName = creditName;
-        this.accountNumber = generateAccountNumber.accountNumber();
-        this.amount = sum;
-        this.ptc = ptc;
-        this.openingDate = new Date();
-        this.creditTerm = creditTerm;
-        this.paymentMonth = payment.calc(this.amount,this.ptc,this.creditTerm);
-        this.idHolder = client.getId();
-
-        clientService.takeCash(amount,client);
-
-        bankOffice.getCreditClientList().put(this.accountNumber,client.getName());
-        bankOffice.getClientBankList().put(client.getPassport(),client.getName());
-        client.getCreditListClient().put(this.accountNumber, this.creditName);
-        client.getListOfAccounts().put(this.accountNumber, this.creditName);
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat();
-        System.out.println(client.getName() + " вам одобрен " + this.creditName +
-                "\n________________ИНФОРМАЦИЯ__________________" +
-                "\nномер счёта: " + accountNumber +
-                "\nсрок кредита: " + this.creditTerm + " мес." +
-                "\nдата открытия: " + dateFormat.format(openingDate) +
-                "\nпроцентная ставка: " + this.ptc +
-                "\nсумма займа: " + amount +
-                "\nсумма ежемесячного платежа: " + String.format("%.2f", paymentMonth) + " руб." +
-                "\n____________________________________________");
     }
 
     @Override
     public void openCredit(String creditName, int sum, double ptc, int creditTerm) {
 
     }
+
+    public String openCreditChat(String creditName, int sum, double ptc, int creditTerm){
+         this.creditName = creditName;
+         this.accountNumber = generateAccountNumber.accountNumber();
+         this.amount = sum;
+         this.ptc = ptc;
+         this.openingDate = new Date();
+         this.creditTerm = creditTerm;
+         this.paymentMonth = payment.calc(this.amount,this.ptc,this.creditTerm);
+         // this.idHolder = client.getId();
+         //clientService.takeCash(amount,client);
+         // bankOffice.getCreditClientList().put(this.accountNumber,client.getName());
+         //  bankOffice.getClientBankList().put(client.getPassport(),client.getName());
+         //  client.getCreditListClient().put(this.accountNumber, this.creditName);
+         // client.getListOfAccounts().put(this.accountNumber, this.creditName);
+
+         SimpleDateFormat dateFormat = new SimpleDateFormat();
+         return " вам одобрен " + this.creditName +
+                 "\n________________ИНФОРМАЦИЯ__________________" +
+                 "\nномер счёта: " + accountNumber +
+                 "\nсрок кредита: " + this.creditTerm + " мес." +
+                 "\nдата открытия: " + dateFormat.format(openingDate) +
+                 "\nпроцентная ставка: " + this.ptc +
+                 "\nсумма займа: " + amount +
+                 "\nсумма ежемесячного платежа: " + String.format("%.2f", paymentMonth) + " руб." +
+                 "\n____________________________________________";
+     }
 
     public void openCreditCard(String cardCreditName, Client client, int sum, BankOffice bankOffice, double ptc){
         this.cardAccountNumber = generateAccountNumber.accountNumber();

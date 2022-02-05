@@ -14,5 +14,7 @@ public abstract class Credits {
     private int creditTerm;
     private double paymentMonth;
 
-    abstract void openCredit(String creditName, Client a, int sum, BankOffice bankOffice, double ptc, int creditTerm);
+    public abstract void openCredit(String creditName, Client a, int sum, BankOffice bankOffice, double ptc, int creditTerm);
+
+    public abstract void openCredit(String creditName, int sum,  double ptc, int creditTerm );
 }

@@ -17,8 +17,11 @@ public class Main {
         Client clientEgor = new Client("Egor ","431",45000,505600,"7676 42414");
         Client clientUriy = new Client("Ura ","491",49000,500600,"7676 09843");
 
+
+
         BankOffice bankSber = new BankOffice("Sber");
         MobilBank mobilBankSber = new MobilBank(bankSber);
+        mobilBankSber.openMobilBankChatBot();
         BankCentralOffice bankCentralOffice = new BankCentralOffice("Sber");
 
         String tic1 = bankSber.getTerminal1().getTicketToAccount(clientSergei,bankSber);

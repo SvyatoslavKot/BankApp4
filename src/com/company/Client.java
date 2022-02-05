@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Client implements Comparable {
+public class Client  {
     private String name;
     private String lastName;
     private String id;
@@ -149,8 +149,4 @@ public class Client implements Comparable {
         return Objects.hash(id);
     }
 
-    @Override
-    public int compareTo(Object o) {
-        return 0;
-    }
 }
