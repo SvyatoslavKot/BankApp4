@@ -1,6 +1,6 @@
 package com.company.mobilBank;
 
-import com.company.bankOffice.creditDepartment.CreditAccount;
+import com.company.bankOffice.creditDepartment.CreditController;
 
-public class MobilBankCredit extends CreditAccount {
+public class MobilBankCredit extends CreditController {
 }

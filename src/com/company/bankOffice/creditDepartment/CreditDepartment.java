@@ -16,10 +16,10 @@ public class CreditDepartment{
         }
     };
    private ArrayDeque<String> tickets  = new ArrayDeque<>();
-   public CreditAccount startWork  (){
+   public CreditController startWork  (){
         while (tickets.size()!=0) {
                 Client client = bankOffice.getBankCollections().getClientHashMap().get(tickets.pollFirst());
-                CreditAccount creditAccount = new CreditAccount();
+                CreditController creditAccount = new CreditController();
                 creditAccount.openCredit(client, bankOffice);
         }
         return null;

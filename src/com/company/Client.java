@@ -18,10 +18,6 @@ public class Client  {
     private int cash;
     private String passport;
     private boolean bankAccount = false;
-    Scanner scanner = new Scanner(System.in);
-    HashMap<String,String> creditListClient = new HashMap<>();
-    HashMap<String,String> debitAccount = new HashMap<>();
-    HashMap<String,String> listOfAccounts = new HashMap<>();
 
     public Client(String name,String id, int income, int cash, String passport) {
         this.name = name;
@@ -30,62 +26,6 @@ public class Client  {
         this.cash = cash;
         this.passport = passport;
     }
-    public Client() {
-        System.out.println("Ведите имя клиент.");
-        String nameScan = scanner.nextLine();
-        // System.out.println("Ведите фамилию клиент.");
-        // String lastNameScan = scanner.nextLine();
-        System.out.println("Введите номер паспорта.");
-        String passportScan = scanner.nextLine();
-        //System.out.println("Ведите возраст клиент.");
-        // int ageScan = scanner.nextInt();
-        // System.out.println("Ведите доход клиента.");
-        // int incomeScan = scanner.nextInt();
-        // System.out.println("Сколько наличных у клиента");
-        // int cashScan = scanner.nextInt();
-
-
-        System.out.println("Создан клиент.");
-        this.name = nameScan;
-        // this.lastName = lastNameScan;
-        // this.age = ageScan;
-        this.passport = passportScan;
-        //this.income = incomeScan;
-        //this.cash = cashScan;
-    }
-
-
-    public void viewCreditAccount (){
-
-        System.out.println("-----Список кредитов"+" " + getName() +"-----");
-        for (Map.Entry viewList: getCreditListClient().entrySet()){
-
-            System.out.println(
-                    "\nНомер кредитного счёта: " + viewList.getKey() +
-                    "\nНазвания кредита: " + viewList.getValue() + "\n");
-        }
-    }
-    public void viewDebitAccount (){
-        System.out.println("-----Список дебетовых счетов"+" " + getName() +"-----");
-        for (Map.Entry viewList: getDebitAccount().entrySet()){
-
-            System.out.println(
-                    "\nНомер дебетого счёта: " + viewList.getKey() +
-                    "\nНазвания счёта: " + viewList.getValue() + "\n" );
-        }
-    }
-
-    public void viewListOfAccounts (){
-        System.out.println("-----Список счетов клиента"+" " + getName() +"-----");
-        for (Map.Entry viewList: getListOfAccounts().entrySet()){
-
-            System.out.println(
-                    "\nНомер счёта: " + viewList.getKey() +
-                    "\nНазвание счёта: " + viewList.getValue() + "\n" );
-        }
-    }
-
-
 
     public String getPassport() {
         return passport;
@@ -93,15 +33,12 @@ public class Client  {
     public String getName() {
         return name;
     }
-
     public String getId() {
         return id;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public String getLastName() {
         return lastName;
     }
@@ -123,19 +60,6 @@ public class Client  {
     public void setBankAccount(boolean bankCard) {
         this.bankAccount = bankCard;
     }
-
-    public HashMap<String, String> getCreditListClient() {
-        return creditListClient;
-    }
-
-    public HashMap<String, String> getDebitAccount() {
-        return debitAccount;
-    }
-
-    public HashMap<String, String> getListOfAccounts() {
-        return listOfAccounts;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -149,4 +73,16 @@ public class Client  {
         return Objects.hash(id);
     }
 
+    @Override
+    public String toString() {
+        return "Client{" +
+                "name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", id='" + id + '\'' +
+                ", age=" + age +
+                ", income=" + income +
+                ", cash=" + cash +
+                ", passport='" + passport + '\'' +
+                '}';
+    }
 }

@@ -1,10 +1,10 @@
 package com.company.bankOffice.BankService;
 
 import com.company.Client;
-import com.company.bankOffice.creditDepartment.CreditAccount;
+import com.company.bankOffice.creditDepartment.CreditController;
 
 public interface AccontCreditOperation {
-    void viewMoneyAmountCredit(CreditAccount a);
-    void paymentCreditCash(Client cash, CreditAccount a, int money);
+    void viewMoneyAmountCredit(CreditController a);
+    void paymentCreditCash(Client cash, CreditController a, int money);
 
 }

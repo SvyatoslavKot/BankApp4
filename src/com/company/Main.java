@@ -2,6 +2,7 @@ package com.company;
 
 import com.company.bankCentralOffice.BankCentralOffice;
 import com.company.bankOffice.BankOffice;
+import com.company.bankOffice.BankService.BankCollectionManage;
 import com.company.bankOffice.insuranceDepartment.InsuranceAgent;
 import com.company.bankOffice.insuranceDepartment.InsuranceOpen;
 import com.company.mobilBank.MobilBank;
@@ -21,22 +22,26 @@ public class Main {
 
         BankOffice bankSber = new BankOffice("Sber");
         MobilBank mobilBankSber = new MobilBank(bankSber);
-        mobilBankSber.openMobilBankChatBot();
+
         BankCentralOffice bankCentralOffice = new BankCentralOffice("Sber");
 
         String tic1 = bankSber.getTerminal1().getTicketToAccount(clientSergei,bankSber);
         String tic2 = bankSber.getTerminal1().getTicketToCredit(clientOlga,bankSber);
         String tic3 = bankSber.getTerminal1().getTicketToCredit(clientEgor,bankSber);
         String tic4 = bankSber.getTerminal1().getTicketToAccount(clientUriy,bankSber);
-        String tic5 = bankSber.getTerminal1().getTicketToInsurance(clientSergei,bankSber);
+        String tic5 = bankSber.getTerminal1().getTicketToInsurance(clientAnna,bankSber);
         String tic6 = bankSber.getTerminal1().getTicketToInsurance(clientSergei,bankSber);
         bankSber.getInsuranceDepartment().startWork();
-        bankSber.getAccountManagerDepartment().startWork();
-        bankSber.getCreditDepartment().startWork();
 
-        InsuranceAgent agent = bankSber.getInsuranceDepartment().getInsuranceAgents().get(0);
+        BankCollectionManage bankCollectionManage = new BankCollectionManage();
+        bankCollectionManage.viewInsuranceByClient(clientSergei,bankSber);
+        bankCollectionManage.viewAllInsurance(bankSber);
+        bankCollectionManage.sortInsuranseUpDown(bankSber);
+        bankSber.getInsuranceDepartment().getInsuranceAgents().get(0).viewInsuranceByClient(clientSergei,bankSber);
+        bankCollectionManage.deleteAllInsuranceByClient(bankSber,clientSergei);
+        bankCollectionManage.viewAllClient(bankSber);
 
-        bankSber.getBankCollections().sourceInsurence(clientSergei);
+
 
     }
 

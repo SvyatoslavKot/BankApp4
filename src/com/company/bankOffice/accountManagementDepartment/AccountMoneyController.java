@@ -5,8 +5,8 @@ import com.company.bankOffice.BankOffice;
 
 import java.util.Scanner;
 
-public class DebitOpenAccount {
-    DebitAccountModel debit = new DebitAccountModel();
+public class AccountMoneyController {
+    AccountMoney debit = new AccountMoney();
     Scanner scanner = new Scanner(System.in);
 
     public void openDebit(Client client, BankOffice bankOffice) {

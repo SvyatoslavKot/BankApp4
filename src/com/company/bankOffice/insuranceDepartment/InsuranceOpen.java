@@ -7,7 +7,12 @@ import java.util.Scanner;
 
 public class InsuranceOpen {
     Scanner scanner = new Scanner(System.in);
-    InsuranceModel insuranceModel = new InsuranceModel();
+    Insurance insuranceModel = new Insurance() {
+        @Override
+        public int compareTo(Object o) {
+            return 0;
+        }
+    };
 
 
     public void openInsurance (Client client, BankOffice bankOffice){

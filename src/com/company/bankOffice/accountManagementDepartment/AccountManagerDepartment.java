@@ -2,12 +2,9 @@ package com.company.bankOffice.accountManagementDepartment;
 
 import com.company.Client;
 import com.company.bankOffice.BankOffice;
-import com.company.bankOffice.creditDepartment.CreditAccount;
-import com.company.bankOffice.creditDepartment.CreditManager;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.PriorityQueue;
 
 public class AccountManagerDepartment {
     BankOffice bankOffice;
@@ -24,7 +21,7 @@ public class AccountManagerDepartment {
     public AccountManagerDepartment startWork (){
         while (tickets.size()!=0){
                 Client client = bankOffice.getBankCollections().clientHashMap.get(tickets.pollFirst());
-                DebitOpenAccount debitOpenAccount = new DebitOpenAccount();
+                AccountMoneyController debitOpenAccount = new AccountMoneyController();
                 debitOpenAccount.openDebit(client, bankOffice);
                 System.out.println(client.getName());
         }

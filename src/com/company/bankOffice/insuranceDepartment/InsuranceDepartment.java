@@ -2,16 +2,9 @@ package com.company.bankOffice.insuranceDepartment;
 
 import com.company.Client;
 import com.company.bankOffice.BankOffice;
-import com.company.bankOffice.BankService.BankCollections;
-import com.company.bankOffice.accountManagementDepartment.AccountManeger;
-import com.company.bankOffice.creditDepartment.CreditAccount;
-import com.company.bankOffice.creditDepartment.CreditManager;
-import com.company.service.WaitingInLine;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.PriorityQueue;
 
 public class InsuranceDepartment {
     BankOffice bankOffice;

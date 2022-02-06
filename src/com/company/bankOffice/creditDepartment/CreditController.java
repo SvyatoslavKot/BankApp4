@@ -1,14 +1,11 @@
 package com.company.bankOffice.creditDepartment;
 
 import com.company.Client;
-import com.company.service.CreditCalculationPayment;
-import com.company.service.GenerateAccountNumber;
 import com.company.bankOffice.BankOffice;
 
-import java.util.HashMap;
 import java.util.Scanner;
 
-public class CreditAccount {
+public class CreditController {
     private String creditName;
     private String accountNumber;
     private int amount;
@@ -22,7 +19,7 @@ public class CreditAccount {
     private int incomeHolder;
     private double paymentMonth;
 
-    CreditModel credit = new CreditModel();
+    Credit credit = new Credit();
     Scanner scanner = new Scanner(System.in);
     public void openCredit(Client client , BankOffice bankOffice){
         System.out.println(client.getName() + " ввведи тип кредита \n" +
