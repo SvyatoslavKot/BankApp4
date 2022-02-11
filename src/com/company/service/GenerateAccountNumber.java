@@ -10,7 +10,7 @@ public class GenerateAccountNumber {
         return (int) (Math.random() * max);
     }
     public String accountNumber (){
-        String a = " " + genNum() + " " + genNum() + " " + genNum() + " " + genNum();
+        String a = genNum() + " " + genNum() + " " + genNum() + " " + genNum();
         return a;
 
     }

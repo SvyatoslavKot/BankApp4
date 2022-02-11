@@ -5,6 +5,8 @@ import com.company.Client;
 import com.company.bankOffice.BankOffice;
 import com.company.mobilBank.chatBot.MobilBankChatBot;
 
+import javax.swing.*;
+
 public class MobilBank {
     private String nameBank;
     MobilBankPayment mobilBankPayment;
@@ -20,9 +22,14 @@ public class MobilBank {
         this.mobilBankInsurance = new MobilBankInsurance();
     }
     public MobilBankChatBot openMobilBankChatBot() {
-        //System.out.println(client.getName() + " открыл чат с чатБотомв " + mobilBank.getNameBank());
-        MobilBankChatBot chatBot = new MobilBankChatBot();
-        return chatBot;
+
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                MobilBankChatBot chatBot = new MobilBankChatBot();
+            }
+        });
+        return null;
     }
 
     public String getNameBank() {

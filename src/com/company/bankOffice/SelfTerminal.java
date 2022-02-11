@@ -12,25 +12,28 @@ import com.company.bankOffice.insuranceDepartment.InsuranceAgent;
 import com.company.bankOffice.insuranceDepartment.InsuranceDepartment;
 
 public class SelfTerminal {
-
-    public String getTicketToCredit (Client client, CreditDepartment creditDepartment){
-        String numberOfTikcet = "C-"+ creditDepartment.getTickets().size();
-        creditDepartment.getClients().add(client);
-        creditDepartment.getTickets().add(client.getId());
+    int counter;
+    public String getTicketToCredit (Client client, BankOffice bankOffice){
+        counter = counter + 1;
+        String numberOfTikcet = "C-"+ counter;
+        bankOffice.getBankCollections().getClientHashMap().put(client.getId(),client);
+        bankOffice.getCreditDepartment().getTickets().addLast(client.getId());
         System.out.println("Создан клиент с талонном: " + numberOfTikcet);
        return numberOfTikcet;
     }
-    public String getTicketToAccount (Client client, AccountManagerDepartment accountDepartment){
-        String numberOfTikcet = "A-"+ accountDepartment.getTickets().size();
-        accountDepartment.getClients().add(client);
-        accountDepartment.getTickets().add(client.getId());
+    public String getTicketToAccount (Client client, BankOffice bankOffice){
+        counter = counter + 1;
+        String numberOfTikcet = "A-"+ counter;
+        bankOffice.getBankCollections().getClientHashMap().put(client.getId(),client);
+        bankOffice.getAccountManagerDepartment().getTickets().addLast(client.getId());
         System.out.println("Создан клиент с талонном: " + numberOfTikcet);
         return numberOfTikcet;
     }
-    public String getTicketToInsurance (Client client, InsuranceDepartment insuranceDepartment){
-        String numberOfTikcet = "I-"+ insuranceDepartment.getTickets().size();
-        insuranceDepartment.getClients().add(client);
-        insuranceDepartment.getTickets().add(client.getId());
+    public String getTicketToInsurance (Client client, BankOffice bankOffice){
+        counter = counter + 1;
+        String numberOfTikcet = "I-"+ counter;
+        bankOffice.getBankCollections().getClientHashMap().put(client.getId(),client);
+        bankOffice.getInsuranceDepartment().getTickets().addLast(client.getId());
         System.out.println("Создан клиент с талонном: " + numberOfTikcet);
         return numberOfTikcet;
     }

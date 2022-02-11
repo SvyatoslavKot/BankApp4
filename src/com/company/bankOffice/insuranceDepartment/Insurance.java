@@ -1,49 +1,89 @@
 package com.company.bankOffice.insuranceDepartment;
 
-public class Insurance {
+import com.company.Client;
+import com.company.bankOffice.BankOffice;
+import com.company.service.GenerateAccountNumber;
+
+import javax.management.ObjectName;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public abstract class Insurance extends InsuranceModel implements Comparable {
     private String nameInsurance;
-    private String dateInsurance;
-    private String timeInsurance;
-    private int priceInsurance;
+    private int insuranceValue;
+    private double price;
+    private int term;
+    private Date openDate;
+    private String insuranceNumber;
+    private String clientId;
+    private String info;
 
-    public Insurance() {
+    private GenerateAccountNumber generateAccountNumber = new GenerateAccountNumber();
 
+    @Override
+    public String openInsurance(Client client, BankOffice bankOffice, int insuranceValue, double price, int term) {
+        this.nameInsurance = "Страхование";
+        this.insuranceNumber = generateAccountNumber.accountNumber();
+        this.price = price;
+        this.term = term;
+        this.openDate = new Date();
+        this.insuranceValue = insuranceValue;
+        this.clientId = client.getId();
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat();
+        bankOffice.getBankCollections().getInsurensList().add(this);
+        this.info = " вы оформили страховку " + this.nameInsurance +
+                "\n________________ИНФОРМАЦИЯ__________________" +
+                "\nномер счёта: " + insuranceNumber +
+                "\nсрок страхования: " + this.term + " мес." +
+                "\nдата открытия: " + dateFormat.format(openDate) +
+                "\nстоимость стрхования: " + this.price +
+                "\nстраховая сумма: " + this.insuranceValue +
+                "\n____________________________________________";
+
+        return "Создана страховка с номером " + this.nameInsurance;
     }
 
-    public Insurance openInsuranceType1() {
-        this.nameInsurance = "nameInsurance1";
-        this.dateInsurance = "dateInsurance";
-        this.timeInsurance = "timeInsurance";
-        this.priceInsurance = 5000;
-        return openInsuranceType1();
-    }
-    public void insuranceType2() {
-        this.nameInsurance = "nameInsurance2";
-        this.dateInsurance = "dateInsurance";
-        this.timeInsurance = "timeInsurance";
-        this.priceInsurance = 10000;
-    }
-
-    public void insuranceType3() {
-        this.nameInsurance = "nameInsurance3";
-        this.dateInsurance = "dateInsurance";
-        this.timeInsurance = "timeInsurance";
-        this.priceInsurance = 15000;
+    @Override
+    public int compareTo(Insurance o1, Insurance o2) {
+        return 0;
     }
 
     public String getNameInsurance() {
         return nameInsurance;
     }
 
-    public String getDateInsurance() {
-        return dateInsurance;
+    public int getInsuranceValue() {
+        return insuranceValue;
     }
 
-    public String getTimeInsurance() {
-        return timeInsurance;
+    public double getPrice() {
+        return price;
     }
 
-    public int getPriceInsurance() {
-        return priceInsurance;
+    public int getTerm() {
+        return term;
     }
+
+    public Date getOpenDate() {
+        return openDate;
+    }
+
+    public String getInsuranceNumber() {
+        return insuranceNumber;
+    }
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    @Override
+    public String toString() {
+        return "Insurance{"+ price +'}';
+    }
+
 }

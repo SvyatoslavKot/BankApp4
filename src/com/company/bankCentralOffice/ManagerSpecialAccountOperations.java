@@ -3,7 +3,7 @@ package com.company.bankCentralOffice;
 
 import com.company.Client;
 import com.company.bankOffice.Staff;
-import com.company.bankOffice.accountManagementDepartment.DebitAccountModel;
+import com.company.bankOffice.accountManagementDepartment.AccountMoney;
 import com.company.service.ClientService;
 import com.company.service.DebitAccountService;
 
@@ -16,7 +16,7 @@ public class ManagerSpecialAccountOperations extends Staff {
     ClientService clientService = new ClientService();
     DebitAccountService debitAccountService = new DebitAccountService();
 
-    public void getCashOnCard(Client client, DebitAccountModel debitAccountModel, int money){
+    public void getCashOnCard(Client client, AccountMoney debitAccountModel, int money){
         if (money>= 10000000){
             System.out.println("Снять со счёта " + money);
             clientService.takeCash(money,client);

@@ -8,27 +8,29 @@ import com.company.service.GenerateAccountNumber;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DebitAccountModel extends  DebitAccount{
+public class AccountMoney extends AccountMoneyModel {
     private String nameAccount;
     private String accountNumber;
     private int moneyInAccount;
     private Date openingDate;
     private int creditTerm;
+    private int payment;
+    private double cashBack;
+    private String idHolder;
 
     private GenerateAccountNumber generateAccountNumber = new GenerateAccountNumber();
-
-
     @Override
-    void openDebitAccount(Client client, BankOffice bankOffice) {
-        this.nameAccount = "Дебетовый счет";
+    void openDebitAccount(String nameCredit,int sum,int term, Client client, BankOffice bankOffice, int payment, double cashBack) {
+        this.nameAccount = nameCredit;
         this.accountNumber = generateAccountNumber.accountNumber();
-        this.moneyInAccount = moneyInAccount;
+        this.moneyInAccount = sum;
         this.openingDate = new Date();
-        this.creditTerm = 24;
+        this.creditTerm = term;
+        this.payment = payment;
+        this.cashBack = cashBack;
+        this.idHolder = client.getId();
 
-        bankOffice.getClientBankList().put(client.getPassport(),client.getName());
-        client.getDebitAccount().put(this.accountNumber, this.nameAccount);
-        client.getListOfAccounts().put(this.accountNumber, this.nameAccount);
+        bankOffice.getBankCollections().getAccountList().add(this);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat();
         System.out.println("Для "+ client.getName() + " создан " + nameAccount  +
@@ -37,11 +39,10 @@ public class DebitAccountModel extends  DebitAccount{
                 "\nдата открытия: " + dateFormat.format(openingDate) +
                 "\nсроком: "+ creditTerm +" мес."+
                 "\nбаланс счёта: "+ moneyInAccount+
+                "\nежемесчная плата за обслуживание: "+ payment +
+                "\ncashBack по карте: " + cashBack +
                 "\n____________________________________________");
     }
-
-
-
 
     public int getMoneyInAccount() {
         return moneyInAccount;
