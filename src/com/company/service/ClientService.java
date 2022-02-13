@@ -15,10 +15,10 @@ public class ClientService {
         return client.getCash();
     }
 
-    public int takeCash(int money, Client client) {
+    public void takeCash(int money, Client client) {
         int a = 0;
         a = client.getCash() + money;
         client.setCash(a);
-        return client.getCash();
+
     }
 }

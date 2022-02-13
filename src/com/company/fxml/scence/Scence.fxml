@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.fxml.controller.Controller">
+   <children>
+      <Pane layoutX="850.0" layoutY="27.0" prefHeight="300.0" prefWidth="150.0" />
+      <Label alignment="TOP_CENTER" layoutX="135.0" layoutY="27.0" prefHeight="36.0" prefWidth="307.0" text="Симулятор банка" textAlignment="CENTER">
+         <font>
+            <Font name="Calibri Bold" size="27.0" />
+         </font>
+      </Label>
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="550.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Pane layoutY="63.0" prefHeight="291.0" prefWidth="343.0">
+         <children>
+            <Button fx:id="btnTerminal" layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#showTerminal" prefHeight="25.0" prefWidth="166.0" text="Terminal" />
+            <Button fx:id="btnTeller" layoutX="14.0" layoutY="53.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="166.0" text="Teller" />
+            <Button fx:id="btnAtm" layoutX="14.0" layoutY="86.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="166.0" text="ATM" />
+         </children>
+      </Pane>
+      <Pane layoutX="343.0" layoutY="63.0" prefHeight="291.0" prefWidth="207.0">
+         <children>
+            <Label layoutX="79.0" layoutY="11.0" text="Очередь" />
+            <ListView fx:id="listViewStage" layoutY="30.0" prefHeight="261.0" prefWidth="207.0" />
+            <ScrollBar layoutX="193.0" layoutY="30.0" orientation="VERTICAL" prefHeight="261.0" prefWidth="15.0" />
+         </children></Pane>
+      <Button layoutX="14.0" layoutY="354.0" mnemonicParsing="false" onAction="#btnInsurence" prefHeight="47.0" prefWidth="166.0" text="Отдел страхования" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" layoutX="14.0" layoutY="408.0" mnemonicParsing="false" onAction="#btnCredit" prefHeight="47.0" prefWidth="166.0" text="Кредитный отдел" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Button layoutX="16.0" layoutY="464.0" mnemonicParsing="false" onAction="#btnAccount" prefHeight="47.0" prefWidth="166.0" text="Отдел управления счетами" textAlignment="CENTER" wrapText="true" />
+   </children>
+</Pane>

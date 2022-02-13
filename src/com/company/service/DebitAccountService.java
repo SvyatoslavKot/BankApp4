@@ -1,6 +1,6 @@
 package com.company.service;
 
-import com.company.bankOffice.accountManagementDepartment.AccountMoney;
+import com.company.bank.bankOffice.accountManagementDepartment.AccountMoney;
 
 public class DebitAccountService {
     public int putMoneyOnDebit (int money, AccountMoney debitAccountModel){
