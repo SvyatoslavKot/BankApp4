@@ -2,9 +2,10 @@ package com.company;
 
 
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Client  {
+public class Client implements Serializable {
     private String name;
     private String lastName;
     private String id;

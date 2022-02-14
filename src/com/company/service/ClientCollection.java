@@ -2,9 +2,10 @@ package com.company.service;
 
 import com.company.Client;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class ClientCollection {
+public class ClientCollection implements Serializable {
     HashMap<String,Client> clientBD = new HashMap<String, Client>(){{
         put("1",new Client("Сергей ","1",50000,500000,"7676 875434"));
         put("2",new Client("Анна ","2",50000,500000,"7676 2434523"));

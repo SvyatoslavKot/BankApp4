@@ -1,10 +1,13 @@
 
 package com.company.fxml.controller;
 
+        import com.company.Client;
         import com.company.bank.bankOffice.BankOffice;
+        import com.company.bank.bankOffice.BankService.BankCollections;
         import com.company.bank.bankOffice.Ticket;
         import com.company.MainFxml;
         import javafx.event.ActionEvent;
+        import javafx.event.EventHandler;
         import javafx.fxml.FXML;
         import javafx.fxml.FXMLLoader;
         import javafx.fxml.Initializable;
@@ -15,7 +18,7 @@ package com.company.fxml.controller;
         import javafx.scene.control.ListView;
         import javafx.stage.Stage;
 
-        import java.io.IOException;
+        import java.io.*;
         import java.net.URL;
         import java.util.ArrayList;
         import java.util.LinkedList;
@@ -31,6 +34,14 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            deserialization();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         listViewStage.getItems().addAll(listAdd);
 
         LinkedList<Ticket> tic = new LinkedList<>();
@@ -87,6 +98,26 @@ public class Controller implements Initializable {
 
     @FXML private void btnAccount(){
 
+    }
+    @FXML private void saveFile (ActionEvent actionEvent) throws IOException {
+        FileOutputStream fileOutputStream = new FileOutputStream("Save.ser");
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+        objectOutputStream.writeObject(bankOffice.getBankCollections());
+        objectOutputStream.close();
+
+
+    }
+    @FXML private void openFile (ActionEvent actionEvent) throws IOException, ClassNotFoundException {
+        deserialization();
+    }
+    private  void deserialization () throws IOException, ClassNotFoundException {
+        BankCollections bankCollections = new BankCollections();
+        FileInputStream fileInputStream = new FileInputStream("Save.ser");
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        Object temp = objectInputStream.readObject();
+        bankCollections = (BankCollections) temp;
+        bankOffice.setBankCollections(bankCollections);
+        objectInputStream.close();
     }
 
     @FXML

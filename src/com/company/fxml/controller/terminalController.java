@@ -29,9 +29,6 @@ public class terminalController implements Initializable {
     private ComboBox<String> comboBox;
     @FXML
     private TextField textField;
-
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         comboBox.getItems().setAll(
@@ -42,8 +39,6 @@ public class terminalController implements Initializable {
         });
 
     }
-
-
     @FXML
     public void clickButton(ActionEvent actionEvent)throws IOException {
             id  = textField.getText();
@@ -84,7 +79,16 @@ public class terminalController implements Initializable {
         }
 
         @FXML
-        public void btnAddClient(){
+        public void btnAddClient(ActionEvent actionEvent) throws IOException {
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("../scence/addClientForm.fxml"));
+            stage.setTitle("Terminal");
+            stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            stage.setMinHeight(449);
+            stage.setMinWidth(244);
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.show();
 
         }
 

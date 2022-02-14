@@ -63,6 +63,10 @@ public class BankOffice {
         return bankCollections;
     }
 
+    public void setBankCollections(BankCollections bankCollections) {
+        this.bankCollections = bankCollections;
+    }
+
     public void setNameBank(String nameBank) {
         this.nameBank = nameBank;
     }
