@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="550.0"
-      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.fxml.controller.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.fxml.controller.Controller">
    <children>
       <Pane layoutX="850.0" layoutY="27.0" prefHeight="300.0" prefWidth="150.0" />
       <Label alignment="TOP_CENTER" layoutX="135.0" layoutY="27.0" prefHeight="36.0" prefWidth="307.0" text="Симулятор банка" textAlignment="CENTER">
@@ -64,5 +63,6 @@
          </font>
       </Button>
       <Button layoutX="16.0" layoutY="464.0" mnemonicParsing="false" onAction="#btnAccount" prefHeight="47.0" prefWidth="166.0" text="Отдел управления счетами" textAlignment="CENTER" wrapText="true" />
+      <Button layoutX="466.0" layoutY="453.0" mnemonicParsing="false" onAction="#btnAddStaff" prefHeight="47.0" prefWidth="70.0" text="addStaff" textAlignment="CENTER" wrapText="true" />
    </children>
 </Pane>
