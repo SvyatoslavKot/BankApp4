@@ -17,7 +17,7 @@ public class InsuranceDepartment {
 
     ArrayList<InsuranceAgent> insuranceAgents = new ArrayList<InsuranceAgent>() {
         {
-            add(new InsuranceAgent(" Игорь" , 33, "Страховой Агент"));
+            add(new InsuranceAgent(" Игорь" , 33, "Страховой Агент", 44, " "));
         }
     };
 

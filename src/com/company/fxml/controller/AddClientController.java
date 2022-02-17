@@ -74,7 +74,7 @@ public class AddClientController {
                 textFieldName!=null && textFieldPassport!=null){
             int income = Integer.parseInt(textFieldIncome.getText());
             int cash = Integer.parseInt(textFieldCash.getText());
-            Client client= new Client(textFieldName.getText(), textFieldid.getId(),income, cash, textFieldPassport.getText());
+            Client client= new Client(textFieldName.getText(), textFieldLastName.getText(), Integer.valueOf(textFieldAge.getText()), textFieldid.getText(),income, cash, textFieldPassport.getText());
             bankOffice.getBankCollections().getClientHashMap().put(textFieldid.getText(), client);
             texyAreaInfo.setText("Клиент" +
                     "\n" + textFieldLastName.getText() + " " + textFieldName.getText()+

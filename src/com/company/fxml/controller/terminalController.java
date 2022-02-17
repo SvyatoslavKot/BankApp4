@@ -11,6 +11,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -29,6 +31,9 @@ public class terminalController implements Initializable {
     private ComboBox<String> comboBox;
     @FXML
     private TextField textField;
+    @FXML
+    private Text textWar;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         comboBox.getItems().setAll(
@@ -42,7 +47,9 @@ public class terminalController implements Initializable {
     @FXML
     public void clickButton(ActionEvent actionEvent)throws IOException {
             id  = textField.getText();
-            if (id!=null){
+        if (id != null) {
+            client = bankOffice.getBankCollections().getClientHashMap().get(id);
+            if (client!=null){
                 if (dep!=null){
                     if (dep.equals("Кредитный")){
                         bankOffice.getTerminal1().getTicketToCredit(id,bankOffice);
@@ -62,11 +69,15 @@ public class terminalController implements Initializable {
                     stage.setScene(new Scene(root));
                     stage.show();
                 }else {
-                    System.out.println("Выберите услугу");
+                    textWar.setText("Выберите услугу");
                 }
             }else {
-                System.out.println("Укажите id");
+                textWar.setText("Клиента с Id <" + id + "> нет, вы можете создать клиента.");
             }
+        }else {
+            textWar.setText("Укажите верный Id");
+        }
+
 
     }
 

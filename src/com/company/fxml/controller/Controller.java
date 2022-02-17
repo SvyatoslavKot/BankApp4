@@ -1,6 +1,8 @@
 
 package com.company.fxml.controller;
 
+        import com.company.BD_Bank.BdReadClient;
+        import com.company.BD_Bank.BdWriteClient;
         import com.company.Client;
         import com.company.bank.bankOffice.BankOffice;
         import com.company.bank.bankOffice.BankService.BankCollections;
@@ -26,6 +28,10 @@ package com.company.fxml.controller;
 
 public class Controller implements Initializable {
     BankOffice bankOffice = MainFxml.getBankOffice();
+    BdWriteClient bdWriteClient  = new BdWriteClient();
+    BdReadClient bdReadClient = new BdReadClient();
+
+    private String  ClientBD = "clients.txt";
 
 
     @FXML
@@ -34,13 +40,14 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            deserialization();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+       // try {
+            //deserialization();
+           // bdReadClient.readBD(bankOffice, ClientBD);
+        //} catch (IOException e) {
+           // e.printStackTrace();
+        //} catch (ClassNotFoundException e) {
+          //  e.printStackTrace();
+        //}
 
         listViewStage.getItems().addAll(listAdd);
 
@@ -100,15 +107,18 @@ public class Controller implements Initializable {
 
     }
     @FXML private void saveFile (ActionEvent actionEvent) throws IOException {
-        FileOutputStream fileOutputStream = new FileOutputStream("Save.ser");
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-        objectOutputStream.writeObject(bankOffice.getBankCollections());
-        objectOutputStream.close();
+        //FileOutputStream fileOutputStream = new FileOutputStream("Save.ser");
+        //ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+       // objectOutputStream.writeObject(bankOffice.getBankCollections());
+        //objectOutputStream.close();
+        bdWriteClient.writeClient(bankOffice,ClientBD);
+
 
 
     }
     @FXML private void openFile (ActionEvent actionEvent) throws IOException, ClassNotFoundException {
-        deserialization();
+       bdReadClient.readBD(bankOffice,ClientBD);
+        //deserialization();
     }
     private  void deserialization () throws IOException, ClassNotFoundException {
         BankCollections bankCollections = new BankCollections();
@@ -118,6 +128,23 @@ public class Controller implements Initializable {
         bankCollections = (BankCollections) temp;
         bankOffice.setBankCollections(bankCollections);
         objectInputStream.close();
+    }
+    @FXML
+    private void btnAddStaff(ActionEvent actionEvent){
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("../scence/addStafForm.fxml"));
+            stage.setTitle("Terminal");
+            stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            stage.setMinHeight(449);
+            stage.setMinWidth(244);
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML

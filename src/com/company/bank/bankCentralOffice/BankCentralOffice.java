@@ -11,8 +11,8 @@ public class BankCentralOffice extends BankOffice {
 
     public BankCentralOffice(String nameBank) {
         super(nameBank);
-        this.managerCustomerService = new ManagerCustomerService(null,0,null);
-        this.managerSpecialAccountOperations = new ManagerSpecialAccountOperations(null,0, null);
+        this.managerCustomerService = new ManagerCustomerService(null,0,null,44, " ");
+        this.managerSpecialAccountOperations = new ManagerSpecialAccountOperations(null,0, null,44, " ");
     }
 
 

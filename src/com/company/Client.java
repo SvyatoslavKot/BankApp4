@@ -15,8 +15,13 @@ public class Client implements Serializable {
     private String passport;
     private boolean bankAccount = false;
 
-    public Client(String name,String id, int income, int cash, String passport) {
+    public Client() {
+    }
+
+    public Client(String name,String lastName,int age, String id, int income, int cash, String passport) {
         this.name = name;
+        this.lastName = lastName;
+        this.age = age;
         this.id = id;
         this.income = income;
         this.cash = cash;
@@ -32,9 +37,7 @@ public class Client implements Serializable {
     public String getId() {
         return id;
     }
-    public void setName(String name) {
-        this.name = name;
-    }
+
     public String getLastName() {
         return lastName;
     }
@@ -47,15 +50,42 @@ public class Client implements Serializable {
     public int getCash() {
         return cash;
     }
-    public void setCash(int cash) {
-        this.cash = cash;
-    }
+
     public boolean isBankAccount() {
         return bankAccount ;
     }
     public void setBankAccount(boolean bankCard) {
         this.bankAccount = bankCard;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setIncome(int income) {
+        this.income = income;
+    }
+
+    public void setCash(int cash) {
+        this.cash = cash;
+    }
+
+    public void setPassport(String passport) {
+        this.passport = passport;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -81,4 +111,6 @@ public class Client implements Serializable {
                 ", passport='" + passport + '\'' +
                 '}';
     }
+
+
 }

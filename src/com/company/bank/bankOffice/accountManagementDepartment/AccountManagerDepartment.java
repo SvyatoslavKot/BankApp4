@@ -16,7 +16,7 @@ public class AccountManagerDepartment {
 
     ArrayList<AccountManeger> accountPersonal = new ArrayList<AccountManeger>() {
         {
-            add(new AccountManeger("Игорь", 26, "Менеджер по работе со счетами"));
+            add(new AccountManeger("Игорь", 26, "Менеджер по работе со счетами", 66," "));
         }
     };
     ArrayDeque<String> tickets  =new ArrayDeque<>();

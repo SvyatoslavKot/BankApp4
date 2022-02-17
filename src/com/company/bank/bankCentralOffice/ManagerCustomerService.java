@@ -4,8 +4,8 @@ import com.company.Client;
 import com.company.bank.bankOffice.Staff;
 
 public class ManagerCustomerService extends Staff {
-    public ManagerCustomerService(String name, int age, String position) {
-        super(name, age, position);
+    public ManagerCustomerService(String name, int age, String position, int tabNum, String dep) {
+        super(name, age, position, tabNum, dep);
     }
 
     public void writtenRequestToTheBank(Client client, String a){
