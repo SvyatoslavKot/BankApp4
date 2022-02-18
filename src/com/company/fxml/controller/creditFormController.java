@@ -85,6 +85,7 @@ public class creditFormController  implements Initializable  {
     void comboBoxChange (ActionEvent event){
         String selectedValue = comboBoxType.getSelectionModel().getSelectedItem();
         String a = selectedValue;
+        System.out.println(a);
         setCombo(a);
 
     }

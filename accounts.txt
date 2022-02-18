@@ -1,0 +1,1 @@
+name:Сбер light number:26510 moneyIn:0 term:24 payment:150 cashBack:0.0 idHolder:7 

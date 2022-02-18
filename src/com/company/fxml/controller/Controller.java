@@ -1,6 +1,8 @@
 
 package com.company.fxml.controller;
 
+        import com.company.BD_Bank.BDReadAccountMoney;
+        import com.company.BD_Bank.BDWriteAccountMoney;
         import com.company.BD_Bank.BdReadClient;
         import com.company.BD_Bank.BdWriteClient;
         import com.company.Client;
@@ -30,8 +32,11 @@ public class Controller implements Initializable {
     BankOffice bankOffice = MainFxml.getBankOffice();
     BdWriteClient bdWriteClient  = new BdWriteClient();
     BdReadClient bdReadClient = new BdReadClient();
+    BDReadAccountMoney bdReadAccountMoney = new BDReadAccountMoney();
+    BDWriteAccountMoney bdWriteAccountMoney = new BDWriteAccountMoney();
 
-    private String  ClientBD = "clients.txt";
+    final private String  ClientBD = "clients.txt";
+    final private String  ACC_BD = "accounts.txt";
 
 
     @FXML
@@ -103,22 +108,30 @@ public class Controller implements Initializable {
 
     }
 
-    @FXML private void btnAccount(){
+    @FXML private void btnAccount(ActionEvent actionEvent){
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("../scence/accountForm.fxml"));
+            stage.setTitle("Account Department");
+            stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            stage.setMinHeight(297);
+            stage.setMinWidth(404);
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
 
     }
     @FXML private void saveFile (ActionEvent actionEvent) throws IOException {
-        //FileOutputStream fileOutputStream = new FileOutputStream("Save.ser");
-        //ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-       // objectOutputStream.writeObject(bankOffice.getBankCollections());
-        //objectOutputStream.close();
         bdWriteClient.writeClient(bankOffice,ClientBD);
-
-
-
+        bdWriteAccountMoney.writeAcc(bankOffice,ACC_BD);
     }
     @FXML private void openFile (ActionEvent actionEvent) throws IOException, ClassNotFoundException {
        bdReadClient.readBD(bankOffice,ClientBD);
-        //deserialization();
+       bdReadAccountMoney.readBD(bankOffice,ACC_BD);
     }
     private  void deserialization () throws IOException, ClassNotFoundException {
         BankCollections bankCollections = new BankCollections();

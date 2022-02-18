@@ -22,12 +22,11 @@ public class AccountManagerDepartment {
     ArrayDeque<String> tickets  =new ArrayDeque<>();
     private LinkedList<Ticket> tickets2 = new LinkedList<>();
 
-    public AccountManagerDepartment startWork (){
-        while (tickets.size()!=0){
-                Client client = bankOffice.getBankCollections().clientHashMap.get(tickets.pollFirst());
-                AccountMoneyController debitOpenAccount = new AccountMoneyController();
-                debitOpenAccount.openDebit(client, bankOffice);
+    public Client startWork (){
+        while (tickets2.size()!=0){
+                Client client = bankOffice.getBankCollections().getClientHashMap().get(tickets2.pollFirst().getClintId());
                 System.out.println(client.getName());
+                return client;
         }
         return null;
     }

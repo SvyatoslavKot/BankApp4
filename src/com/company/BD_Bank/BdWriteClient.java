@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BdWriteClient {
-    private String CLIENT_MAPA = "clients.txt";
+    private String CLIENT_MAPA = "com.company.BD_Bank.clients.txt";
     Client client;
     public void writeClient (BankOffice bankOffice, String fileBD){
         try (FileWriter fw = new FileWriter(fileBD)){
