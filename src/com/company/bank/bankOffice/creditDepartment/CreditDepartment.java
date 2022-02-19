@@ -14,7 +14,7 @@ public class CreditDepartment{
     }
     ArrayList<CreditManager> creditPersonal = new ArrayList<CreditManager>() {
         {
-            add(new CreditManager("Олег",22,"Стажер"));
+            add(new CreditManager("Олег",22,"Стажер",44, " "));
         }
     };
     private LinkedList<Ticket> tickets2 = new LinkedList<>();

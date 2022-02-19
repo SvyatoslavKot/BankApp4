@@ -8,8 +8,8 @@ import com.company.service.ClientService;
 import com.company.service.DebitAccountService;
 
 public class ManagerSpecialAccountOperations extends Staff {
-    public ManagerSpecialAccountOperations(String name, int age, String position) {
-        super(name, age, position);
+    public ManagerSpecialAccountOperations(String name, int age, String position, int tabNum, String dep) {
+        super(name, age, position, tabNum, dep);
         this.clientService = clientService;
     }
 

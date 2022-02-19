@@ -72,7 +72,12 @@ public class creditFormController  implements Initializable  {
             int term = Integer.parseInt(textFieldTerm.getText());
             if (sum!= 0 && term!= 0 && combo!= null){
                 setCredit(creditController.openCredit(client,bankOffice,sum, combo, term));
-                areaResult.setText(creditResul(client,credit));
+                if (credit!= null){
+                    areaResult.setText(creditResul(client,credit));
+                }else {
+                    textAreaStart.setText(client.getName()+"для вас нет подходящих предложений");
+                }
+
         }else {areaResult.setText("Для вас нет подходящих вариантов");}
         }else {areaResult.setText("Заполните форму");}
     }
@@ -80,6 +85,7 @@ public class creditFormController  implements Initializable  {
     void comboBoxChange (ActionEvent event){
         String selectedValue = comboBoxType.getSelectionModel().getSelectedItem();
         String a = selectedValue;
+        System.out.println(a);
         setCombo(a);
 
     }
@@ -104,16 +110,26 @@ public class creditFormController  implements Initializable  {
             clientService.takeCash(credit.getAmount(),client);
             System.out.println(client.getCash());
             bankOffice.getBankCollections().getCreditList().add(credit);
+            setClient(bankOffice.getCreditDepartment().startWork());
+            if (client!=null){
+                textFieldSum.setText("");
+                textFieldTerm.setText("");
+                areaResult.setText("");
+                textAreaStart.setText("Здравствуйет " + client.getName() + " заполните форму.");
+            }else {
+                Stage stage = new Stage();
+                Parent root = FXMLLoader.load(getClass().getResource("../scence/Scence.fxml"));
+                stage.setTitle("Main");
+                stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+                stage.setMinHeight(550);
+                stage.setMinWidth(518);
+                stage.setResizable(false);
+                stage.setScene(new Scene(root));
+                stage.show();
+            }
 
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("../scence/Scence.fxml"));
-            stage.setTitle("Main");
-            stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setMinHeight(550);
-            stage.setMinWidth(518);
-            stage.setResizable(false);
-            stage.setScene(new Scene(root));
-            stage.show();
+        }else {
+
         }
     }
 

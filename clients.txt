@@ -1,0 +1,15 @@
+name:Гоша lastnam:  pasport:7676875434 age:22 income:50000 cash:500000 id:11 
+name:Денис lastnam:  pasport:7676875434 age:22 income:50000 cash:500000 id:12 
+name:Марк lastnam:  pasport:7676875434 age:22 income:50000 cash:500000 id:13 
+name:Марго lastnam:  pasport:7676875434 age:22 income:50000 cash:500000 id:14 
+name:Валентин lastnam:  pasport:7676875434 age:22 income:50000 cash:500000 id:15 
+name:Сергей lastnam:  pasport:7676875434 age:22 income:50000 cash:500000 id:1 
+name:Анна lastnam:  pasport:76762434523 age:22 income:50000 cash:500000 id:2 
+name:Генадий lastnam:  pasport:7633564982 age:22 income:50000 cash:500000 id:3 
+name:Валерий lastnam:  pasport:7614824057 age:22 income:50000 cash:500000 id:4 
+name:Юлия lastnam:  pasport:7699245342 age:22 income:50000 cash:500000 id:5 
+name:Василий lastnam:  pasport:7656754254 age:22 income:50000 cash:500000 id:6 
+name:Мария lastnam:  pasport:7698532799 age:22 income:50000 cash:500000 id:7 
+name:Евгений lastnam:  pasport:76982736781 age:22 income:50000 cash:500000 id:8 
+name:Лариса lastnam:  pasport:767232432 age:22 income:50000 cash:500000 id:9 
+name:Тимофей lastnam:  pasport:7676875434 age:22 income:50000 cash:500000 id:10 

@@ -6,7 +6,7 @@ import com.company.bank.bankOffice.BankService.BankCollectionManage;
 import com.company.bank.bankOffice.Staff;
 
 public class InsuranceAgent extends Staff {
-    public InsuranceAgent(String name, int age, String position) {super(name, age, position);}
+    public InsuranceAgent(String name, int age, String position, int tabNum, String dep) {super(name, age, position, tabNum, dep);}
 
     BankCollectionManage manageInsurance = new BankCollectionManage();
 

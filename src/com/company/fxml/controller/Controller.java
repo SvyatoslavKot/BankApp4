@@ -1,10 +1,17 @@
 
 package com.company.fxml.controller;
 
+        import com.company.BD_Bank.BDReadAccountMoney;
+        import com.company.BD_Bank.BDWriteAccountMoney;
+        import com.company.BD_Bank.BdReadClient;
+        import com.company.BD_Bank.BdWriteClient;
+        import com.company.Client;
         import com.company.bank.bankOffice.BankOffice;
+        import com.company.bank.bankOffice.BankService.BankCollections;
         import com.company.bank.bankOffice.Ticket;
         import com.company.MainFxml;
         import javafx.event.ActionEvent;
+        import javafx.event.EventHandler;
         import javafx.fxml.FXML;
         import javafx.fxml.FXMLLoader;
         import javafx.fxml.Initializable;
@@ -15,7 +22,7 @@ package com.company.fxml.controller;
         import javafx.scene.control.ListView;
         import javafx.stage.Stage;
 
-        import java.io.IOException;
+        import java.io.*;
         import java.net.URL;
         import java.util.ArrayList;
         import java.util.LinkedList;
@@ -23,6 +30,13 @@ package com.company.fxml.controller;
 
 public class Controller implements Initializable {
     BankOffice bankOffice = MainFxml.getBankOffice();
+    BdWriteClient bdWriteClient  = new BdWriteClient();
+    BdReadClient bdReadClient = new BdReadClient();
+    BDReadAccountMoney bdReadAccountMoney = new BDReadAccountMoney();
+    BDWriteAccountMoney bdWriteAccountMoney = new BDWriteAccountMoney();
+
+    final private String  ClientBD = "clients.txt";
+    final private String  ACC_BD = "accounts.txt";
 
 
     @FXML
@@ -31,6 +45,15 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+       // try {
+            //deserialization();
+           // bdReadClient.readBD(bankOffice, ClientBD);
+        //} catch (IOException e) {
+           // e.printStackTrace();
+        //} catch (ClassNotFoundException e) {
+          //  e.printStackTrace();
+        //}
+
         listViewStage.getItems().addAll(listAdd);
 
         LinkedList<Ticket> tic = new LinkedList<>();
@@ -85,8 +108,56 @@ public class Controller implements Initializable {
 
     }
 
-    @FXML private void btnAccount(){
+    @FXML private void btnAccount(ActionEvent actionEvent){
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("../scence/accountForm.fxml"));
+            stage.setTitle("Account Department");
+            stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            stage.setMinHeight(297);
+            stage.setMinWidth(404);
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.show();
 
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
+    @FXML private void saveFile (ActionEvent actionEvent) throws IOException {
+        bdWriteClient.writeClient(bankOffice,ClientBD);
+        bdWriteAccountMoney.writeAcc(bankOffice,ACC_BD);
+    }
+    @FXML private void openFile (ActionEvent actionEvent) throws IOException, ClassNotFoundException {
+       bdReadClient.readBD(bankOffice,ClientBD);
+       bdReadAccountMoney.readBD(bankOffice,ACC_BD);
+    }
+    private  void deserialization () throws IOException, ClassNotFoundException {
+        BankCollections bankCollections = new BankCollections();
+        FileInputStream fileInputStream = new FileInputStream("Save.ser");
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        Object temp = objectInputStream.readObject();
+        bankCollections = (BankCollections) temp;
+        bankOffice.setBankCollections(bankCollections);
+        objectInputStream.close();
+    }
+    @FXML
+    private void btnAddStaff(ActionEvent actionEvent){
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("../scence/addStafForm.fxml"));
+            stage.setTitle("Terminal");
+            stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            stage.setMinHeight(449);
+            stage.setMinWidth(244);
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML

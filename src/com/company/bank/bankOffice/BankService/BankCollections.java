@@ -6,10 +6,11 @@ import com.company.bank.bankOffice.creditDepartment.Credit;
 import com.company.bank.bankOffice.insuranceDepartment.Insurance;
 import com.company.service.ClientCollection;
 
+import java.io.Serializable;
 import java.util.*;
 
 
-public class BankCollections {
+public class BankCollections  implements Serializable {
     ClientCollection clientCollection = new ClientCollection();
 
     private HashMap<String,Client> clientHashMap2 = clientCollection.getClientBD();
@@ -38,4 +39,5 @@ public class BankCollections {
     public ArrayList<Insurance> getInsurensList() {
         return insurensList;
     }
+
 }
