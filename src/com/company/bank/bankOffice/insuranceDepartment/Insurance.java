@@ -19,6 +19,19 @@ public class Insurance extends InsuranceModel implements Comparable {
 
     private GenerateAccountNumber generateAccountNumber = new GenerateAccountNumber();
 
+    public Insurance() {
+    }
+
+    public Insurance(BankOffice bankOffice, Client client, String nameInsurance, int insuranceValue, double price, int term) {
+        this.nameInsurance = nameInsurance;
+        this.insuranceValue = insuranceValue;
+        this.price = price;
+        this.term = term;
+        this.openDate = new Date();
+        this.insuranceNumber = generateAccountNumber.accountNumber();
+        this.clientId = client.getId();
+    }
+
     @Override
     public String openInsurance(Client client, BankOffice bankOffice, int insuranceValue, double price, int term) {
         this.nameInsurance = "Страхование";
