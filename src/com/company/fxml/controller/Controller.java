@@ -104,8 +104,21 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    private void btnInsurence(){
+    private void btnInsurence(ActionEvent actionEvent){
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("../scence/insuranceForm.fxml"));
+            stage.setTitle("Insurance Department");
+            stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            stage.setMinHeight(297);
+            stage.setMinWidth(404);
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.show();
 
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML private void btnAccount(ActionEvent actionEvent){

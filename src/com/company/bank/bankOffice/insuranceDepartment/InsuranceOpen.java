@@ -6,40 +6,55 @@ import com.company.bank.bankOffice.BankOffice;
 import java.util.Scanner;
 
 public class InsuranceOpen {
-    Scanner scanner = new Scanner(System.in);
-    Insurance insuranceModel = new Insurance() {
-        @Override
-        public int compareTo(Object o) {
-            return 0;
-        }
-    };
+       public Insurance openInsurance (Client client, BankOffice bankOffice, String type, int insuranceValue,int term){
+           switch (type) {
+               case "Жизнь":
+                   return openInsuranceLive(client,bankOffice,insuranceValue,term);
+               case "Имущество":
+                   return openInsuranceProperty(client,bankOffice,insuranceValue,term);
+        }return null;
+
+    }
 
 
-    public void openInsurance (Client client, BankOffice bankOffice){
-
-        System.out.println("Введите страховую сумму");
-        int value  = scanner.nextInt();
-        System.out.println("Введите желаемый срок страхования до 12 месяцев:");
-        int term = scanner.nextInt();
-        double price = 0;
+    public Insurance openInsuranceLive(Client client, BankOffice bankOffice,int insuranceValue,int term){
         if (term == 1){
-           price = (value / 1000 )* 0.2 ;
-            insuranceModel.openInsurance(client,bankOffice, value,price,term);
+            double price = (insuranceValue / 1000 )* 0.2 ;
+            return new Insurance(bankOffice, client, "Жизни", insuranceValue, price, term);
         }else if (term >1 && term <=3 ){
-            price= (value / 1000) * 0.4;
-            insuranceModel.openInsurance(client,bankOffice, value,price,term);
+            double price= (insuranceValue / 1000) * 0.4;
+            return new Insurance(bankOffice, client, "Жизни2", insuranceValue, price, term);
         }else  if (term > 3 && term <= 6) {
-            price = (value / 1000) * 0.6;
-            insuranceModel.openInsurance(client,bankOffice, value,price,term);
+            double price = (insuranceValue / 1000) * 0.6;
+            return new Insurance(bankOffice, client, "Жизни3", insuranceValue, price, term);
         }else  if (term > 6 && term <= 9) {
-            price = (value / 1000) * 0.6;
-            insuranceModel.openInsurance(client,bankOffice, value,price,term);
+            double price = (insuranceValue / 1000) * 0.6;
+            return new Insurance(bankOffice, client, "Жизни4", insuranceValue, price, term);
         }else if (term > 9 && term <= 12) {
-            price = value / 1000;
-            insuranceModel.openInsurance(client,bankOffice, value,price,term);
+            double price = insuranceValue / 1000;
+            return new Insurance(bankOffice, client, "Жизни5", insuranceValue, price, term);
         }else {
-            System.out.println("Неверная операция.");
+            return  null;
         }
-
+    }
+    public Insurance openInsuranceProperty(Client client, BankOffice bankOffice,int insuranceValue,int term){
+        if (term == 1){
+            double price = (insuranceValue / 1000 )* 0.2 ;
+            return new Insurance(bankOffice, client, "Иммущество", insuranceValue, price, term);
+        }else if (term >1 && term <=3 ){
+            double price= (insuranceValue / 1000) * 0.4;
+            return new Insurance(bankOffice, client, "Иммущество2", insuranceValue, price, term);
+        }else  if (term > 3 && term <= 6) {
+            double price = (insuranceValue / 1000) * 0.6;
+            return new Insurance(bankOffice, client, "Иммущество3", insuranceValue, price, term);
+        }else  if (term > 6 && term <= 9) {
+            double price = (insuranceValue / 1000) * 0.6;
+            return new Insurance(bankOffice, client, "Иммущество4", insuranceValue, price, term);
+        }else if (term > 9 && term <= 12) {
+            double price = insuranceValue / 1000;
+            return new Insurance(bankOffice, client, "Иммущество5", insuranceValue, price, term);
+        }else {
+            return  null;
+        }
     }
 }

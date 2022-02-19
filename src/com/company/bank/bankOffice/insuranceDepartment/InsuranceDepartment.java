@@ -24,11 +24,10 @@ public class InsuranceDepartment {
     private LinkedList<Ticket> tickets2 = new LinkedList<>();
     ArrayDeque<String> tickets  = new ArrayDeque<>();
 
-    public InsuranceOpen startWork (){
-        while (tickets.size()!=0){
-                Client client = bankOffice.getBankCollections().getClientHashMap().get(tickets.pollFirst());
-                InsuranceOpen insuranceOpen = new InsuranceOpen();
-                insuranceOpen.openInsurance(client, bankOffice);
+    public Client startWork (){
+        while (tickets2.size()!=0){
+                Client client = bankOffice.getBankCollections().getClientHashMap().get(tickets2.pollFirst().getClintId());
+                return client;
         }
         return null;
     }
