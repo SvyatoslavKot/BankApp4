@@ -1,0 +1,2 @@
+name:Потребительский number:19086 amount:500000 percent:17.9 payment:20795.00816147764 term:30.0 idHolder:8
+name:Автокредит number:22241 amount:500000 percent:15.9 payment:23626.05890186065 term:25 idHolder:9 

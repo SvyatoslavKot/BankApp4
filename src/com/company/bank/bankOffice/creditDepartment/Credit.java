@@ -27,6 +27,10 @@ public class Credit extends CreditModel {
 
     GenerateAccountNumber generateAccountNumber = new GenerateAccountNumber();
     CreditCalculationPayment payment = new CreditCalculationPayment();
+
+    public Credit() {
+    }
+
     ClientService clientService  = new ClientService();
     //Date date = new Date();
 
@@ -43,7 +47,7 @@ public class Credit extends CreditModel {
 
         //clientService.takeCash(amount,client);
 
-        bankOffice.getBankCollections().getCreditList().add(this);
+        //bankOffice.getBankCollections().getCreditList().add(this);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat();
         System.out.println(client.getName() + " вам одобрен " + this.creditName +
@@ -56,8 +60,6 @@ public class Credit extends CreditModel {
                 "\nсумма ежемесячного платежа: " + String.format("%.2f", paymentMonth) + " руб." +
                 "\n____________________________________________");
     }
-
-
 
 
     public void openCreditCard(String cardCreditName, Client client, int sum, BankOffice bankOffice, double ptc){
@@ -105,5 +107,37 @@ public class Credit extends CreditModel {
 
     public double getPaymentMonth() {
         return paymentMonth;
+    }
+
+    public String getIdHolder() {
+        return idHolder;
+    }
+
+    public void setCreditName(String creditName) {
+        this.creditName = creditName;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public void setPtc(double ptc) {
+        this.ptc = ptc;
+    }
+
+    public void setCreditTerm(int creditTerm) {
+        this.creditTerm = creditTerm;
+    }
+
+    public void setPaymentMonth(double paymentMonth) {
+        this.paymentMonth = paymentMonth;
+    }
+
+    public void setIdHolder(String idHolder) {
+        this.idHolder = idHolder;
     }
 }
