@@ -57,7 +57,7 @@ public class BDReadAccountMoney {
 
     private void getCashbackAndSet(String s, AccountMoney ac) {
         if ( s!= null && s.contains("cashBack:")){
-            ac.setCashBack(Integer.valueOf(s.split(":")[1]));
+            ac.setCashBack(Double.valueOf(s.split(":")[1]));
         }
 
     }

@@ -1,17 +1,12 @@
 
 package com.company.fxml.controller;
 
-        import com.company.BD_Bank.BDReadAccountMoney;
-        import com.company.BD_Bank.BDWriteAccountMoney;
-        import com.company.BD_Bank.BdReadClient;
-        import com.company.BD_Bank.BdWriteClient;
-        import com.company.Client;
+        import com.company.BD_Bank.*;
         import com.company.bank.bankOffice.BankOffice;
         import com.company.bank.bankOffice.BankService.BankCollections;
         import com.company.bank.bankOffice.Ticket;
         import com.company.MainFxml;
         import javafx.event.ActionEvent;
-        import javafx.event.EventHandler;
         import javafx.fxml.FXML;
         import javafx.fxml.FXMLLoader;
         import javafx.fxml.Initializable;
@@ -34,9 +29,12 @@ public class Controller implements Initializable {
     BdReadClient bdReadClient = new BdReadClient();
     BDReadAccountMoney bdReadAccountMoney = new BDReadAccountMoney();
     BDWriteAccountMoney bdWriteAccountMoney = new BDWriteAccountMoney();
+    BDReadCredit bdReadCredit = new BDReadCredit();
+    BDWriteCredit bdWriteCredit = new BDWriteCredit();
 
     final private String  ClientBD = "clients.txt";
     final private String  ACC_BD = "accounts.txt";
+    final private String  CREDIT_BD = "credits.txt";
 
 
     @FXML
@@ -141,10 +139,12 @@ public class Controller implements Initializable {
     @FXML private void saveFile (ActionEvent actionEvent) throws IOException {
         bdWriteClient.writeClient(bankOffice,ClientBD);
         bdWriteAccountMoney.writeAcc(bankOffice,ACC_BD);
+        bdWriteCredit.writeCredit(bankOffice, CREDIT_BD);
     }
     @FXML private void openFile (ActionEvent actionEvent) throws IOException, ClassNotFoundException {
        bdReadClient.readBD(bankOffice,ClientBD);
        bdReadAccountMoney.readBD(bankOffice,ACC_BD);
+       bdReadCredit.readBD(bankOffice, CREDIT_BD);
     }
     private  void deserialization () throws IOException, ClassNotFoundException {
         BankCollections bankCollections = new BankCollections();
