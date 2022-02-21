@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -45,12 +46,21 @@ public class CreditFormController implements Initializable {
     @FXML
     private ComboBox<String> comboBoxType;
 
+    @FXML
+    private Button btn_Send;
+
+    @FXML
+    private Button btn_Calc;
+
     TextArea textArea;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        btn_Send.setDisable(true);
+        btn_Calc.setDisable(true);
         setClient(bankOffice.getCreditDepartment().startWork());
         if (client != null) {
+            btn_Calc.setDisable(false);
             textAreaStart.setText("Здравствуйте, " + client.getName() + ". Заполните форму.");
         } else {
             textAreaStart.setText("Клиентов на оформление нет.");
@@ -65,29 +75,25 @@ public class CreditFormController implements Initializable {
 
     @FXML
     void btnCalck(ActionEvent event) {
-        if (client != null) {
-            if (!textFieldSum.getText().isEmpty() && !textFieldTerm.getText().isEmpty()) {
-                if (textFieldSum != null && textFieldTerm != null) {
-                    int sum = Integer.parseInt(textFieldSum.getText());
-                    int term = Integer.parseInt(textFieldTerm.getText());
-                    if (combo == null) {
-                        areaResult.setText("Выберите тип кредита");
-                    } else if (sum != 0 && term != 0) {
-                        setCredit(creditController.openCredit(client, bankOffice, sum, combo, term));
-                        if (credit != null) {
-                            areaResult.setText(creditResult(client, credit));
-                        } else {
-                            textAreaStart.setText(client.getName() + ", для вас нет подходящих предложений");
-                            areaResult.setText("");
-                        }
-
-                    } else {
-                        areaResult.setText("Для вас нет подходящих вариантов");
-                    }
+        if (!textFieldSum.getText().isEmpty() && !textFieldTerm.getText().isEmpty()) {
+            int sum = Integer.parseInt(textFieldSum.getText());
+            int term = Integer.parseInt(textFieldTerm.getText());
+            if (combo == null) {
+                areaResult.setText("Выберите тип кредита");
+            } else if (sum != 0 && term != 0) {
+                setCredit(creditController.openCredit(client, bankOffice, sum, combo, term));
+                if (credit != null) {
+                    btn_Send.setDisable(false);
+                    areaResult.setText(creditResult(client, credit));
+                } else {
+                    btn_Send.setDisable(true);
+                    textAreaStart.setText(client.getName() + ", для вас нет подходящих предложений");
+                    areaResult.setText("");
                 }
-            } else {
-                areaResult.setText("Заполните форму");
             }
+        } else {
+            btn_Send.setDisable(true);
+            areaResult.setText("Заполните форму");
         }
     }
 
@@ -114,27 +120,25 @@ public class CreditFormController implements Initializable {
 
     @FXML
     void btnSend(ActionEvent event) throws IOException {
-        if (credit != null) {
-            clientService.takeCash(credit.getAmount(), client);
-            System.out.println(client.getCash());
-            bankOffice.getBankCollections().getCreditList().add(credit);
-            setClient(bankOffice.getCreditDepartment().startWork());
-            if (client != null) {
-                textFieldSum.setText("");
-                textFieldTerm.setText("");
-                areaResult.setText("");
-                textAreaStart.setText("Здравствуйте, " + client.getName() + ". Заполните форму.");
-            } else {
-                Stage stage = new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource("../scence/Scence.fxml"));
-                stage.setTitle("Main");
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setMinHeight(550);
-                stage.setMinWidth(518);
-                stage.setResizable(false);
-                stage.setScene(new Scene(root));
-                stage.show();
-            }
+        clientService.takeCash(credit.getAmount(), client);
+        System.out.println(client.getCash());
+        bankOffice.getBankCollections().getCreditList().add(credit);
+        setClient(bankOffice.getCreditDepartment().startWork());
+        if (client != null) {
+            textFieldSum.setText("");
+            textFieldTerm.setText("");
+            areaResult.setText("");
+            textAreaStart.setText("Здравствуйте, " + client.getName() + ". Заполните форму.");
+        } else {
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("../scence/Scence.fxml"));
+            stage.setTitle("Main");
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setMinHeight(550);
+            stage.setMinWidth(518);
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.show();
         }
     }
 

@@ -3,8 +3,6 @@ package com.company.fxml.controller;
 import com.company.Client;
 import com.company.MainFxml;
 import com.company.bank.bankOffice.BankOffice;
-import com.company.bank.bankOffice.creditDepartment.Credit;
-import com.company.bank.bankOffice.creditDepartment.CreditController;
 import com.company.bank.bankOffice.insuranceDepartment.Insurance;
 import com.company.bank.bankOffice.insuranceDepartment.InsuranceOpen;
 import com.company.service.ClientService;
@@ -15,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -30,7 +29,7 @@ public class InsuranceController implements Initializable {
     InsuranceOpen insuranceOpen = new InsuranceOpen();
     String combo;
     Insurance insurance;
-    ClientService clientService= new ClientService();
+    ClientService clientService = new ClientService();
 
     @FXML
     ComboBox comboBoxType;
@@ -47,13 +46,22 @@ public class InsuranceController implements Initializable {
     @FXML
     TextField textFieldSum;
 
+    @FXML
+    Button btn_Send;
+
+    @FXML
+    Button btn_Calc;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        btn_Calc.setDisable(true);
+        btn_Send.setDisable(true);
         setClient(bankOffice.getInsuranceDepartment().startWork());
-        if (client!= null){
-            textAreaStart.setText("Здравствуйет " + client.getName() + " заполните форму.");
-        }else {
+        if (client != null) {
+            btn_Calc.setDisable(false);
+            textAreaStart.setText("Здравствуйте, " + client.getName() + ". Заполните форму.");
+        } else {
             textAreaStart.setText("Клиентов на оформление нет.");
         }
 
@@ -65,42 +73,50 @@ public class InsuranceController implements Initializable {
     }
 
     public void btnCalck(ActionEvent actionEvent) {
-        if (combo!= null && textFieldSum!=null && textFieldTerm != null){
-            int val = Integer.valueOf(textFieldSum.getText());
-            int term = Integer.valueOf(textFieldTerm.getText());
-            setInsurance(insuranceOpen.openInsurance(client,bankOffice,combo,val,term));
-            if (insurance!= null){
-                areaResult.setText(textResul(client,insurance));
-            }else  {textAreaStart.setText(client.getName()+"для вас нет подходящих предложений");}
-        }else {areaResult.setText("Заполните форму");}
+        if (!textFieldSum.getText().isEmpty() && !textFieldTerm.getText().isEmpty()) {
+            int val = Integer.parseInt(textFieldSum.getText());
+            int term = Integer.parseInt(textFieldTerm.getText());
+            if (combo == null) {
+                areaResult.setText("Выберите тип страховки");
+            } else {
+                setInsurance(insuranceOpen.openInsurance(client, bankOffice, combo, val, term));
+                if (insurance != null) {
+                    btn_Send.setDisable(false);
+                    areaResult.setText(textResult(client, insurance));
+                } else {
+                    btn_Send.setDisable(true);
+                    textAreaStart.setText(client.getName() + ", для вас нет подходящих предложений");
+                }
+            }
+        } else {
+            btn_Send.setDisable(true);
+            areaResult.setText("Заполните форму");
+        }
+
     }
 
+
     public void btnSend(ActionEvent actionEvent) throws IOException {
-        if (insurance!=null){
-            bankOffice.getBankCollections().getInsurensList().add(insurance);
-            clientService.giveCash((int)insurance.getPrice(), client);
+        bankOffice.getBankCollections().getInsurensList().add(insurance);
+        clientService.giveCash((int) insurance.getPrice(), client);
 
-            setClient(bankOffice.getInsuranceDepartment().startWork());
-            if (client!=null){
-                textFieldSum.setText("");
-                textFieldTerm.setText("");
-                areaResult.setText("");
-                textAreaStart.setText("Здравствуйет " + client.getName() + " заполните форму.");
-            }else {
-                Stage stage = new Stage();
-                Parent root = null;
-                root = FXMLLoader.load(getClass().getResource("../scence/Scence.fxml"));
-                stage.setTitle("Main");
-                stage =(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-                stage.setMinHeight(550);
-                stage.setMinWidth(518);
-                stage.setResizable(false);
-                stage.setScene(new Scene(root));
-                stage.show();
-            }
-
-        }else {
-
+        setClient(bankOffice.getInsuranceDepartment().startWork());
+        if (client != null) {
+            textFieldSum.setText("");
+            textFieldTerm.setText("");
+            areaResult.setText("");
+            textAreaStart.setText("Здравствуйте, " + client.getName() + ". Заполните форму.");
+        } else {
+            Stage stage = new Stage();
+            Parent root = null;
+            root = FXMLLoader.load(getClass().getResource("../scence/Scence.fxml"));
+            stage.setTitle("Main");
+            stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            stage.setMinHeight(550);
+            stage.setMinWidth(518);
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.show();
         }
     }
 
@@ -135,7 +151,7 @@ public class InsuranceController implements Initializable {
         this.insurance = insurance;
     }
 
-    private String textResul(Client client, Insurance insurance){
+    private String textResult(Client client, Insurance insurance){
         return
                 client.getName() + " вам подобрана страхование " + insurance.getInsuranceNumber() +
                         "\nсрок страхования: " + insurance.getTerm() + " мес." +

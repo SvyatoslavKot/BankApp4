@@ -14,7 +14,7 @@ public class BdReadClient {
     HashMap<String, Client> clientHashMap = new HashMap<>();
     Client client;
     public  void readBD (BankOffice bankOffice, String filebd){
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(CLIENT_MAPA))) {
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(filebd))) {
             String currentLine = " ";
             while (null != (currentLine = bufferedReader.readLine())) {
                 client = convertStringToClient(currentLine);

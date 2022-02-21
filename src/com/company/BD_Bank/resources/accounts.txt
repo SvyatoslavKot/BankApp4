@@ -1,0 +1,3 @@
+name:Сбер light number:29609 moneyIn:0 term:24 payment:150 cashBack:0.0 idHolder:5 
+name:Сбер light number:29609 moneyIn:0 term:24 payment:150 cashBack:0.0 idHolder:5 
+name:Сбер light number:29609 moneyIn:0 term:24 payment:150 cashBack:0.0 idHolder:5 
