@@ -8,8 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class BDWriteCredit {
-    private String CLIENT_MAPA = "com.company.BD_Bank.credits.txt";
-    Credit credit;
+    //private String CLIENT_MAPA = "";
+    //Credit credit;
     public void writeCredit (BankOffice bankOffice, String fileBD){
         try (FileWriter fw = new FileWriter(fileBD)){
             fw.write("");

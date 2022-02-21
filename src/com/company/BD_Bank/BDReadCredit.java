@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class BDReadCredit {
-    private String CLIENT_MAPA = "credits.txt";
+    //private String CLIENT_MAPA = "credits.txt";
     private ArrayList<Credit> creditList = new ArrayList<>();
     Credit credit;
 

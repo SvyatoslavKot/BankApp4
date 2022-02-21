@@ -31,11 +31,13 @@ public class Controller implements Initializable {
     BDWriteAccountMoney bdWriteAccountMoney = new BDWriteAccountMoney();
     BDReadCredit bdReadCredit = new BDReadCredit();
     BDWriteCredit bdWriteCredit = new BDWriteCredit();
+    BDReadInsurance bdReadInsurance = new BDReadInsurance();
+    BDWriteInsurance bdWriteInsurance = new BDWriteInsurance();
 
-    final private String  ClientBD = "clients.txt";
-    final private String  ACC_BD = "accounts.txt";
-    final private String  CREDIT_BD = "credits.txt";
-
+    final private String  CLIENT_BD = "src/com/company/BD_Bank/resources/clients.txt";
+    final private String  ACC_BD = "src/com/company/BD_Bank/resources/accounts.txt";
+    final private String  CREDIT_BD = "src/com/company/BD_Bank/resources/credits.txt";
+    final private String  INSURANCE_BD = "src/com/company/BD_Bank/resources/insurances.txt";
 
     @FXML
     ListView<String> listViewStage;
@@ -137,14 +139,16 @@ public class Controller implements Initializable {
 
     }
     @FXML private void saveFile (ActionEvent actionEvent) throws IOException {
-        bdWriteClient.writeClient(bankOffice,ClientBD);
+        bdWriteClient.writeClient(bankOffice,CLIENT_BD);
         bdWriteAccountMoney.writeAcc(bankOffice,ACC_BD);
         bdWriteCredit.writeCredit(bankOffice, CREDIT_BD);
+        bdWriteInsurance.writeInsurance(bankOffice, INSURANCE_BD);
     }
     @FXML private void openFile (ActionEvent actionEvent) throws IOException, ClassNotFoundException {
-       bdReadClient.readBD(bankOffice,ClientBD);
+       bdReadClient.readBD(bankOffice,CLIENT_BD);
        bdReadAccountMoney.readBD(bankOffice,ACC_BD);
        bdReadCredit.readBD(bankOffice, CREDIT_BD);
+       bdReadInsurance.readBD(bankOffice, INSURANCE_BD);
     }
     private  void deserialization () throws IOException, ClassNotFoundException {
         BankCollections bankCollections = new BankCollections();

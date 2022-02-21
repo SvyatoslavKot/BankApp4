@@ -61,6 +61,16 @@ public class Insurance extends InsuranceModel implements Comparable {
         return 0;
     }
 
+    @Override
+    public String toString() {
+        return "Insurance{"+ price +'}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
+
     public String getNameInsurance() {
         return nameInsurance;
     }
@@ -93,13 +103,27 @@ public class Insurance extends InsuranceModel implements Comparable {
         return info;
     }
 
-    @Override
-    public String toString() {
-        return "Insurance{"+ price +'}';
+    public void setNameInsurance(String nameInsurance) {
+        this.nameInsurance = nameInsurance;
     }
 
-    @Override
-    public int compareTo(Object o) {
-        return 0;
+    public void setInsuranceValue(int insuranceValue) {
+        this.insuranceValue = insuranceValue;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setTerm(int term) {
+        this.term = term;
+    }
+
+    public void setInsuranceNumber(String insuranceNumber) {
+        this.insuranceNumber = insuranceNumber;
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
     }
 }
