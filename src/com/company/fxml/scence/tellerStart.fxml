@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="314.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.fxml.controller.TellerController">
+   <children>
+      <Button layoutX="69.0" layoutY="66.0" mnemonicParsing="false" onAction="#btnPutMoney" prefHeight="39.0" prefWidth="175.0" text="Внести деньги" />
+      <Button layoutX="70.0" layoutY="128.0" mnemonicParsing="false" onAction="#btnGetMoney" prefHeight="39.0" prefWidth="175.0" text="Выдать деньги" />
+   </children>
+</Pane>

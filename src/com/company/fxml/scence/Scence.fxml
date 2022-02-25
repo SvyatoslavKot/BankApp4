@@ -42,7 +42,7 @@
       <Pane layoutY="63.0" prefHeight="291.0" prefWidth="343.0">
          <children>
             <Button fx:id="btnTerminal" layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#showTerminal" prefHeight="25.0" prefWidth="166.0" text="Terminal" />
-            <Button fx:id="btnTeller" layoutX="14.0" layoutY="53.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="166.0" text="Teller" />
+            <Button layoutX="14.0" layoutY="53.0" mnemonicParsing="false" onAction="#btnTeller" prefHeight="25.0" prefWidth="166.0" text="Teller" />
             <Button fx:id="btnAtm" layoutX="14.0" layoutY="86.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="166.0" text="ATM" />
          </children>
       </Pane>
