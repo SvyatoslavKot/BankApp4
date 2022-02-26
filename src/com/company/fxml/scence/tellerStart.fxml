@@ -7,5 +7,6 @@
    <children>
       <Button layoutX="69.0" layoutY="66.0" mnemonicParsing="false" onAction="#btnPutMoney" prefHeight="39.0" prefWidth="175.0" text="Внести деньги" />
       <Button layoutX="70.0" layoutY="128.0" mnemonicParsing="false" onAction="#btnGetMoney" prefHeight="39.0" prefWidth="175.0" text="Выдать деньги" />
+      <Button layoutX="14.0" layoutY="351.0" mnemonicParsing="false" onAction="#btnCancel" prefHeight="25.0" prefWidth="92.0" text="Отмена" />
    </children>
 </Pane>

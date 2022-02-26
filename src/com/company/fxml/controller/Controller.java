@@ -182,7 +182,7 @@ public class Controller implements Initializable {
         try{
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("../scence/TellerStart.fxml"));
-            stage.setTitle("Terminal");
+            stage.setTitle("Teller");
             stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             stage.setMinHeight(449);
             stage.setMinWidth(244);

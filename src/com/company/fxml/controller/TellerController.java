@@ -1,7 +1,5 @@
 package com.company.fxml.controller;
 
-import com.company.MainFxml;
-import com.company.bank.bankOffice.BankOffice;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,44 +14,23 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TellerController implements Initializable {
-    BankOffice bankOffice = MainFxml.getBankOffice();
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 
     @FXML
-    private void btnPutMoney(ActionEvent actionEvent){
+    private void btnPutMoney(ActionEvent event){
         try{
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("../scence/putMoneyTeller.fxml"));
-            stage.setTitle("Teller");
-            stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            stage.setMinHeight(449);
-            stage.setMinWidth(244);
-            stage.setResizable(false);
-            stage.setScene(new Scene(root));
-            stage.show();
-
+            windowStage(event, "putMoneyTeller.fxml", 449, 244);
         }catch (IOException e){
             e.printStackTrace();
         }
     }
 
     @FXML
-    private void btnGetMoney(ActionEvent actionEvent){
+    private void btnGetMoney(ActionEvent event){
         try{
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("../scence/getMoneyTeller.fxml"));
-            stage.setTitle("Teller");
-            stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            stage.setMinHeight(449);
-            stage.setMinWidth(244);
-            stage.setResizable(false);
-            stage.setScene(new Scene(root));
-            stage.show();
-
+            windowStage(event, "getMoneyTeller.fxml", 449, 244);
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -61,12 +38,16 @@ public class TellerController implements Initializable {
 
     @FXML
     public void btnCancel(ActionEvent event) throws IOException {
+        windowStage(event, "Scence.fxml", 560, 570);
+    }
+
+    private void windowStage(ActionEvent event, String fxml, int height, int width) throws IOException {
         Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../scence/Scence.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../scence/" + fxml));
         stage.setTitle("Main");
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setMinHeight(550);
-        stage.setMinWidth(518);
+        stage.setMinHeight(height);
+        stage.setMinWidth(width);
         stage.setResizable(false);
         stage.setScene(new Scene(root));
         stage.show();
