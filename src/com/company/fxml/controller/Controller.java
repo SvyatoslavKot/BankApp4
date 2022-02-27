@@ -178,10 +178,25 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    private Button btnAtm;
+    private void btnTeller(ActionEvent actionEvent){
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("../scence/TellerStart.fxml"));
+            stage.setTitle("Teller");
+            stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            stage.setMinHeight(449);
+            stage.setMinWidth(244);
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
     @FXML
-    private Button btnTeller;
+    private Button btnAtm;
 
     @FXML
     private Button btnTerminal;

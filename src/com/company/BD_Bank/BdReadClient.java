@@ -46,7 +46,7 @@ public class BdReadClient {
     }
 
     private void getCashAndSet(String s, Client client1) {
-        if ( s!= null && s.contains("cash::")){
+        if ( s!= null && s.contains("cash:")){
             client1.setCash(Integer.valueOf(s.split(":")[1]));
         }
     }
