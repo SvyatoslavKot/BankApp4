@@ -23,9 +23,9 @@ public class BDReadAccountMoney {
             while (null != (currentLine = bufferedReader.readLine())) {
                 accountMoney = convertStringToClient(currentLine);
                 accountList.add(accountMoney);
-                bankOffice.getBankCollections().getAccountList().addAll(accountList);
-            }
 
+            }
+            bankOffice.getBankCollections().getAccountList().addAll(accountList);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -44,9 +44,15 @@ public class BDReadAccountMoney {
             getTermAndSet(s,accountMoney1);
             getPaymentAndSet(s,accountMoney1);
             getCashbackAndSet(s,accountMoney1);
+            getPinAndSet(s,accountMoney1);
             getIdholderAndSet(s,accountMoney1);
         }
         return accountMoney1;
+    }
+    private void getPinAndSet(String s, AccountMoney ac) {
+        if ( s!= null && s.contains("pin:")){
+            ac.setPin(s.split(":")[1]);
+        }
     }
 
     private void getIdholderAndSet(String s, AccountMoney ac) {

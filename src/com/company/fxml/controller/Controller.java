@@ -3,7 +3,6 @@ package com.company.fxml.controller;
 
         import com.company.BD_Bank.*;
         import com.company.bank.bankOffice.BankOffice;
-        import com.company.bank.bankOffice.BankService.BankCollections;
         import com.company.bank.bankOffice.Ticket;
         import com.company.MainFxml;
         import javafx.event.ActionEvent;
@@ -45,15 +44,6 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-       // try {
-            //deserialization();
-           // bdReadClient.readBD(bankOffice, ClientBD);
-        //} catch (IOException e) {
-           // e.printStackTrace();
-        //} catch (ClassNotFoundException e) {
-          //  e.printStackTrace();
-        //}
-
         listViewStage.getItems().addAll(listAdd);
 
         LinkedList<Ticket> tic = new LinkedList<>();
@@ -150,15 +140,7 @@ public class Controller implements Initializable {
        bdReadCredit.readBD(bankOffice, CREDIT_BD);
        bdReadInsurance.readBD(bankOffice, INSURANCE_BD);
     }
-    private  void deserialization () throws IOException, ClassNotFoundException {
-        BankCollections bankCollections = new BankCollections();
-        FileInputStream fileInputStream = new FileInputStream("Save.ser");
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-        Object temp = objectInputStream.readObject();
-        bankCollections = (BankCollections) temp;
-        bankOffice.setBankCollections(bankCollections);
-        objectInputStream.close();
-    }
+
     @FXML
     private void btnAddStaff(ActionEvent actionEvent){
         try{
@@ -196,8 +178,24 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    private Button btnAtm;
-
+    private  Button btnAtm;
     @FXML
     private Button btnTerminal;
+
+    public void btnATM(ActionEvent actionEvent) {
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("../scence/atm/atmStar.fxml"));
+            stage.setTitle("Teller");
+            stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            stage.setMinHeight(449);
+            stage.setMinWidth(244);
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 }

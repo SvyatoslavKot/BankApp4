@@ -2,7 +2,9 @@ package com.company.bank.bankOffice.BankService;
 
 import com.company.Client;
 import com.company.bank.bankOffice.BankOffice;
+import com.company.bank.bankOffice.accountManagementDepartment.AccountMoney;
 import com.company.bank.bankOffice.insuranceDepartment.Insurance;
+import javafx.scene.control.TextField;
 
 import java.util.*;
 
@@ -64,6 +66,15 @@ public class BankCollectionManage {
                     "Id клиента: " + list.getValue()
             );
         }
+    }
+    public AccountMoney searchAccountFromNumber (BankOffice bankOffice, String number){
+       ArrayList<AccountMoney> accounts = bankOffice.getBankCollections().getAccountList();
+        for (AccountMoney acc : accounts){
+            if (acc.getAccountNumber().equals(number)){
+                System.out.println(acc.getAccountNumber());
+                return acc;
+            }
+        }return null;
     }
 
 

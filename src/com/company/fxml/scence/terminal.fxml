@@ -26,5 +26,6 @@
          </children>
       </Pane>
       <Button layoutX="199.0" layoutY="236.0" mnemonicParsing="false" onAction="#btnAddClient" prefHeight="50.0" prefWidth="72.0" text="Добавить клиента" textAlignment="CENTER" wrapText="true" />
+      <Button layoutX="36.0" layoutY="236.0" mnemonicParsing="false" onAction="#btnCancel" prefHeight="50.0" prefWidth="72.0" text="назад" textAlignment="CENTER" wrapText="true" />
    </children>
 </Pane>

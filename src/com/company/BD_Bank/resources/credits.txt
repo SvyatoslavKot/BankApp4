@@ -1,2 +1,0 @@
-name:Автокредит number:18764 amount:300000 percent:17.9 payment:27489.722485871185 term:12 idHolder:8 
-name:Автокредит number:18764 amount:300000 percent:17.9 payment:27489.722485871185 term:12 idHolder:9 

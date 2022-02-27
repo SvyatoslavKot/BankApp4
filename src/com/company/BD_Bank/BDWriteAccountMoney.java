@@ -32,6 +32,7 @@ public class BDWriteAccountMoney {
                 fileWriter.write("payment:" + accountMoney.getPayment() + " ");
                 fileWriter.write("cashBack:" + accountMoney.getCashBack() + " ");
                 fileWriter.write("idHolder:" + accountMoney.getIdHolder() + " ");
+                fileWriter.write("pin:" + accountMoney.getPin() + " ");
                 fileWriter.write("\n");
 
                 fileWriter.flush();

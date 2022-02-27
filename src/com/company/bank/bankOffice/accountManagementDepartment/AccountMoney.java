@@ -8,7 +8,7 @@ import javafx.scene.input.DataFormat;
 
 import java.text.SimpleDateFormat;
 
-public class AccountMoney extends AccountMoneyModel {
+public class AccountMoney  {
     private String nameAccount;
     private String accountNumber;
     private int moneyInAccount;
@@ -17,6 +17,7 @@ public class AccountMoney extends AccountMoneyModel {
     private int payment;
     private double cashBack;
     private String idHolder;
+    private String pin;
 
     private GenerateAccountNumber generateAccountNumber = new GenerateAccountNumber();
 
@@ -32,6 +33,7 @@ public class AccountMoney extends AccountMoneyModel {
         this.payment = payment;
         this.cashBack = cashBack;
         this.idHolder = client.getId();
+        this.pin = "0000";
 
         SimpleDateFormat dateFormat = new SimpleDateFormat();
         System.out.println("Для "+ client.getName() + " создан " + nameAccount  +
@@ -45,30 +47,18 @@ public class AccountMoney extends AccountMoneyModel {
                 "\n____________________________________________");
     }
 
-    @Override
-    void openDebitAccount(String nameCredit,int sum,int term, Client client, BankOffice bankOffice, int payment, double cashBack) {
-        this.nameAccount = nameCredit;
-        this.accountNumber = generateAccountNumber.accountNumber();
-        this.moneyInAccount = sum;
-       // this.openingDate = new DataFormat();
-        this.creditTerm = term;
-        this.payment = payment;
-        this.cashBack = cashBack;
-        this.idHolder = client.getId();
-
-        bankOffice.getBankCollections().getAccountList().add(this);
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat();
-        System.out.println("Для "+ client.getName() + " создан " + nameAccount  +
-                "\n________________ИНФОРМАЦИЯ__________________" +
-                "\nномер счёта: " + accountNumber +
-               // "\nдата открытия: " + dateFormat.format(openingDate) +
-                "\nсроком: "+ creditTerm +" мес."+
-                "\nбаланс счёта: "+ moneyInAccount+
-                "\nежемесчная плата за обслуживание: "+ payment +
-                "\ncashBack по карте: " + cashBack +
-                "\n____________________________________________");
+    public void plusMoney( int money){
+        setMoneyInAccount(getMoneyInAccount() + money);
     }
+    public void minusMoney(int money){
+        int a = 0;
+        if (getMoneyInAccount() >= money){
+            a = getMoneyInAccount() - money;
+            setMoneyInAccount(a);
+        }
+    }
+
+
 
     public int getMoneyInAccount() {
         return moneyInAccount;
@@ -102,6 +92,14 @@ public class AccountMoney extends AccountMoneyModel {
 
     public String getIdHolder() {
         return idHolder;
+    }
+
+    public String getPin() {
+        return pin;
+    }
+
+    public void setPin(String pin) {
+        this.pin = pin;
     }
 
     public void setNameAccount(String nameAccount) {

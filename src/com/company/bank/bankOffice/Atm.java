@@ -12,6 +12,22 @@ import com.company.service.DebitAccountService;
 public class Atm implements AccountDebitOperation, PaymentOperation, AccontCreditOperation {
     DebitAccountService debitAccountService = new DebitAccountService();
     ClientService clientService = new ClientService();
+    private AccountMoney accountMoneyUser = new AccountMoney();
+    private AccountMoney accountMoneyAdress = new AccountMoney();
+
+
+    public AccountMoney getAccountMoneyUser() {
+        return accountMoneyUser;
+    }
+    public void setAccountMoneyUser(AccountMoney accountMoneyUser) {
+        this.accountMoneyUser = accountMoneyUser;
+    }
+    public AccountMoney getAccountMoneyAdress() {
+        return accountMoneyAdress;
+    }
+    public void setAccountMoneyAdress(AccountMoney accountMoneyAdress) {
+        this.accountMoneyAdress = accountMoneyAdress;
+    }
 
     public void putCashOnDebitAccount(Client client, AccountMoney debitAccountModel, int money) {
         System.out.println("Положить наличку на счет " + money);
@@ -42,10 +58,20 @@ public class Atm implements AccountDebitOperation, PaymentOperation, AccontCredi
         creditAccount.putMoneyOnCreditAmount(money);
         System.out.println(client.getName() + " перевел на кредитный счёт " + money + " рублей.");
     }
-    public void moneyTransfer(Client client, AccountMoney debitAccountSender, AccountMoney debitAccountAddressee, int money){
-        debitAccountService.givMoneyDebit(money, debitAccountSender);
-        debitAccountService.putMoneyOnDebit(money, debitAccountAddressee);
-        System.out.println(client.getName() + " перевел  с счета " + debitAccountSender.getAccountNumber() + money + " рублей на счёт номер " + debitAccountAddressee.getAccountNumber());
+
+    @Override
+    public void moneyTransfer(Client client, AccountMoney debitAccountSender, AccountMoney debitAccountAddressee, int money) {
+
+    }
+
+    public void moneyTransfer( AccountMoney debitAccountSender, AccountMoney debitAccountAddressee, int money){
+        if (debitAccountSender.getMoneyInAccount()>= money){
+            debitAccountSender.minusMoney(money);
+            debitAccountAddressee.plusMoney(money);
+        }else {
+            System.out.println("Недостаточно средств на карте");
+        }
+
     }
 
     @Override

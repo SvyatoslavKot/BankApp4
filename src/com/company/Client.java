@@ -15,6 +15,7 @@ public class Client implements Serializable {
     private String passport;
     private boolean bankAccount = false;
 
+
     public Client() {
     }
 
