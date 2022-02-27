@@ -42,9 +42,9 @@ public class AccountController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle){
         setClient(bankOffice.getAccountManagerDepartment().startWork());
         if (client!= null){
-            textAreaStart.setText("Здравствуйет " + client.getName() + " заполните форму.");
+            textAreaStart.setText("Здравствуйте " + client.getName() + " заполните форму.");
         }else {
-            textAreaStart.setText("Клиен6тов на оформление нет.");
+            textAreaStart.setText("Клиентов на оформление нет.");
         }
 
         comboBoxType.getItems().setAll(
@@ -54,23 +54,23 @@ public class AccountController implements Initializable {
         });
 
         comboBoxLevel.getItems().setAll(
-                "ligt", "Standard", "Gold"
+                "Light", "Standard", "Gold"
         );
         comboBoxLevel.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) ->{
 
         });
     }
 
-
-
-
-
     @FXML
     void btnCalck(ActionEvent actionEvent){
         System.out.println(client+comboLevel+comboType);
-
         if (comboType!=null && comboLevel!=null &&  client!= null){
-            setAccountMoney(accountController.openDebit(client,bankOffice,comboType,comboLevel));
+            try {
+                setAccountMoney(accountController.openDebit(client,bankOffice,comboType,comboLevel));
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                //e.printStackTrace();
+            }
             if (accountMoney!=null){
                 areaResult.setText(resultCalk(client,accountMoney));
             }else {areaResult.setText("Счёт не создан");}
@@ -84,7 +84,7 @@ public class AccountController implements Initializable {
             if (client!=null){
 
                 areaResult.setText("");
-                textAreaStart.setText("Здравствуйет " + client.getName() + " заполните форму.");
+                textAreaStart.setText("Здравствуйте " + client.getName() + " заполните форму.");
             }else {
                 Stage stage = new Stage();
                 Parent root = FXMLLoader.load(getClass().getResource("../scence/Scence.fxml"));
