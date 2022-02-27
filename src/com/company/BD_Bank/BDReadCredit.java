@@ -10,12 +10,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class BDReadCredit {
-    //private String CLIENT_MAPA = "credits.txt";
     private ArrayList<Credit> creditList = new ArrayList<>();
     Credit credit;
-
+    private String dir = "src/com/company/BD_Bank/resources/";
     public void readBD(BankOffice bankOffice, String filebd) {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filebd))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader( filebd))) {
             String currentLine = " ";
             while (null != (currentLine = bufferedReader.readLine())) {
                 credit = convertStringToCredit(currentLine);

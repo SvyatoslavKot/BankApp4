@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="154.0" prefWidth="300.0"
-      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.fxml.controller.atm.AtmStartController">
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.fxml.controller.AtmStartController">
    <children>
       <TextField fx:id="textFieldPass" layoutX="133.0" layoutY="73.0" prefHeight="25.0" prefWidth="151.0" promptText="pasword" />
       <Text fx:id="textStar" layoutX="110.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Авторизуйтесь" />

@@ -1,4 +1,4 @@
-package com.company.fxml.controller.atm;
+package com.company.fxml.controller;
 
 import com.company.MainFxml;
 import com.company.bank.bankOffice.BankOffice;
