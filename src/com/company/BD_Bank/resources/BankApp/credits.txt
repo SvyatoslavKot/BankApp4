@@ -1,0 +1,5 @@
+name:Автокредит number:18764 amount:300000 percent:17.9 payment:27489.722485871185 term:12 idHolder:8 
+name:Автокредит number:18764 amount:300000 percent:17.9 payment:27489.722485871185 term:12 idHolder:9 
+name:Потребительский number:25721 amount:666666 percent:17.9 payment:116983.48658875572 term:6 idHolder:6 
+name:Потребительский number:23600 amount:555555 percent:17.9 payment:116132.293368624 term:5 idHolder:5 
+name:Автокредит number:19453 amount:2222222 percent:6.9 payment:209056.47526542534 term:11 idHolder:6 

@@ -4,23 +4,13 @@ import com.company.Client;
 import com.company.bank.bankOffice.accountManagementDepartment.AccountMoney;
 import com.company.bank.bankOffice.creditDepartment.Credit;
 import com.company.bank.bankOffice.insuranceDepartment.Insurance;
-import com.company.service.ClientCollection;
 
 import java.io.Serializable;
 import java.util.*;
 
 
 public class BankCollections  implements Serializable {
-    ClientCollection clientCollection = new ClientCollection();
-
-    private HashMap<String,Client> clientHashMap2 = clientCollection.getClientBD();
-    public HashMap<String, Client> clientHashMap = new HashMap<>(){
-        {
-            putAll(clientHashMap2);
-        }
-    };
-
-
+    public HashMap<String, Client> clientHashMap = new HashMap<>();
     private ArrayList<Insurance> insurensList = new ArrayList<>();
     private ArrayList<Credit> CreditList = new ArrayList<>();
     private ArrayList<AccountMoney> AccountList = new ArrayList<>();

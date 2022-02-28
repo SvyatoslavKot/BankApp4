@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class BDWriteCredit {
     //private String CLIENT_MAPA = "";
     //Credit credit;
+    private String dir = "src/com/company/BD_Bank/resources/";
     public void writeCredit (BankOffice bankOffice, String fileBD){
         try (FileWriter fw = new FileWriter(fileBD)){
             fw.write("");
@@ -18,7 +19,6 @@ public class BDWriteCredit {
         }
         ArrayList<Credit> creditList = bankOffice.getBankCollections().getCreditList();
         for (Credit credit:creditList){
-            //credit = cr;
             try (FileWriter fileWriter  =new FileWriter(fileBD, true)) {
 
                 fileWriter.write("name:"+credit.getCreditName()+" ");

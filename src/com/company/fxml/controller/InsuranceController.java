@@ -153,7 +153,7 @@ public class InsuranceController implements Initializable {
 
     private String textResult(Client client, Insurance insurance){
         return
-                client.getName() + " вам подобрана страхование " + insurance.getInsuranceNumber() +
+                client.getName() + " вам подобрана страхование " + insurance.getNameInsurance() +
                         "\nсрок страхования: " + insurance.getTerm() + " мес." +
                         "\nдата открытия: " + insurance.getOpenDate() +
                         "\nстоимость стрхования: " + insurance.getPrice() +

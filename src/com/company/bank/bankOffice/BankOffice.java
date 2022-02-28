@@ -20,6 +20,7 @@ public class BankOffice {
     InsuranceDepartment insuranceDepartment;
     AccountManagerDepartment accountManagerDepartment;
     BankCollections bankCollections = new BankCollections();
+
     public BankOffice(String nameBank) {
         this.nameBank = nameBank;
         this.terminal1 = new SelfTerminal();

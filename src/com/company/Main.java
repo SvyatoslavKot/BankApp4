@@ -19,9 +19,8 @@ public class Main {
 
         BankOffice bankSber = new BankOffice("Sber");
 
-        bdWriteClient.writeClient(bankSber, "clients.txt");
-
-        bdReadClient.readBD(bankSber, "clients.txt");
+       // bdWriteClient.writeClient(bankSber, "clients.txt");
+        //bdReadClient.readBD(bankSber, "clients.txt");
 
         Client clientSergei = new Client("Сергей "," ", 22,"23",50000,500000,"7676 875434");
         Client clientAnna = new Client("Anna "," ", 22,"28",52000,540000,"7676 434234");

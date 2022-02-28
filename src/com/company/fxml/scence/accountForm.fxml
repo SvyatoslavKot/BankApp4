@@ -23,7 +23,7 @@
       <Button layoutX="158.0" layoutY="361.0" mnemonicParsing="false" onAction="#btnSend" prefHeight="25.0" prefWidth="118.0" text="подтвердить" />
       <Button layoutX="35.0" layoutY="361.0" mnemonicParsing="false" onAction="#btnCancel" prefHeight="25.0" prefWidth="118.0" text="отказаться" />
       <TextArea fx:id="textAreaStart" editable="false" layoutX="35.0" layoutY="40.0" prefHeight="40.0" prefWidth="241.0" wrapText="true" />
-      <ComboBox fx:id="comboBoxType" layoutX="94.0" layoutY="113.0" onAction="#comboBoxChangeType" prefWidth="150.0" promptText="Тип страховки" />
+      <ComboBox fx:id="comboBoxType" layoutX="94.0" layoutY="113.0" onAction="#comboBoxChangeType" prefWidth="150.0" promptText="Название" />
       <ComboBox fx:id="comboBoxLevel" layoutX="94.0" layoutY="150.0" onAction="#comboBoxChangeLevel" prefWidth="150.0" promptText="Уровень" />
    </children>
 </Pane>

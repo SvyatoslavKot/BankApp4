@@ -19,9 +19,9 @@ public class BdReadClient {
             while (null != (currentLine = bufferedReader.readLine())) {
                 client = convertStringToClient(currentLine);
                 clientHashMap.put(client.getId(), client);
-                bankOffice.getBankCollections().getClientHashMap().putAll(clientHashMap);
-            }
 
+            }
+            bankOffice.getBankCollections().getClientHashMap().putAll(clientHashMap);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

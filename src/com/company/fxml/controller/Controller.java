@@ -3,7 +3,6 @@ package com.company.fxml.controller;
 
         import com.company.BD_Bank.*;
         import com.company.bank.bankOffice.BankOffice;
-        import com.company.bank.bankOffice.BankService.BankCollections;
         import com.company.bank.bankOffice.Ticket;
         import com.company.MainFxml;
         import javafx.event.ActionEvent;
@@ -25,19 +24,11 @@ package com.company.fxml.controller;
 
 public class Controller implements Initializable {
     BankOffice bankOffice = MainFxml.getBankOffice();
-    BdWriteClient bdWriteClient  = new BdWriteClient();
-    BdReadClient bdReadClient = new BdReadClient();
-    BDReadAccountMoney bdReadAccountMoney = new BDReadAccountMoney();
-    BDWriteAccountMoney bdWriteAccountMoney = new BDWriteAccountMoney();
-    BDReadCredit bdReadCredit = new BDReadCredit();
-    BDWriteCredit bdWriteCredit = new BDWriteCredit();
-    BDReadInsurance bdReadInsurance = new BDReadInsurance();
-    BDWriteInsurance bdWriteInsurance = new BDWriteInsurance();
 
-    final private String  CLIENT_BD = "src/com/company/BD_Bank/resources/clients.txt";
-    final private String  ACC_BD = "src/com/company/BD_Bank/resources/accounts.txt";
-    final private String  CREDIT_BD = "src/com/company/BD_Bank/resources/credits.txt";
-    final private String  INSURANCE_BD = "src/com/company/BD_Bank/resources/insurances.txt";
+    BDReader bdReader = new BDReader();
+    BDWriter bdWriter = new BDWriter();
+    final private String NAME_BD_DIR = "BankApp";
+
 
     @FXML
     ListView<String> listViewStage;
@@ -45,15 +36,10 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-       // try {
-            //deserialization();
-           // bdReadClient.readBD(bankOffice, ClientBD);
-        //} catch (IOException e) {
-           // e.printStackTrace();
-        //} catch (ClassNotFoundException e) {
-          //  e.printStackTrace();
-        //}
+        if (bankOffice.getBankCollections().getClientHashMap().isEmpty()){
 
+            bdReader.bdRead(bankOffice,NAME_BD_DIR);
+        }
         listViewStage.getItems().addAll(listAdd);
 
         LinkedList<Ticket> tic = new LinkedList<>();
@@ -139,26 +125,12 @@ public class Controller implements Initializable {
 
     }
     @FXML private void saveFile (ActionEvent actionEvent) throws IOException {
-        bdWriteClient.writeClient(bankOffice,CLIENT_BD);
-        bdWriteAccountMoney.writeAcc(bankOffice,ACC_BD);
-        bdWriteCredit.writeCredit(bankOffice, CREDIT_BD);
-        bdWriteInsurance.writeInsurance(bankOffice, INSURANCE_BD);
+        bdWriter.write(bankOffice,NAME_BD_DIR);
     }
     @FXML private void openFile (ActionEvent actionEvent) throws IOException, ClassNotFoundException {
-       bdReadClient.readBD(bankOffice,CLIENT_BD);
-       bdReadAccountMoney.readBD(bankOffice,ACC_BD);
-       bdReadCredit.readBD(bankOffice, CREDIT_BD);
-       bdReadInsurance.readBD(bankOffice, INSURANCE_BD);
+        bdReader.bdRead(bankOffice,NAME_BD_DIR);
     }
-    private  void deserialization () throws IOException, ClassNotFoundException {
-        BankCollections bankCollections = new BankCollections();
-        FileInputStream fileInputStream = new FileInputStream("Save.ser");
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-        Object temp = objectInputStream.readObject();
-        bankCollections = (BankCollections) temp;
-        bankOffice.setBankCollections(bankCollections);
-        objectInputStream.close();
-    }
+
     @FXML
     private void btnAddStaff(ActionEvent actionEvent){
         try{
@@ -196,8 +168,24 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    private Button btnAtm;
-
+    private  Button btnAtm;
     @FXML
     private Button btnTerminal;
+
+    public void btnATM(ActionEvent actionEvent) {
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("../scence/atmStar.fxml"));
+            stage.setTitle("Teller");
+            stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            stage.setMinHeight(449);
+            stage.setMinWidth(244);
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 }
