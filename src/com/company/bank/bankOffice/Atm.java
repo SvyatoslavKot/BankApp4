@@ -5,11 +5,11 @@ import com.company.bank.bankOffice.BankService.AccontCreditOperation;
 import com.company.bank.bankOffice.BankService.AccountDebitOperation;
 import com.company.bank.bankOffice.BankService.PaymentOperation;
 import com.company.bank.bankOffice.accountManagementDepartment.AccountMoney;
-import com.company.bank.bankOffice.creditDepartment.CreditController;
+import com.company.exception.MoneyAccountException;
 import com.company.service.ClientService;
 import com.company.service.DebitAccountService;
 
-public class Atm implements AccountDebitOperation, PaymentOperation, AccontCreditOperation {
+public class Atm {
     DebitAccountService debitAccountService = new DebitAccountService();
     ClientService clientService = new ClientService();
     private AccountMoney accountMoneyUser = new AccountMoney();
@@ -44,41 +44,24 @@ public class Atm implements AccountDebitOperation, PaymentOperation, AccontCredi
         debitAccountService.givMoneyDebit( money,debitAccountModel);
 
     }
-    public void viewMoneyAmountCredit(CreditController a){
-        System.out.println("Узнать сумму долга по кредите.");
-        System.out.println("Долг составляет: " + a.getAmount());
-    }
-    public void paymentCreditCash(Client client, CreditController a, int money){
-        System.out.println("Поожить на кредитный счет " + money + " руб.");
-        clientService.giveCash(money, client);
-        a.putMoneyOnCreditAmount(money);
-    }
-    public void paymentCreditDebit(Client client, AccountMoney debitAccount, CreditController creditAccount, int money){
-        debitAccountService.givMoneyDebit(money, debitAccount);
-        creditAccount.putMoneyOnCreditAmount(money);
-        System.out.println(client.getName() + " перевел на кредитный счёт " + money + " рублей.");
-    }
 
-    @Override
-    public void moneyTransfer(Client client, AccountMoney debitAccountSender, AccountMoney debitAccountAddressee, int money) {
 
-    }
 
-    public void moneyTransfer( AccountMoney debitAccountSender, AccountMoney debitAccountAddressee, int money){
+
+
+
+    public boolean moneyTransfer( AccountMoney debitAccountSender, AccountMoney debitAccountAddressee, int money)throws MoneyAccountException{
         if (debitAccountSender.getMoneyInAccount()>= money){
             debitAccountSender.minusMoney(money);
             debitAccountAddressee.plusMoney(money);
+            return true;
         }else {
             System.out.println("Недостаточно средств на карте");
+            return false;
         }
-
     }
 
-    @Override
-    public void payForComunalServis(Client client, int money) {
-        System.out.println("Оплатить комунальные услугу в кассе.");
-        clientService.giveCash(money, client);
-    }
+
 
     public void paymentMobilPhoneCash(Client client, int money, String mobilPhone) {
         clientService.giveCash(money, client);

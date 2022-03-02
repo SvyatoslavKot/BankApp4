@@ -2,9 +2,6 @@ package com.company.bank.bankOffice.accountManagementDepartment;
 
 import com.company.Client;
 import com.company.bank.bankOffice.BankOffice;
-import com.company.bank.bankOffice.creditDepartment.Credit;
-
-import java.util.Scanner;
 
 public class AccountMoneyController {
     public AccountMoney openDebit(Client client, BankOffice bankOffice, String type, String level) {

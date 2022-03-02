@@ -6,8 +6,8 @@ import com.company.bank.bankOffice.BankOffice;
 import com.company.service.ClientService;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import com.company.bank.bankOffice.creditDepartment.CreditModel;
-public class CreditBot extends CreditModel {
+
+public class CreditBot {
     private String creditName;
     private String accountNumber;
     private int amount;

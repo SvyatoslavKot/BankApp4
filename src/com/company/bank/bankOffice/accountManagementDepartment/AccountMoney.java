@@ -3,6 +3,7 @@ package com.company.bank.bankOffice.accountManagementDepartment;
 
 import com.company.Client;
 import com.company.bank.bankOffice.BankOffice;
+import com.company.exception.MoneyAccountException;
 import com.company.service.GenerateAccountNumber;
 import javafx.scene.input.DataFormat;
 
@@ -50,11 +51,13 @@ public class AccountMoney  {
     public void plusMoney( int money){
         setMoneyInAccount(getMoneyInAccount() + money);
     }
-    public void minusMoney(int money){
+    public void minusMoney(int money) throws MoneyAccountException {
         int a = 0;
         if (getMoneyInAccount() >= money){
             a = getMoneyInAccount() - money;
             setMoneyInAccount(a);
+        }else {
+            throw new MoneyAccountException("На счету недостаточно денег");
         }
     }
 

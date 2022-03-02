@@ -2,7 +2,7 @@ package com.company.bank.bankOffice.BankService;
 
 import com.company.Client;
 import com.company.bank.bankOffice.accountManagementDepartment.AccountMoney;
-import com.company.bank.bankOffice.creditDepartment.Credit;
+import com.company.bank.bankOffice.creditDepartment.bankCreditFactory.Credit;
 import com.company.bank.bankOffice.insuranceDepartment.Insurance;
 
 import java.io.Serializable;

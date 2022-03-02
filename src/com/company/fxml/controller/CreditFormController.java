@@ -2,9 +2,9 @@ package com.company.fxml.controller;
 
 import com.company.Client;
 import com.company.bank.bankOffice.BankOffice;
-import com.company.bank.bankOffice.creditDepartment.Credit;
-import com.company.bank.bankOffice.creditDepartment.CreditController;
 import com.company.MainFxml;
+import com.company.bank.bankOffice.creditDepartment.bankCreditFactory.BankCreditFactory;
+import com.company.bank.bankOffice.creditDepartment.bankCreditFactory.Credit;
 import com.company.service.ClientService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,7 +26,8 @@ import java.util.ResourceBundle;
 public class CreditFormController implements Initializable {
     BankOffice bankOffice = MainFxml.bankOffice;
     Client client;
-    CreditController creditController = new CreditController();
+    BankCreditFactory creditFactory = new BankCreditFactory();
+
     String combo;
     Credit credit;
     ClientService clientService = new ClientService();
@@ -81,10 +82,10 @@ public class CreditFormController implements Initializable {
             if (combo == null) {
                 areaResult.setText("Выберите тип кредита");
             } else if (sum != 0 && term != 0) {
-                setCredit(creditController.openCredit(client, bankOffice, sum, combo, term));
+                setCredit(creditFactory.create(bankOffice,client,sum,combo,term));
                 if (credit != null) {
                     btn_Send.setDisable(false);
-                    areaResult.setText(creditResult(client, credit));
+                    areaResult.setText(creditResult(client,  credit));
                 } else {
                     btn_Send.setDisable(true);
                     textAreaStart.setText(client.getName() + ", для вас нет подходящих предложений");
