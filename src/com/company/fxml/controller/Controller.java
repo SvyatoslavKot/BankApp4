@@ -1,7 +1,7 @@
 
 package com.company.fxml.controller;
 
-        import com.company.BD_Bank.*;
+        import com.company.data.*;
         import com.company.bank.bankOffice.BankOffice;
         import com.company.bank.bankOffice.Ticket;
         import com.company.MainFxml;

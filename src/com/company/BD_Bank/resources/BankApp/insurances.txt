@@ -1,9 +1,0 @@
-name:Иммущество5 number:18097 value:200000 price:200.0 term:10 idHolder:7 
-name:Иммущество5 number:18097 value:200000 price:200.0 term:10 idHolder:10 
-name:Жизни2 number:21181 value:2000000 price:800.0 term:2 idHolder:2 
-name:Иммущество5 number:18097 value:200000 price:200.0 term:10 idHolder:7 
-name:Иммущество5 number:18097 value:200000 price:200.0 term:10 idHolder:10 
-name:Жизни2 number:21181 value:2000000 price:800.0 term:2 idHolder:2 
-name:Иммущество5 number:18097 value:200000 price:200.0 term:10 idHolder:7 
-name:Иммущество5 number:18097 value:200000 price:200.0 term:10 idHolder:10 
-name:Жизни2 number:21181 value:2000000 price:800.0 term:2 idHolder:2 
