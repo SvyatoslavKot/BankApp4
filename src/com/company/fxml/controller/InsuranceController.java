@@ -5,6 +5,7 @@ import com.company.MainFxml;
 import com.company.bank.bankOffice.BankOffice;
 import com.company.bank.bankOffice.insuranceDepartment.Insurance;
 import com.company.bank.bankOffice.insuranceDepartment.InsuranceOpen;
+import com.company.fxml.NumberTextField;
 import com.company.service.ClientService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -41,10 +42,10 @@ public class InsuranceController implements Initializable {
     TextArea areaResult;
 
     @FXML
-    TextField textFieldTerm;
+    NumberTextField textFieldTerm;
 
     @FXML
-    TextField textFieldSum;
+    NumberTextField textFieldSum;
 
     @FXML
     Button btn_Send;

@@ -34,7 +34,7 @@ public class terminalController implements Initializable {
     @FXML
     private ComboBox<String> comboBox;
     @FXML
-    private TextField textField;
+    private NumberTextField textField;
 
     @FXML
     private Text textWar;

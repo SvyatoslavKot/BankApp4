@@ -4,6 +4,7 @@ import com.company.MainFxml;
 import com.company.bank.bankOffice.BankOffice;
 import com.company.bank.bankOffice.BankService.BankCollectionManage;
 import com.company.bank.bankOffice.accountManagementDepartment.AccountMoney;
+import com.company.fxml.NumberTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,7 +31,7 @@ public class AtmStartController {
     Text textStar;
 
     @FXML
-    TextField textFieldCardNum;
+    NumberTextField textFieldCardNum;
 
 
     public void btnNext(ActionEvent actionEvent) throws IOException {

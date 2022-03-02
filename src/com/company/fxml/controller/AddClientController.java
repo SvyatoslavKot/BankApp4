@@ -3,6 +3,7 @@ package com.company.fxml.controller;
 import com.company.Client;
 import com.company.MainFxml;
 import com.company.bank.bankOffice.BankOffice;
+import com.company.fxml.NumberTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,13 +24,13 @@ public class AddClientController {
     private Button btnCalkId;
 
     @FXML
-    private TextField textFieldAge;
+    private NumberTextField textFieldAge;
 
     @FXML
-    private TextField textFieldCash;
+    private NumberTextField textFieldCash;
 
     @FXML
-    private TextField textFieldIncome;
+    private NumberTextField textFieldIncome;
 
     @FXML
     private TextField textFieldLastName;
@@ -38,10 +39,10 @@ public class AddClientController {
     private TextField textFieldName;
 
     @FXML
-    private TextField textFieldPassport;
+    private NumberTextField textFieldPassport;
 
     @FXML
-    private TextField textFieldid;
+    private NumberTextField textFieldid;
 
     @FXML
     private TextArea texyAreaInfo;

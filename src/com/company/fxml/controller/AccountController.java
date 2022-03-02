@@ -60,11 +60,6 @@ public class AccountController implements Initializable {
 
         });
     }
-
-
-
-
-
     @FXML
     void btnCalck(ActionEvent actionEvent){
         System.out.println(client+comboLevel+comboType);

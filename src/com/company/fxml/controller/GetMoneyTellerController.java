@@ -3,6 +3,7 @@ package com.company.fxml.controller;
 import com.company.Client;
 import com.company.MainFxml;
 import com.company.bank.bankOffice.BankOffice;
+import com.company.fxml.NumberTextField;
 import com.company.service.ClientService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,10 +27,10 @@ public class GetMoneyTellerController implements Initializable {
     int sum;
 
     @FXML
-    TextField textFieldId;
+    NumberTextField textFieldId;
 
     @FXML
-    TextField textFieldSum;
+    NumberTextField textFieldSum;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

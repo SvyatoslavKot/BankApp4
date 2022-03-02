@@ -1,5 +1,6 @@
 package com.company.fxml.controller;
 
+import com.company.fxml.NumberTextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -11,15 +12,15 @@ public class addStaffController {
     @FXML
     private TextField textFieldName;
     @FXML
-    private TextField textFieldAge;
+    private NumberTextField textFieldAge;
     @FXML
     private TextField textFieldDep;
     @FXML
-    private TextField textFieldTab;
+    private NumberTextField textFieldTab;
     @FXML
     private TextField textFieldPosition;
     @FXML
-    private TextField textFieldPassport;
+    private NumberTextField textFieldPassport;
     @FXML
     private TextField textFieldLastName;
 

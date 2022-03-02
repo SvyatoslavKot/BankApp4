@@ -22,8 +22,8 @@ public class atmTransitController {
     BankCollectionManage bankCollectionManage = new BankCollectionManage();
     AccountMoney accountMoneySender = bankOffice.getAtm().getAccountMoneyUser();
 
-    public TextField textFieldSum;
-    public TextField textFieldNum;
+    public NumberTextField textFieldSum;
+    public NumberTextField textFieldNum;
 
     public void btnCancel(ActionEvent actionEvent) throws IOException {
         Stage stage = new Stage();

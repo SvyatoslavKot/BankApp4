@@ -5,6 +5,7 @@ import com.company.bank.bankOffice.BankOffice;
 import com.company.MainFxml;
 import com.company.bank.bankOffice.creditDepartment.bankCreditFactory.BankCreditFactory;
 import com.company.bank.bankOffice.creditDepartment.bankCreditFactory.Credit;
+import com.company.fxml.NumberTextField;
 import com.company.service.ClientService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,10 +40,10 @@ public class CreditFormController implements Initializable {
     private TextArea textAreaStart;
 
     @FXML
-    private TextField textFieldSum;
+    private NumberTextField textFieldSum;
 
     @FXML
-    private TextField textFieldTerm;
+    private NumberTextField textFieldTerm;
 
     @FXML
     private ComboBox<String> comboBoxType;

@@ -8,6 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import com.company.fxml.NumberTextField?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.fxml.controller.terminalController">
    <children>
       <Label alignment="CENTER" contentDisplay="TOP" layoutY="6.0" prefHeight="40.0" prefWidth="300.0" text="Терминал" textAlignment="CENTER">
@@ -18,7 +19,7 @@
       <Pane layoutY="40.0" prefHeight="196.0" prefWidth="300.0">
          <children>
             <Label layoutX="28.0" layoutY="39.0" prefHeight="31.0" prefWidth="57.0" text="Id клиента" />
-            <TextField fx:id="textField" layoutX="180.0" layoutY="41.0" prefHeight="26.0" prefWidth="88.0" />
+            <NumberTextField fx:id="textField" layoutX="180.0" layoutY="41.0" prefHeight="26.0" prefWidth="88.0" />
             <Label layoutX="28.0" layoutY="73.0" prefHeight="31.0" prefWidth="57.0" text="услуга" />
             <Button fx:id="btnTakeTicket" layoutX="27.0" layoutY="129.0" mnemonicParsing="false" onAction="#clickButton" prefHeight="30.0" prefWidth="241.0" text="Взять талон" />
             <ComboBox fx:id="comboBox" layoutX="116.0" layoutY="76.0" onAction="#ComboBoxCganged" prefWidth="150.0" promptText="выберите Услугу" />

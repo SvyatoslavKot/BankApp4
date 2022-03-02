@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import com.company.fxml.NumberTextField?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="244.0" prefWidth="449.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.fxml.controller.AddClientController">
    <children>
       <Label layoutX="24.0" layoutY="41.0" text="Имя" />
@@ -16,11 +17,11 @@
       <Label layoutX="232.0" layoutY="77.0" text="паспорт" />
       <Label layoutX="32.0" layoutY="164.0" text="id" />
       <TextField fx:id="textFieldName" layoutX="78.0" layoutY="37.0" prefHeight="25.0" prefWidth="126.0" />
-      <TextField fx:id="textFieldAge" layoutX="78.0" layoutY="73.0" prefHeight="25.0" prefWidth="126.0" />
-      <TextField fx:id="textFieldIncome" layoutX="78.0" layoutY="117.0" prefHeight="25.0" prefWidth="126.0" />
-      <TextField fx:id="textFieldid" editable="false" layoutX="96.0" layoutY="160.0" prefHeight="25.0" prefWidth="108.0" />
-      <TextField fx:id="textFieldCash" layoutX="317.0" layoutY="117.0" prefHeight="25.0" prefWidth="126.0" />
-      <TextField fx:id="textFieldPassport" layoutX="317.0" layoutY="73.0" prefHeight="25.0" prefWidth="126.0" />
+      <NumberTextField fx:id="textFieldAge" layoutX="78.0" layoutY="73.0" prefHeight="25.0" prefWidth="126.0" />
+      <NumberTextField fx:id="textFieldIncome" layoutX="78.0" layoutY="117.0" prefHeight="25.0" prefWidth="126.0" />
+      <NumberTextField fx:id="textFieldid" editable="false" layoutX="96.0" layoutY="160.0" prefHeight="25.0" prefWidth="108.0" />
+      <NumberTextField fx:id="textFieldCash" layoutX="317.0" layoutY="117.0" prefHeight="25.0" prefWidth="126.0" />
+      <NumberTextField fx:id="textFieldPassport" layoutX="317.0" layoutY="73.0" prefHeight="25.0" prefWidth="126.0" />
       <TextField fx:id="textFieldLastName" layoutX="317.0" layoutY="37.0" prefHeight="25.0" prefWidth="126.0" />
       <Button layoutX="22.0" layoutY="205.0" mnemonicParsing="false" onAction="#btnCancel" prefHeight="25.0" prefWidth="117.0" text="отмена" />
       <Button fx:id="btnCalkId" layoutX="222.0" layoutY="160.0" mnemonicParsing="false" onAction="#btnCalkId" prefHeight="25.0" prefWidth="83.0" text="получить" />
