@@ -1,7 +1,7 @@
 package com.company;
 
-import com.company.BD_Bank.BdReadClient;
-import com.company.BD_Bank.BdWriteClient;
+import com.company.data.BdReadClient;
+import com.company.data.BdWriteClient;
 import com.company.bank.bankCentralOffice.BankCentralOffice;
 import com.company.bank.bankOffice.BankOffice;
 import com.company.bank.mobilBank.MobilBank;
@@ -19,8 +19,9 @@ public class Main {
 
         BankOffice bankSber = new BankOffice("Sber");
 
-       // bdWriteClient.writeClient(bankSber, "clients.txt");
-        //bdReadClient.readBD(bankSber, "clients.txt");
+
+
+
 
         Client clientSergei = new Client("Сергей "," ", 22,"23",50000,500000,"7676 875434");
         Client clientAnna = new Client("Anna "," ", 22,"28",52000,540000,"7676 434234");

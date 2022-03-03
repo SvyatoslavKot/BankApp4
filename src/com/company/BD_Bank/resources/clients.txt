@@ -1,2 +1,0 @@
-name:Иван lastnam:Иванов pasport:987543 age:22 income:222222 cash:222222 id:1 
-name:Анна lastnam:Федорова pasport:33998877 age:23 income:233333 cash:100000 id:2 

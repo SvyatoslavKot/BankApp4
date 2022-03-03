@@ -18,5 +18,6 @@
       <Button layoutX="14.0" layoutY="136.0" mnemonicParsing="false" onAction="#btnPayCredit" prefHeight="35.0" prefWidth="123.0" text="Оплатить  кредит" />
       <Button layoutX="14.0" layoutY="191.0" mnemonicParsing="false" onAction="#btnInfo" prefHeight="35.0" prefWidth="123.0" text="ИНФО" />
       <Button layoutX="14.0" layoutY="239.0" mnemonicParsing="false" onAction="#btnCancel" prefHeight="35.0" prefWidth="123.0" text="Назад" />
+      <Button layoutX="163.0" layoutY="191.0" mnemonicParsing="false" onAction="#btnBalance" prefHeight="35.0" prefWidth="123.0" text="Баланс" />
    </children>
 </Pane>

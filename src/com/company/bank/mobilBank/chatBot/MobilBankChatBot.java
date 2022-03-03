@@ -1,6 +1,6 @@
 package com.company.bank.mobilBank.chatBot;
 
-import com.company.bank.bankOffice.creditDepartment.chatBotService.CreditAccountBot;
+import com.company.bank.bankOffice.bankFactory.creditDepartment.chatBotService.CreditAccountBot;
 
 import javax.swing.*;
 import javax.swing.text.SimpleAttributeSet;

@@ -1,3 +1,0 @@
-name:Сбер light number:29609 moneyIn:0 term:24 payment:150 cashBack:0.0 idHolder:5 pin:0000
-name:Молодежный+ number:18668 moneyIn:0 term:36 payment:220 cashBack:3.2 idHolder:2 pin:0000
-name:Сбер Standart number:26061 moneyIn:0 term:36 payment:390 cashBack:5.5 idHolder:14 pin:0000 

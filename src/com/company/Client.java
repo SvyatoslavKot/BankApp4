@@ -2,10 +2,12 @@ package com.company;
 
 
 
+import com.company.exception.MoneyAccountException;
+
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Client implements Serializable {
+public class Client {
     private String name;
     private String lastName;
     private String id;
@@ -14,11 +16,8 @@ public class Client implements Serializable {
     private int cash;
     private String passport;
     private boolean bankAccount = false;
-
-
     public Client() {
     }
-
     public Client(String name,String lastName,int age, String id, int income, int cash, String passport) {
         this.name = name;
         this.lastName = lastName;
@@ -28,7 +27,6 @@ public class Client implements Serializable {
         this.cash = cash;
         this.passport = passport;
     }
-
     public String getPassport() {
         return passport;
     }
@@ -38,7 +36,6 @@ public class Client implements Serializable {
     public String getId() {
         return id;
     }
-
     public String getLastName() {
         return lastName;
     }
@@ -94,12 +91,10 @@ public class Client implements Serializable {
         Client client = (Client) o;
         return id.equals(client.id);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(id);
     }
-
     @Override
     public String toString() {
         return "Client{" +
@@ -113,5 +108,17 @@ public class Client implements Serializable {
                 '}';
     }
 
+    public void plusCash(int money){
+        setCash(getCash()+ money);
+    }
+    public void minusCash(int money) throws MoneyAccountException{
+        int a = 0;
+        if (getCash() >= money) {
+            a = getCash()- money;
+            setCash(a);
+        }else {
+            throw new MoneyAccountException("Недостаточно денег");
+        }
+    }
 
 }

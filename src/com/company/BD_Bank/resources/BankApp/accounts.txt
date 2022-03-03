@@ -1,3 +1,0 @@
-name:Молодежный number:20552 moneyIn:0 term:24 payment:150 cashBack:0.0 idHolder:6 pin:0000
-name:Молодежный number:11804 moneyIn:0 term:24 payment:150 cashBack:0.0 idHolder:4 pin:0000 
-name:Travel_light number:8607 moneyIn:0 term:12 payment:200 cashBack:4.5 idHolder:6 pin:0000 

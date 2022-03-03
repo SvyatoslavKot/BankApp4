@@ -3,9 +3,9 @@ package com.company.bank.bankOffice;
 
 
 import com.company.bank.bankOffice.BankService.BankCollections;
-import com.company.bank.bankOffice.accountManagementDepartment.AccountManagerDepartment;
-import com.company.bank.bankOffice.creditDepartment.CreditDepartment;
-import com.company.bank.bankOffice.insuranceDepartment.InsuranceDepartment;
+import com.company.bank.bankOffice.bankFactory.accountDertment.AccountManagerDepartment;
+import com.company.bank.bankOffice.bankFactory.creditDepartment.CreditDepartment;
+import com.company.bank.bankOffice.bankFactory.insuranceDepartment.InsuranceDepartment;
 
 import java.util.HashMap;
 import java.util.Map;

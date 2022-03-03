@@ -26,16 +26,29 @@ public class atmMainMenu {
         stage.show();
     }
 
-    public void btnWithdrawMoney(ActionEvent actionEvent) {
+    public void btnWithdrawMoney(ActionEvent actionEvent) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("../scence/atmWithdrawMoney.fxml"));
+        stage.setTitle("Teller");
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setMinHeight(449);
+        stage.setMinWidth(244);
+        stage.setResizable(false);
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
-    public void btnPutMoney(ActionEvent actionEvent) {
+    public void btnPutMoney(ActionEvent actionEvent) throws IOException {
+
     }
 
     public void btnPayCredit(ActionEvent actionEvent) {
     }
 
     public void btnInfo(ActionEvent actionEvent) {
+    }
+
+    public void btnBalance(ActionEvent actionEvent) {
     }
 
     public void btnCancel (ActionEvent actionEvent) throws IOException {
@@ -49,4 +62,6 @@ public class atmMainMenu {
         stage.setScene(new Scene(root));
         stage.show();
     }
+
+
 }

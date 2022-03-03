@@ -2,9 +2,11 @@ package com.company.fxml.controller;
 
 import com.company.Client;
 import com.company.MainFxml;
+import com.company.bank.bankOffice.bankFactory.AbstractFactory;
 import com.company.bank.bankOffice.BankOffice;
-import com.company.bank.bankOffice.accountManagementDepartment.AccountMoney;
-import com.company.bank.bankOffice.accountManagementDepartment.AccountMoneyController;
+import com.company.bank.bankOffice.bankFactory.BankProductFactory;
+import com.company.bank.bankOffice.bankFactory.accountDertment.bankAccountFactory.AccountFactory;
+import com.company.bank.bankOffice.bankFactory.accountDertment.bankAccountFactory.AccountMoney;
 import com.company.service.ClientService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +19,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
-import javax.imageio.IIOException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,7 +29,11 @@ public class AccountController implements Initializable {
     String comboLevel;
     String comboType;
     AccountMoney accountMoney;
-    AccountMoneyController accountController = new AccountMoneyController();
+
+    BankProductFactory accountF = new AbstractFactory().createFactory("Account");
+
+    AccountFactory accountFactory = new AccountFactory();
+    AbstractFactory abstractFactory = new AbstractFactory();
     ClientService clientService = new ClientService();
     @FXML
     TextArea areaResult;
@@ -60,17 +65,11 @@ public class AccountController implements Initializable {
 
         });
     }
-
-
-
-
-
     @FXML
     void btnCalck(ActionEvent actionEvent){
         System.out.println(client+comboLevel+comboType);
-
         if (comboType!=null && comboLevel!=null &&  client!= null){
-            setAccountMoney(accountController.openDebit(client,bankOffice,comboType,comboLevel));
+            setAccountMoney(accountF.create(bankOffice,client,comboType,comboLevel));
             if (accountMoney!=null){
                 areaResult.setText(resultCalk(client,accountMoney));
             }else {areaResult.setText("Счёт не создан");}

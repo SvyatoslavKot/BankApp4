@@ -2,9 +2,12 @@ package com.company.fxml.controller;
 
 import com.company.Client;
 import com.company.bank.bankOffice.BankOffice;
-import com.company.bank.bankOffice.creditDepartment.Credit;
-import com.company.bank.bankOffice.creditDepartment.CreditController;
 import com.company.MainFxml;
+import com.company.bank.bankOffice.bankFactory.AbstractFactory;
+import com.company.bank.bankOffice.bankFactory.BankProductFactory;
+import com.company.bank.bankOffice.bankFactory.creditDepartment.bankCreditFactory.BankCreditFactory;
+import com.company.bank.bankOffice.bankFactory.creditDepartment.bankCreditFactory.Credit;
+import com.company.fxml.NumberTextField;
 import com.company.service.ClientService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,7 +19,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -26,34 +28,27 @@ import java.util.ResourceBundle;
 public class CreditFormController implements Initializable {
     BankOffice bankOffice = MainFxml.bankOffice;
     Client client;
-    CreditController creditController = new CreditController();
+
+    BankProductFactory creditF = new AbstractFactory().createFactory("Credit");
+
     String combo;
     Credit credit;
     ClientService clientService = new ClientService();
-
     @FXML
     private TextArea areaResult;
-
     @FXML
     private TextArea textAreaStart;
-
     @FXML
-    private TextField textFieldSum;
-
+    private NumberTextField textFieldSum;
     @FXML
-    private TextField textFieldTerm;
-
+    private NumberTextField textFieldTerm;
     @FXML
     private ComboBox<String> comboBoxType;
-
     @FXML
     private Button btn_Send;
-
     @FXML
     private Button btn_Calc;
-
     TextArea textArea;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btn_Send.setDisable(true);
@@ -72,7 +67,6 @@ public class CreditFormController implements Initializable {
         comboBoxType.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
         });
     }
-
     @FXML
     void btnCalck(ActionEvent event) {
         if (!textFieldSum.getText().isEmpty() && !textFieldTerm.getText().isEmpty()) {
@@ -81,10 +75,10 @@ public class CreditFormController implements Initializable {
             if (combo == null) {
                 areaResult.setText("Выберите тип кредита");
             } else if (sum != 0 && term != 0) {
-                setCredit(creditController.openCredit(client, bankOffice, sum, combo, term));
+                setCredit(creditF.create(bankOffice,client,sum,combo,term));
                 if (credit != null) {
                     btn_Send.setDisable(false);
-                    areaResult.setText(creditResult(client, credit));
+                    areaResult.setText(creditResult(client,  credit));
                 } else {
                     btn_Send.setDisable(true);
                     textAreaStart.setText(client.getName() + ", для вас нет подходящих предложений");
@@ -104,7 +98,6 @@ public class CreditFormController implements Initializable {
         System.out.println(a);
         setCombo(a);
     }
-
     @FXML
     void btnCancel(ActionEvent event) throws IOException {
         Stage stage = new Stage();
@@ -117,7 +110,6 @@ public class CreditFormController implements Initializable {
         stage.setScene(new Scene(root));
         stage.show();
     }
-
     @FXML
     void btnSend(ActionEvent event) throws IOException {
         clientService.takeCash(credit.getAmount(), client);
@@ -141,7 +133,6 @@ public class CreditFormController implements Initializable {
             stage.show();
         }
     }
-
     public void setClient(Client client) {
         this.client = client;
     }

@@ -3,6 +3,7 @@ package com.company.fxml.controller;
 import com.company.Client;
 import com.company.bank.bankOffice.BankOffice;
 import com.company.MainFxml;
+import com.company.fxml.NumberTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,12 +15,15 @@ import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import com.company.fxml.NumberTextField;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class terminalController implements Initializable {
+
+
 
     public javafx.scene.control.Button btnTakeTicket;
     Client client;
@@ -30,7 +34,8 @@ public class terminalController implements Initializable {
     @FXML
     private ComboBox<String> comboBox;
     @FXML
-    private TextField textField;
+    private NumberTextField textField;
+
     @FXML
     private Text textWar;
 

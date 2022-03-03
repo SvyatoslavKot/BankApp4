@@ -8,6 +8,7 @@
 <?import javafx.scene.text.Text?>
 
 
+<?import com.company.fxml.NumberTextField?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.fxml.controller.PutMoneyTellerController">
    <children>
       <Text layoutX="109.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Внесение денег" textAlignment="CENTER" wrappingWidth="150.93670654296875">
@@ -16,9 +17,9 @@
          </font>
       </Text>
       <Label layoutX="33.0" layoutY="74.0" text="Id client" />
-      <TextField fx:id="textFieldId" layoutX="171.0" layoutY="70.0" prefHeight="25.0" prefWidth="81.0" promptText="id" />
+      <NumberTextField fx:id="textFieldId" layoutX="171.0" layoutY="70.0" prefHeight="25.0" prefWidth="81.0" promptText="id" />
       <Text layoutX="33.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="сумма " />
-      <TextField fx:id="textFieldSum" layoutX="117.0" layoutY="104.0" prefHeight="25.0" prefWidth="135.0" promptText="введите сумму" />
+      <NumberTextField fx:id="textFieldSum" layoutX="117.0" layoutY="104.0" prefHeight="25.0" prefWidth="135.0" promptText="введите сумму" />
       <Button layoutX="181.0" layoutY="166.0" mnemonicParsing="false" onAction="#btnOkPutMoney" prefHeight="25.0" prefWidth="118.0" text="Ок" />
       <Button layoutX="50.0" layoutY="166.0" mnemonicParsing="false" onAction="#btnCancel" prefHeight="25.0" prefWidth="118.0" text="Отмена" />
    </children>
