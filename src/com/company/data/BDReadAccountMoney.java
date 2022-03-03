@@ -1,7 +1,7 @@
 package com.company.data;
 
 import com.company.bank.bankOffice.BankOffice;
-import com.company.bank.bankOffice.accountManagementDepartment.AccountMoney;
+import com.company.bank.bankOffice.bankFactory.accountDertment.bankAccountFactory.AccountMoney;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -10,16 +10,25 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class BDReadAccountMoney {
-    private String CLIENT_MAPA = "clients.txt";
+    private String nameAccount;
+    private String accountNumber;
+    private int moneyInAccount;
+    // private DataFormat openingDate;
+    private int creditTerm;
+    private int payment;
+    private double cashBack;
+    private String idHolder;
+    private String pin;
+
     private ArrayList<AccountMoney> accountList = new ArrayList<>();
     AccountMoney accountMoney;
+
     public  void readBD (BankOffice bankOffice, String filebd){
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(filebd))) {
             String currentLine = " ";
             while (null != (currentLine = bufferedReader.readLine())) {
                 accountMoney = convertStringToClient(currentLine);
                 accountList.add(accountMoney);
-
             }
             bankOffice.getBankCollections().getAccountList().removeAll(bankOffice.getBankCollections().getAccountList());
             bankOffice.getBankCollections().getAccountList().addAll(accountList);
@@ -32,69 +41,102 @@ public class BDReadAccountMoney {
 
     public AccountMoney convertStringToClient ( String currentLine){
         String[] sp = currentLine.split(" ");
-        AccountMoney accountMoney1 = new AccountMoney();
+       // AccountMoney accountMoney1 = new AccountMoney();
         for (String s : sp){
-            getNameAndSet(s,accountMoney1);
-            getNumberAndSet(s,accountMoney1);
-            getMoneyinAndSet(s,accountMoney1);
+            setNamei(s);
+            setNumberi(s);
+            setMoneyi(s);
           //  getDateAndSet(s,accountMoney1);
-            getTermAndSet(s,accountMoney1);
-            getPaymentAndSet(s,accountMoney1);
-            getCashbackAndSet(s,accountMoney1);
-            getPinAndSet(s,accountMoney1);
-            getIdholderAndSet(s,accountMoney1);
+            setTermi(s);
+            setPaymenti(s);
+            setCashbacki(s);
+            setPini(s);
+            setIdHolderi(s);
         }
-        return accountMoney1;
+        return new AccountMoney.Builder().setNameAccount(nameAccount).setAccountNumber(accountNumber)
+                .setMoneyInAccount(moneyInAccount).setCreditTerm(creditTerm).setPayment(payment).setCashBack(cashBack)
+                .setPin(pin).setIdHolder(idHolder).build();
     }
-    private void getPinAndSet(String s, AccountMoney ac) {
+    private void setPini(String s) {
         if ( s!= null && s.contains("pin:")){
-            ac.setPin(s.split(":")[1]);
+            setPin(s.split(":")[1]);
         }
     }
 
-    private void getIdholderAndSet(String s, AccountMoney ac) {
+    private void setIdHolderi(String s) {
         if ( s!= null && s.contains("idHolder:")){
-            ac.setIdHolder(s.split(":")[1]);
+            setIdHolder(s.split(":")[1]);
         }
     }
 
-    private void getCashbackAndSet(String s, AccountMoney ac) {
+    private void setCashbacki(String s) {
         if ( s!= null && s.contains("cashBack:")){
-            ac.setCashBack(Double.valueOf(s.split(":")[1]));
+            setCashBack(Double.valueOf(s.split(":")[1]));
         }
 
     }
 
-    private void getPaymentAndSet(String s, AccountMoney ac) {
+    private void setPaymenti(String s) {
         if ( s!= null && s.contains("payment:")){
-            ac.setPayment(Integer.valueOf(s.split(":")[1]));
+            setPayment(Integer.valueOf(s.split(":")[1]));
         }
     }
 
-    private void getTermAndSet(String s, AccountMoney ac) {
+    private void setTermi(String s) {
         if ( s!= null && s.contains("term:")){
-            ac.setCreditTerm(Integer.valueOf(s.split(":")[1]));
+            setCreditTerm(Integer.valueOf(s.split(":")[1]));
         }
     }
 
 
 
-    private void getMoneyinAndSet(String s, AccountMoney ac) {
+    private void setMoneyi(String s) {
         if ( s!= null && s.contains("moneyIn:")){
-            ac.setMoneyInAccount(Integer.valueOf(s.split(":")[1]));
+            setMoneyInAccount(Integer.valueOf(s.split(":")[1]));
         }
     }
 
-    private void getNumberAndSet(String s, AccountMoney ac) {
+    private void setNumberi(String s) {
         if ( s!= null && s.contains("number:")){
-            ac.setAccountNumber(s.split(":")[1]);
+            setAccountNumber(s.split(":")[1]);
         }
     }
 
-    private void getNameAndSet(String s, AccountMoney ac) {
+    private void setNamei(String s) {
         if ( s!= null && s.contains("name:")){
-            ac.setNameAccount(s.split(":")[1]);
+            setNameAccount(s.split(":")[1]);
         }
     }
 
+    public void setNameAccount(String nameAccount) {
+        this.nameAccount = nameAccount;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public void setMoneyInAccount(int moneyInAccount) {
+        this.moneyInAccount = moneyInAccount;
+    }
+
+    public void setCreditTerm(int creditTerm) {
+        this.creditTerm = creditTerm;
+    }
+
+    public void setPayment(int payment) {
+        this.payment = payment;
+    }
+
+    public void setCashBack(double cashBack) {
+        this.cashBack = cashBack;
+    }
+
+    public void setIdHolder(String idHolder) {
+        this.idHolder = idHolder;
+    }
+
+    public void setPin(String pin) {
+        this.pin = pin;
+    }
 }

@@ -3,8 +3,10 @@ package com.company.fxml.controller;
 import com.company.Client;
 import com.company.MainFxml;
 import com.company.bank.bankOffice.BankOffice;
-import com.company.bank.bankOffice.insuranceDepartment.Insurance;
-import com.company.bank.bankOffice.insuranceDepartment.InsuranceOpen;
+import com.company.bank.bankOffice.bankFactory.AbstractFactory;
+import com.company.bank.bankOffice.bankFactory.BankProductFactory;
+import com.company.bank.bankOffice.bankFactory.insuranceDepartment.bankInsuranceFactory.Insurance;
+import com.company.bank.bankOffice.bankFactory.insuranceDepartment.bankInsuranceFactory.InsuranceFactory;
 import com.company.fxml.NumberTextField;
 import com.company.service.ClientService;
 import javafx.event.ActionEvent;
@@ -17,7 +19,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,7 +28,9 @@ import java.util.ResourceBundle;
 public class InsuranceController implements Initializable {
     BankOffice bankOffice = MainFxml.bankOffice;
     Client client;
-    InsuranceOpen insuranceOpen = new InsuranceOpen();
+
+    BankProductFactory insuraceF = new AbstractFactory().createFactory("Insurence");
+
     String combo;
     Insurance insurance;
     ClientService clientService = new ClientService();
@@ -75,12 +78,11 @@ public class InsuranceController implements Initializable {
 
     public void btnCalck(ActionEvent actionEvent) {
         if (!textFieldSum.getText().isEmpty() && !textFieldTerm.getText().isEmpty()) {
-            int val = Integer.parseInt(textFieldSum.getText());
-            int term = Integer.parseInt(textFieldTerm.getText());
             if (combo == null) {
                 areaResult.setText("Выберите тип страховки");
             } else {
-                setInsurance(insuranceOpen.openInsurance(client, bankOffice, combo, val, term));
+                setInsurance(insuraceF.create(client, bankOffice,
+                        combo,Integer.valueOf(textFieldSum.getText()), Integer.valueOf(textFieldTerm.getText())));
                 if (insurance != null) {
                     btn_Send.setDisable(false);
                     areaResult.setText(textResult(client, insurance));
@@ -93,9 +95,7 @@ public class InsuranceController implements Initializable {
             btn_Send.setDisable(true);
             areaResult.setText("Заполните форму");
         }
-
     }
-
 
     public void btnSend(ActionEvent actionEvent) throws IOException {
         bankOffice.getBankCollections().getInsurensList().add(insurance);
@@ -132,7 +132,6 @@ public class InsuranceController implements Initializable {
         stage.setScene(new Scene(root));
         stage.show();
     }
-
     @FXML
     void comboBoxChange(ActionEvent actionEvent) {
         String selectedValue = (String) comboBoxType.getSelectionModel().getSelectedItem();
@@ -147,11 +146,9 @@ public class InsuranceController implements Initializable {
     public void setCombo(String combo) {
         this.combo = combo;
     }
-
     public void setInsurance(Insurance insurance) {
         this.insurance = insurance;
     }
-
     private String textResult(Client client, Insurance insurance){
         return
                 client.getName() + " вам подобрана страхование " + insurance.getNameInsurance() +
@@ -160,5 +157,4 @@ public class InsuranceController implements Initializable {
                         "\nстоимость стрхования: " + insurance.getPrice() +
                         "\nстраховая сумма: " + insurance.getInsuranceValue();
     }
-
 }

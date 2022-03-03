@@ -1,16 +1,25 @@
 package com.company.data;
 
 import com.company.bank.bankOffice.BankOffice;
-import com.company.bank.bankOffice.insuranceDepartment.Insurance;
+import com.company.bank.bankOffice.bankFactory.insuranceDepartment.bankInsuranceFactory.Insurance;
+import com.company.bank.bankOffice.bankFactory.ProductBuilder;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class BDReadInsurance {
-    //private String CLIENT_MAPA = "insurances.txt";
+    private String nameInsurance;
+    private int insuranceValue;
+    private double price;
+    private int term;
+    private Date openDate;
+    private String insuranceNumber;
+    private String clientId;
+    private String info;
     private ArrayList<Insurance> insuranceList = new ArrayList<>();
     Insurance insurance;
 
@@ -35,51 +44,84 @@ public class BDReadInsurance {
 
     public Insurance convertStringToInsurance(String currentLine) {
         String[] sp = currentLine.split(" ");
-        Insurance insurance1 = new Insurance();
+        //Insurance insurance1 = new Insurance();
         for (String s : sp) {
-            getNameAndSet(s, insurance1);
-            getNumberAndSet(s, insurance1);
-            getValueAndSet(s, insurance1);
-            getPriceAndSet(s, insurance1);
-            getTermAndSet(s, insurance1);
-            getIdHolderAndSet(s, insurance1);
+            getNameAndSet(s);
+            getNumberAndSet(s);
+            getValueAndSet(s);
+            getPriceAndSet(s);
+            getTermAndSet(s);
+            getIdHolderAndSet(s);
         }
-        return insurance1;
+        return new ProductBuilder.Builder().setNameProduct(nameInsurance).setNumber(insuranceNumber).setInsuranceValue(insuranceValue)
+                .setInsirancePrice(price).setTerm(term).setClientId(clientId).build();
     }
 
-    private void getNameAndSet(String s, Insurance insurance) {
+    private void getNameAndSet(String s) {
         if (s != null && s.contains("name:")) {
-            insurance.setNameInsurance(s.split(":")[1]);
+            setNameInsurance(s.split(":")[1]);
         }
     }
 
-    private void getNumberAndSet(String s, Insurance insurance) {
+    private void getNumberAndSet(String s) {
         if (s != null && s.contains("number:")) {
-            insurance.setInsuranceNumber(s.split(":")[1]);
+            setInsuranceNumber(s.split(":")[1]);
         }
     }
 
-    private void getValueAndSet(String s, Insurance insurance) {
+    private void getValueAndSet(String s) {
         if (s != null && s.contains("value:")) {
-            insurance.setInsuranceValue(Integer.parseInt(s.split(":")[1]));
+            setInsuranceValue(Integer.parseInt(s.split(":")[1]));
         }
     }
 
-    private void getPriceAndSet(String s, Insurance insurance) {
+    private void getPriceAndSet(String s) {
         if ( s!= null && s.contains("price:")){
-            insurance.setPrice(Double.parseDouble(s.split(":")[1]));
+            setPrice(Double.parseDouble(s.split(":")[1]));
         }
     }
 
-    private void getTermAndSet(String s, Insurance insurance) {
+    private void getTermAndSet(String s) {
         if ( s!= null && s.contains("term:")){
-            insurance.setTerm(Integer.parseInt(s.split(":")[1]));
+            setTerm(Integer.parseInt(s.split(":")[1]));
         }
     }
 
-    private void getIdHolderAndSet(String s, Insurance insurance) {
+    private void getIdHolderAndSet(String s) {
         if ( s!= null && s.contains("idHolder:")){
-            insurance.setClientId(s.split(":")[1]);
+            setClientId(s.split(":")[1]);
         }
+    }
+
+    public void setNameInsurance(String nameInsurance) {
+        this.nameInsurance = nameInsurance;
+    }
+
+    public void setInsuranceValue(int insuranceValue) {
+        this.insuranceValue = insuranceValue;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setTerm(int term) {
+        this.term = term;
+    }
+
+    public void setOpenDate(Date openDate) {
+        this.openDate = openDate;
+    }
+
+    public void setInsuranceNumber(String insuranceNumber) {
+        this.insuranceNumber = insuranceNumber;
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
     }
 }

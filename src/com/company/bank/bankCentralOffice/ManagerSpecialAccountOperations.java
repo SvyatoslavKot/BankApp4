@@ -3,7 +3,7 @@ package com.company.bank.bankCentralOffice;
 
 import com.company.Client;
 import com.company.bank.bankOffice.Staff;
-import com.company.bank.bankOffice.accountManagementDepartment.AccountMoney;
+import com.company.bank.bankOffice.bankFactory.accountDertment.bankAccountFactory.AccountMoney;
 import com.company.service.ClientService;
 import com.company.service.DebitAccountService;
 

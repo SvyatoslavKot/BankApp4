@@ -1,7 +1,7 @@
 package com.company.bank.bankOffice.BankService;
 
 import com.company.Client;
-import com.company.bank.bankOffice.accountManagementDepartment.AccountMoney;
+import com.company.bank.bankOffice.bankFactory.accountDertment.bankAccountFactory.AccountMoney;
 
 public interface AccountDebitOperation {
     void putCashOnDebitAccount(Client cash, AccountMoney debitAccountModel, int money);

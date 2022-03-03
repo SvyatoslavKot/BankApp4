@@ -1,5 +1,5 @@
-name:null number:24209 amount:0 percent:0.0 payment:0.0 term:0 idHolder:null 
-name:Кредитная_карта_3 number:22433 amount:33333 percent:15.9 payment:3022.7545248746387 term:12 idHolder:9 
-name:Потребительский number:22473 amount:777777 percent:12.9 payment:14903.03308882951 term:77 idHolder:3 
-name:Авто number:18408 amount:888888 percent:17.1 payment:17787.694670808498 term:88 idHolder:6 
-name:Ипотека number:7261 amount:2222222 percent:6.9 payment:107823.3833392337 term:22 idHolder:6 
+name:null number:13912 amount:0 percent:0.0 payment:0.0 term:0 idHolder:null 
+name:Кредитная_карта_3 number:21020 amount:33333 percent:15.9 payment:3022.7545248746387 term:12 idHolder:9 
+name:Потребительский number:16251 amount:777777 percent:12.9 payment:14903.03308882951 term:77 idHolder:3 
+name:Авто number:14227 amount:888888 percent:17.1 payment:17787.694670808498 term:88 idHolder:6 
+name:Ипотека number:29181 amount:2222222 percent:6.9 payment:107823.3833392337 term:22 idHolder:6 

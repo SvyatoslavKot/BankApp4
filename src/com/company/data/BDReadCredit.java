@@ -2,7 +2,7 @@ package com.company.data;
 
 import com.company.bank.bankOffice.BankOffice;
 
-import com.company.bank.bankOffice.creditDepartment.bankCreditFactory.Credit;
+import com.company.bank.bankOffice.bankFactory.creditDepartment.bankCreditFactory.Credit;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -22,15 +22,12 @@ public class BDReadCredit  {
     private double paymentMonth;
     private String idHolder;
 
-
     Credit credit;
-    private String dir = "src/com/company/BD_Bank/resources/";
     public void readBD(BankOffice bankOffice, String filebd) {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader( filebd))) {
             String currentLine = " ";
             while (null != (currentLine = bufferedReader.readLine())) {
                 credit = convertStringToCredit(currentLine);
-
                 creditList.add(credit);
             }
             bankOffice.getBankCollections().getCreditList().removeAll(bankOffice.getBankCollections().getCreditList());
@@ -48,55 +45,55 @@ public class BDReadCredit  {
     public Credit convertStringToCredit(String currentLine) {
         String[] sp = currentLine.split(" ");
         for (String s : sp) {
-            getNameAndSet(s);
-            getNumberAndSet(s);
-            getAmountAndSet(s);
-            getPtcAndSet(s);
-            getPaymentAndSet(s);
-            getTermAndSet(s);
-            getIdHolderAndSet(s);
+            nameSet(s);
+            numberSet(s);
+            amountSet(s);
+            ptcSet(s);
+            paymentSet(s);
+            termSet(s);
+            idHolderdSet(s);
         }
         return  new Credit.Builder().setCreditName(creditName).setCreditTerm(creditTerm)
                 .setAmount(amount).setPtc(ptc).setIdHolder(idHolder).setPaymentMouth(paymentMonth).build();
     }
 
-    private void getNameAndSet(String s) {
+    private void nameSet(String s) {
         if (s != null && s.contains("name:")) {
             setCreditName(s.split(":")[1]);
         }
     }
 
-    private void getNumberAndSet(String s) {
+    private void numberSet(String s) {
         if (s != null && s.contains("number:")) {
             setAccountNumber(s.split(":")[1]);
         }
     }
 
-    private void getAmountAndSet(String s) {
+    private void amountSet(String s) {
         if ( s!= null && s.contains("amount:")){
             setAmount(Integer.parseInt(s.split(":")[1]));
         }
     }
 
-    private void getPtcAndSet(String s) {
+    private void ptcSet(String s) {
         if ( s!= null && s.contains("percent:")){
            setPtc(Double.parseDouble(s.split(":")[1]));
         }
     }
 
-    private void getPaymentAndSet(String s) {
+    private void paymentSet(String s) {
         if ( s!= null && s.contains("payment:")){
             setPaymentMonth(Double.parseDouble(s.split(":")[1]));
         }
     }
 
-    private void getTermAndSet(String s) {
+    private void termSet(String s) {
         if ( s!= null && s.contains("term:")){
             setCreditTerm(Integer.parseInt(s.split(":")[1]));
         }
     }
 
-    private void getIdHolderAndSet(String s) {
+    private void idHolderdSet(String s) {
         if ( s!= null && s.contains("idHolder:")){
             setIdHolder(s.split(":")[1]);
         }

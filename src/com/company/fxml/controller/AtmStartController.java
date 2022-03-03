@@ -3,15 +3,13 @@ package com.company.fxml.controller;
 import com.company.MainFxml;
 import com.company.bank.bankOffice.BankOffice;
 import com.company.bank.bankOffice.BankService.BankCollectionManage;
-import com.company.bank.bankOffice.accountManagementDepartment.AccountMoney;
+import com.company.bank.bankOffice.bankFactory.accountDertment.bankAccountFactory.AccountMoney;
 import com.company.fxml.NumberTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -21,19 +19,14 @@ import static javafx.fxml.FXMLLoader.load;
 
 public class AtmStartController {
 
-    public TextField textFieldPass;
-
+    public NumberTextField textFieldPass;
     BankOffice bankOffice = MainFxml.getBankOffice();
     BankCollectionManage bankCollectionManage = new BankCollectionManage();
     AccountMoney accountMoneyUser;
-
     @FXML
     Text textStar;
-
     @FXML
     NumberTextField textFieldCardNum;
-
-
     public void btnNext(ActionEvent actionEvent) throws IOException {
         if (!textFieldCardNum.getText().isEmpty()) {
             accountMoneyUser  = bankCollectionManage.searchAccountFromNumber(bankOffice, textFieldCardNum.getText());
@@ -59,6 +52,7 @@ public class AtmStartController {
         }
 
         public void btnCancel (ActionEvent actionEvent) throws IOException {
+            bankOffice.getAtm().setAccountMoneyUser(null);
             Stage stage = new Stage();
             Parent root = load(getClass().getResource("../scence/Scence.fxml"));
             stage.setTitle("Main");

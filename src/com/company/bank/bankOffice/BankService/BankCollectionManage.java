@@ -2,9 +2,8 @@ package com.company.bank.bankOffice.BankService;
 
 import com.company.Client;
 import com.company.bank.bankOffice.BankOffice;
-import com.company.bank.bankOffice.accountManagementDepartment.AccountMoney;
-import com.company.bank.bankOffice.insuranceDepartment.Insurance;
-import javafx.scene.control.TextField;
+import com.company.bank.bankOffice.bankFactory.accountDertment.bankAccountFactory.AccountMoney;
+import com.company.bank.bankOffice.bankFactory.insuranceDepartment.bankInsuranceFactory.Insurance;
 
 import java.util.*;
 

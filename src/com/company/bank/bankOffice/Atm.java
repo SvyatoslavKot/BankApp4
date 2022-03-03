@@ -1,10 +1,7 @@
 package com.company.bank.bankOffice;
 
 import com.company.Client;
-import com.company.bank.bankOffice.BankService.AccontCreditOperation;
-import com.company.bank.bankOffice.BankService.AccountDebitOperation;
-import com.company.bank.bankOffice.BankService.PaymentOperation;
-import com.company.bank.bankOffice.accountManagementDepartment.AccountMoney;
+import com.company.bank.bankOffice.bankFactory.accountDertment.bankAccountFactory.AccountMoney;
 import com.company.exception.MoneyAccountException;
 import com.company.service.ClientService;
 import com.company.service.DebitAccountService;
@@ -29,26 +26,26 @@ public class Atm {
         this.accountMoneyAdress = accountMoneyAdress;
     }
 
-    public void putCashOnDebitAccount(Client client, AccountMoney debitAccountModel, int money) {
-        System.out.println("Положить наличку на счет " + money);
-        clientService.giveCash(money, client);
-        debitAccountService.putMoneyOnDebit(money, debitAccountModel);
+    public boolean putMoneyOnAccount(BankOffice bankOffice, AccountMoney accountMoney, int money) throws MoneyAccountException {
+        Client client = bankOffice.getBankCollections().getClientHashMap().get(accountMoney.getIdHolder());
+        if (client!= null && accountMoney!=null){
+            if (client.getCash()>= money){
+                client.minusCash(money);
+                accountMoney.plusMoney(money);
+                return true;
+            }
+        }return false;
     }
-    public void viewMoneyOnDebit(AccountMoney a){
-        System.out.println("Запросить баланс.");
-        System.out.println("На счёте: " + a.getMoneyInAccount());
+    public boolean withdrawMoneyOnAccount (BankOffice bankOffice, AccountMoney account, int money) throws MoneyAccountException{
+        Client client = bankOffice.getBankCollections().getClientHashMap().get(account.getIdHolder());
+        if (client!= null && account!= null){
+            if (account.getMoneyInAccount()>= money){
+                account.minusMoney(money);
+                client.plusCash(money);
+                return true;
+            }
+        }return false;
     }
-    public void getCashOnDebit(Client client, AccountMoney debitAccountModel, int money){
-        System.out.println("Снять со счёта " + money);
-        client.setCash(money);
-        debitAccountService.givMoneyDebit( money,debitAccountModel);
-
-    }
-
-
-
-
-
 
     public boolean moneyTransfer( AccountMoney debitAccountSender, AccountMoney debitAccountAddressee, int money)throws MoneyAccountException{
         if (debitAccountSender.getMoneyInAccount()>= money){
@@ -61,14 +58,4 @@ public class Atm {
         }
     }
 
-
-
-    public void paymentMobilPhoneCash(Client client, int money, String mobilPhone) {
-        clientService.giveCash(money, client);
-        System.out.println("На номер " + mobilPhone+ " зачислинно " + money + " рублей.");
-    }
-    public  void paymentMobilPhoneDebitCard( Client client, int money, String mobilPhone) {
-        clientService.giveCash(money, client);
-        System.out.println("На номер " + mobilPhone+ " зачислинно " + money + " рублей.");
-    }
 }

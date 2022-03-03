@@ -21,6 +21,8 @@ public class Main {
 
 
 
+
+
         Client clientSergei = new Client("Сергей "," ", 22,"23",50000,500000,"7676 875434");
         Client clientAnna = new Client("Anna "," ", 22,"28",52000,540000,"7676 434234");
         Client clientOlga = new Client("Olga "," ", 22,"441",44000,505500,"7676 85652");

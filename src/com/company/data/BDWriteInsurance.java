@@ -1,7 +1,7 @@
 package com.company.data;
 
 import com.company.bank.bankOffice.BankOffice;
-import com.company.bank.bankOffice.insuranceDepartment.Insurance;
+import com.company.bank.bankOffice.bankFactory.insuranceDepartment.bankInsuranceFactory.Insurance;
 
 import java.io.FileWriter;
 import java.io.IOException;

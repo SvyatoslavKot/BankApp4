@@ -1,10 +1,6 @@
-name:Сбер_light number:16295 moneyIn:0 term:24 payment:150 cashBack:0.0 idHolder:6 pin:0000 
+name:Сбер_light number:16295 moneyIn:123161 term:24 payment:150 cashBack:0.0 idHolder:6 pin:0000 
 name:Сбер_light number:24255 moneyIn:0 term:24 payment:150 cashBack:0.0 idHolder:11 pin:0000 
 name:Сбер_light number:16295 moneyIn:0 term:24 payment:150 cashBack:0.0 idHolder:6 pin:0000 
 name:Сбер_light number:24255 moneyIn:0 term:24 payment:150 cashBack:0.0 idHolder:11 pin:0000 
 name:Молодежный+ number:18405 moneyIn:0 term:36 payment:220 cashBack:3.2 idHolder:3 pin:0000 
-name:Сбер_light number:16295 moneyIn:0 term:24 payment:150 cashBack:0.0 idHolder:6 pin:0000 
-name:Сбер_light number:24255 moneyIn:0 term:24 payment:150 cashBack:0.0 idHolder:11 pin:0000 
-name:Сбер_light number:16295 moneyIn:0 term:24 payment:150 cashBack:0.0 idHolder:6 pin:0000 
-name:Сбер_light number:24255 moneyIn:0 term:24 payment:150 cashBack:0.0 idHolder:11 pin:0000 
-name:Молодежный+ number:18405 moneyIn:0 term:36 payment:220 cashBack:3.2 idHolder:3 pin:0000 
+name:Sber_Light number:23959 moneyIn:0 term:24 payment:150 cashBack:1.2 idHolder:14 pin:0000 
