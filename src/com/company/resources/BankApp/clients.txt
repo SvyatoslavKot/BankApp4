@@ -2,7 +2,7 @@ name:Гоша lastnam:null pasport:7676875434 age:22 income:50000 cash:888888 id
 name:Денис lastnam:null pasport:7676875434 age:22 income:50000 cash:0 id:12 
 name:Марк lastnam:null pasport:7676875434 age:22 income:50000 cash:0 id:13 
 name:Марго lastnam:null pasport:7676875434 age:22 income:50000 cash:0 id:14 
-name:Валентин lastnam:null pasport:7676875434 age:22 income:50000 cash:0 id:15 
+name:Валентин lastnam:null pasport:7676875434 age:22 income:50000 cash:2500000 id:15 
 name:Игорь lastnam:null pasport:45632345 age:42 income:44000 cash:300000 id:16 
 name:Сергей lastnam:null pasport:7676875434 age:22 income:50000 cash:0 id:1 
 name:Анна lastnam:null pasport:76762434523 age:22 income:50000 cash:0 id:2 

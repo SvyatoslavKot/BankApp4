@@ -1,12 +1,7 @@
 name:Иммущество5 number:18097 value:0 price:200.0 term:10 idHolder:7 
 name:Иммущество5 number:18097 value:0 price:200.0 term:10 idHolder:10 
 name:Жизни2 number:21181 value:0 price:800.0 term:2 idHolder:2 
-name:Иммущество5 number:18097 value:0 price:200.0 term:10 idHolder:7 
-name:Иммущество5 number:18097 value:0 price:200.0 term:10 idHolder:10 
-name:Жизни2 number:21181 value:0 price:800.0 term:2 idHolder:2 
-name:Иммущество5 number:18097 value:0 price:200.0 term:10 idHolder:7 
-name:Иммущество5 number:18097 value:0 price:200.0 term:10 idHolder:10 
-name:Жизни2 number:21181 value:0 price:800.0 term:2 idHolder:2 
 name:Жизни_5 number:17683 value:0 price:555.0 term:12 idHolder:8 
 name:Жизни_4 number:20582 value:99999 price:59.4 term:9 idHolder:9 
 name:Жизни_4 number:10784 value:99999 price:59.4 term:8 idHolder:13 
+name:Имущества_5 number:26506 value:3000000 price:3000.0 term:11 idHolder:13 

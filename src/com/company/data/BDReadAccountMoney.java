@@ -38,7 +38,6 @@ public class BDReadAccountMoney {
             e.printStackTrace();
         }
     }
-
     public AccountMoney convertStringToClient ( String currentLine){
         String[] sp = currentLine.split(" ");
        // AccountMoney accountMoney1 = new AccountMoney();
@@ -59,84 +58,43 @@ public class BDReadAccountMoney {
     }
     private void setPini(String s) {
         if ( s!= null && s.contains("pin:")){
-            setPin(s.split(":")[1]);
+            this.pin = s.split(":")[1];
         }
     }
-
     private void setIdHolderi(String s) {
         if ( s!= null && s.contains("idHolder:")){
-            setIdHolder(s.split(":")[1]);
+            this.idHolder = s.split(":")[1];
         }
     }
-
     private void setCashbacki(String s) {
         if ( s!= null && s.contains("cashBack:")){
-            setCashBack(Double.valueOf(s.split(":")[1]));
+            this.cashBack = Double.valueOf(s.split(":")[1]);
         }
 
     }
-
     private void setPaymenti(String s) {
         if ( s!= null && s.contains("payment:")){
-            setPayment(Integer.valueOf(s.split(":")[1]));
+            this.payment = Integer.valueOf(s.split(":")[1]);
         }
     }
-
     private void setTermi(String s) {
         if ( s!= null && s.contains("term:")){
-            setCreditTerm(Integer.valueOf(s.split(":")[1]));
+            this.creditTerm = Integer.valueOf(s.split(":")[1]);
         }
     }
-
-
-
     private void setMoneyi(String s) {
         if ( s!= null && s.contains("moneyIn:")){
-            setMoneyInAccount(Integer.valueOf(s.split(":")[1]));
+            this.moneyInAccount = Integer.valueOf(s.split(":")[1]);
         }
     }
-
     private void setNumberi(String s) {
         if ( s!= null && s.contains("number:")){
-            setAccountNumber(s.split(":")[1]);
+           this.accountNumber = s.split(":")[1];
         }
     }
-
     private void setNamei(String s) {
         if ( s!= null && s.contains("name:")){
-            setNameAccount(s.split(":")[1]);
+            this.nameAccount = s.split(":")[1];
         }
-    }
-
-    public void setNameAccount(String nameAccount) {
-        this.nameAccount = nameAccount;
-    }
-
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public void setMoneyInAccount(int moneyInAccount) {
-        this.moneyInAccount = moneyInAccount;
-    }
-
-    public void setCreditTerm(int creditTerm) {
-        this.creditTerm = creditTerm;
-    }
-
-    public void setPayment(int payment) {
-        this.payment = payment;
-    }
-
-    public void setCashBack(double cashBack) {
-        this.cashBack = cashBack;
-    }
-
-    public void setIdHolder(String idHolder) {
-        this.idHolder = idHolder;
-    }
-
-    public void setPin(String pin) {
-        this.pin = pin;
     }
 }

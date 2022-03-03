@@ -56,79 +56,40 @@ public class BDReadCredit  {
         return  new Credit.Builder().setCreditName(creditName).setCreditTerm(creditTerm)
                 .setAmount(amount).setPtc(ptc).setIdHolder(idHolder).setPaymentMouth(paymentMonth).build();
     }
-
     private void nameSet(String s) {
         if (s != null && s.contains("name:")) {
-            setCreditName(s.split(":")[1]);
+            this.creditName = s.split(":")[1];
         }
     }
-
     private void numberSet(String s) {
         if (s != null && s.contains("number:")) {
-            setAccountNumber(s.split(":")[1]);
+            this.accountNumber = s.split(":")[1];
         }
     }
-
     private void amountSet(String s) {
         if ( s!= null && s.contains("amount:")){
-            setAmount(Integer.parseInt(s.split(":")[1]));
+            this.amount = Integer.parseInt(s.split(":")[1]);
         }
     }
-
     private void ptcSet(String s) {
         if ( s!= null && s.contains("percent:")){
-           setPtc(Double.parseDouble(s.split(":")[1]));
+          this.ptc = Double.parseDouble(s.split(":")[1]);
         }
     }
-
     private void paymentSet(String s) {
         if ( s!= null && s.contains("payment:")){
-            setPaymentMonth(Double.parseDouble(s.split(":")[1]));
+            this.paymentMonth  = Double.parseDouble(s.split(":")[1]);
         }
     }
-
     private void termSet(String s) {
         if ( s!= null && s.contains("term:")){
-            setCreditTerm(Integer.parseInt(s.split(":")[1]));
+            this.creditTerm = Integer.parseInt(s.split(":")[1]);
         }
     }
-
     private void idHolderdSet(String s) {
         if ( s!= null && s.contains("idHolder:")){
-            setIdHolder(s.split(":")[1]);
+            this.idHolder = s.split(":")[1];
         }
-    }
-
-    public void setCreditName(String creditName) {
-        this.creditName = creditName;
-    }
-
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    public void setPtc(double ptc) {
-        this.ptc = ptc;
-    }
-
-    public void setOpeningDate(Date openingDate) {
-        this.openingDate = openingDate;
-    }
-
-    public void setCreditTerm(int creditTerm) {
-        this.creditTerm = creditTerm;
-    }
-
-    public void setPaymentMonth(double paymentMonth) {
-        this.paymentMonth = paymentMonth;
-    }
-
-    public void setIdHolder(String idHolder) {
-        this.idHolder = idHolder;
     }
 }
 
