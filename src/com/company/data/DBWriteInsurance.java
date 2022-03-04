@@ -7,9 +7,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class BDWriteInsurance {
-    //private String CLIENT_MAPA = "";
-    //Insurance insurance;
+public class DBWriteInsurance {
+    private static DBWriteInsurance bdWriteInsurance;
+    private DBWriteInsurance(){
+    }
+
+    public static DBWriteInsurance getInstance(){
+        if (bdWriteInsurance == null) {
+            bdWriteInsurance = new DBWriteInsurance();
+        }
+        return bdWriteInsurance;
+    }
+
     public void writeInsurance (BankOffice bankOffice, String fileBD){
         try (FileWriter fw = new FileWriter(fileBD)){
             fw.write("");

@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class BDReadInsurance {
+public class DBReadInsurance {
     private String nameInsurance;
     private int insuranceValue;
     private double price;
@@ -20,8 +20,20 @@ public class BDReadInsurance {
     private String insuranceNumber;
     private String clientId;
     private String info;
+
     private ArrayList<Insurance> insuranceList = new ArrayList<>();
     Insurance insurance;
+
+    private static DBReadInsurance bdReadInsurance;
+    private DBReadInsurance(){
+    }
+
+    public static DBReadInsurance getInstance(){
+        if (bdReadInsurance == null) {
+            bdReadInsurance = new DBReadInsurance();
+        }
+        return bdReadInsurance;
+    }
 
     public void readBD(BankOffice bankOffice, String filebd) {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filebd))) {
@@ -52,7 +64,7 @@ public class BDReadInsurance {
             getIdHolderAndSet(s);
         }
         return new ProductBuilder.Builder().setNameProduct(nameInsurance).setNumber(insuranceNumber).setInsuranceValue(insuranceValue)
-                .setInsirancePrice(price).setTerm(term).setClientId(clientId).build();
+                .setInsirancePrice(price).setTerm(term).setClientId(clientId).buildInsurance();
     }
     private void getNameAndSet(String s) {
         if (s != null && s.contains("name:")) {

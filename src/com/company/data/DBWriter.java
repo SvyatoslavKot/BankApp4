@@ -4,11 +4,11 @@ import com.company.bank.bankOffice.BankOffice;
 
 import java.io.IOException;
 
-public class BDWriter {
-    BDWriteAccountMoney bdWriteAccountMoney = new BDWriteAccountMoney();
-    BDWriteInsurance bdWriteInsurance = new BDWriteInsurance();
-    BDWriteCredit bdWriteCredit = new BDWriteCredit();
-    BdWriteClient bdWriteClient = new BdWriteClient();
+public class DBWriter {
+    DBWriteAccountMoney bdWriteAccountMoney = DBWriteAccountMoney.getInstance();
+    DBWriteInsurance bdWriteInsurance = DBWriteInsurance.getInstance();
+    DBWriteCredit bdWriteCredit = DBWriteCredit.getInstance();
+    DBWriteClient bdWriteClient = DBWriteClient.getInstance();
     private String dir = "src/com/company/resources/";
 
     public void write(BankOffice bankOffice, String packet) throws IOException {

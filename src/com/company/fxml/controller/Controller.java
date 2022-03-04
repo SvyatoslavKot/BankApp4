@@ -25,8 +25,8 @@ package com.company.fxml.controller;
 public class Controller implements Initializable {
     BankOffice bankOffice = MainFxml.getBankOffice();
 
-    BDReader bdReader = new BDReader();
-    BDWriter bdWriter = new BDWriter();
+    DBReader bdReader = new DBReader();
+    DBWriter bdWriter = new DBWriter();
     final private String NAME_BD_DIR = "BankApp";
 
 

@@ -19,12 +19,12 @@ public class Insurance  {
      public Insurance() {
     }
      public Insurance(ProductBuilder.Builder builder) {
-        this.nameInsurance = builder.nameInsurance;
+        this.nameInsurance = builder.nameProduct;
         this.insuranceValue = builder.insuranceValue;
         this.price = builder.price;
         this.term = builder.term;
         this.openDate = new Date();
-        this.insuranceNumber = builder.insuranceNumber;
+        this.insuranceNumber = builder.productNumber;
         this.clientId = builder.clientId;
     }
 

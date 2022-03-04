@@ -2,11 +2,11 @@ package com.company.data;
 
 import com.company.bank.bankOffice.BankOffice;
 
-public class BDReader {
-    BdReadClient bdReadClient = new BdReadClient();
-    BDReadAccountMoney bdReadAccountMoney = new BDReadAccountMoney();
-    BDReadInsurance bdReadInsurance = new BDReadInsurance();
-    BDReadCredit bdReadCredit = new BDReadCredit();
+public class DBReader {
+    DBReadClient bdReadClient = DBReadClient.getInstance();
+    DBReadAccountMoney bdReadAccountMoney = DBReadAccountMoney.getInstance();
+    DBReadInsurance bdReadInsurance = DBReadInsurance.getInstance();
+    DBReadCredit bdReadCredit = DBReadCredit.getInstance();
     private String dir = "src/com/company/resources/";
 
     public void bdRead (BankOffice bankOffice, String packet){
@@ -15,4 +15,5 @@ public class BDReader {
         bdReadCredit.readBD(bankOffice,dir+packet+"/credits.txt");
         bdReadInsurance.readBD(bankOffice,dir+packet+"/insurances.txt");
     }
+
 }

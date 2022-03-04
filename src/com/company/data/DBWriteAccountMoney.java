@@ -7,8 +7,19 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class BDWriteAccountMoney {
-    private String CLIENT_MAPA = "com.company.BD_Bank.clients.txt";
+public class DBWriteAccountMoney {
+
+    private static DBWriteAccountMoney writeAccountMoney;
+
+    private DBWriteAccountMoney() {
+    }
+
+    public static DBWriteAccountMoney getInstance(){
+        if(writeAccountMoney == null){
+            writeAccountMoney = new DBWriteAccountMoney();
+        }return writeAccountMoney;
+    }
+
     AccountMoney accountMoney;
     public void writeAcc (BankOffice bankOffice, String fileBD) throws IOException {
         try (FileWriter fw = new FileWriter(fileBD)){

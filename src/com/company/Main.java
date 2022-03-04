@@ -1,7 +1,5 @@
 package com.company;
 
-import com.company.data.BdReadClient;
-import com.company.data.BdWriteClient;
 import com.company.bank.bankCentralOffice.BankCentralOffice;
 import com.company.bank.bankOffice.BankOffice;
 import com.company.bank.mobilBank.MobilBank;
@@ -14,8 +12,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        BdWriteClient bdWriteClient = new BdWriteClient();
-        BdReadClient bdReadClient = new BdReadClient();
+       // BdWriteClient bdWriteClient = new BdWriteClient();
+        //BdReadClient bdReadClient = new BdReadClient();
 
         BankOffice bankSber = new BankOffice("Sber");
 

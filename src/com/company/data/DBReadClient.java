@@ -9,8 +9,19 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class BdReadClient {
-    private String CLIENT_MAPA = "clients.txt";
+public class DBReadClient {
+    private static DBReadClient dbClient;
+
+    private DBReadClient() {
+    }
+
+    public static DBReadClient getInstance(){
+        if (dbClient == null) {
+            dbClient = new DBReadClient();
+        }
+        return dbClient;
+    }
+
     HashMap<String, Client> clientHashMap = new HashMap<>();
     Client client;
     public  void readBD (BankOffice bankOffice, String filebd){
