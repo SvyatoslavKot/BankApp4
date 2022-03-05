@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="166.0" prefWidth="269.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.fxml.controller.rate.RateSettigController">
+   <children>
+      <Text layoutX="101.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RATE SETTIG" />
+      <CheckBox fx:id="cbUS" layoutX="101.0" layoutY="55.0" mnemonicParsing="false" onAction="#changeUS" text="US" />
+      <CheckBox fx:id="cbEU" layoutX="101.0" layoutY="83.0" mnemonicParsing="false" onAction="#changeEU" text="EU" />
+      <CheckBox fx:id="cbCNY" layoutX="101.0" layoutY="115.0" mnemonicParsing="false" onAction="#changeCNY" text="CNY" />
+      <Button layoutX="167.0" layoutY="120.0" mnemonicParsing="false" onAction="#btnSend" text="ПРИМЕНИТЬ" />
+   </children>
+</Pane>

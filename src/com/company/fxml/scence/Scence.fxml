@@ -9,6 +9,7 @@
 <?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.fxml.controller.Controller">
    <children>
@@ -27,16 +28,17 @@
                 <MenuItem mnemonicParsing="false" onAction="#openFile" text="Open" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
+          <Menu mnemonicParsing="false" text="Edit" />
           <Menu mnemonicParsing="false" text="Help">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Setting">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="rate" />
+               </items>
+            </Menu>
         </menus>
       </MenuBar>
       <Pane layoutY="63.0" prefHeight="291.0" prefWidth="343.0">
@@ -46,7 +48,7 @@
             <Button fx:id="btnAtm" layoutX="14.0" layoutY="86.0" mnemonicParsing="false" onAction="#btnATM" prefHeight="25.0" prefWidth="166.0" text="ATM" />
          </children>
       </Pane>
-      <Pane layoutX="343.0" layoutY="63.0" prefHeight="291.0" prefWidth="207.0">
+      <Pane layoutX="339.0" layoutY="101.0" prefHeight="291.0" prefWidth="207.0">
          <children>
             <Label layoutX="79.0" layoutY="11.0" text="Очередь" />
             <ListView fx:id="listViewStage" layoutY="30.0" prefHeight="261.0" prefWidth="207.0" />
@@ -64,5 +66,10 @@
       </Button>
       <Button layoutX="16.0" layoutY="464.0" mnemonicParsing="false" onAction="#btnAccount" prefHeight="47.0" prefWidth="166.0" text="Отдел управления счетами" textAlignment="CENTER" wrapText="true" />
       <Button layoutX="466.0" layoutY="453.0" mnemonicParsing="false" onAction="#btnAddStaff" prefHeight="47.0" prefWidth="70.0" text="addStaff" textAlignment="CENTER" wrapText="true" />
+      <Text fx:id="textRateUs" layoutX="372.0" layoutY="97.0" visible="true" strokeType="OUTSIDE" strokeWidth="0.0" text="UD 99" />
+      <Text fx:id="textRateEu" layoutX="423.0" layoutY="97.0" visible="true" strokeType="OUTSIDE" strokeWidth="0.0" text="EU 111" />
+      <Label layoutX="331.0" layoutY="84.0" onKeyPressed="#settingRate" text="курс" />
+      <Text fx:id="textRateCny" layoutX="482.0" layoutY="97.0" visible="true" strokeType="OUTSIDE" strokeWidth="0.0" text="CNY 16" />
+      <Button layoutX="332.0" layoutY="53.0" mnemonicParsing="false" onAction="#settingRate" text="Button" />
    </children>
 </Pane>
