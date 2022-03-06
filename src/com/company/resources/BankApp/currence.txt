@@ -1,0 +1,4 @@
+us/rub:113.9
+eu/rub:125
+cny/rub:16
+eu/us:1.09

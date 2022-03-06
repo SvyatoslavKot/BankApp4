@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="166.0" prefWidth="269.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.fxml.controller.rate.RateSettigController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="166.0" prefWidth="269.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.fxml.controller.rate.CurrenceSettigController">
    <children>
       <Text layoutX="101.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RATE SETTIG" />
       <CheckBox fx:id="cbUS" layoutX="101.0" layoutY="55.0" mnemonicParsing="false" onAction="#changeUS" text="US" />

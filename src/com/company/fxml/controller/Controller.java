@@ -5,7 +5,9 @@ package com.company.fxml.controller;
         import com.company.bank.bankOffice.BankOffice;
         import com.company.bank.bankOffice.Ticket;
         import com.company.MainFxml;
-        import com.company.fxml.controller.rate.RateSetting;
+        import com.company.data.currencyReader.CurrenceReader;
+        import com.company.fxml.controller.rate.CurrenceSettigController;
+        import com.company.fxml.controller.rate.CurrenceSetting;
         import javafx.event.ActionEvent;
         import javafx.fxml.FXML;
         import javafx.fxml.FXMLLoader;
@@ -15,10 +17,8 @@ package com.company.fxml.controller;
         import javafx.scene.Scene;
         import javafx.scene.control.Button;
         import javafx.scene.control.ListView;
-        import javafx.scene.input.MouseEvent;
         import javafx.scene.text.Text;
         import javafx.stage.Stage;
-        import javafx.stage.Window;
 
         import java.io.*;
         import java.net.URL;
@@ -32,15 +32,14 @@ public class Controller implements Initializable {
     public Text textRateCny;
     BankOffice bankOffice = MainFxml.getBankOffice();
 
+    CurrenceReader currenceReader = new CurrenceReader();
+
     DBReader bdReader = new DBReader();
     DBWriter bdWriter = new DBWriter();
     final private String NAME_BD_DIR = "BankApp";
-
-
     @FXML
     ListView<String> listViewStage;
     ArrayList<String> listAdd = new ArrayList<>();
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (bankOffice.getBankCollections().getClientHashMap().isEmpty()){
@@ -58,10 +57,10 @@ public class Controller implements Initializable {
             listAdd.add(t);
 
         }
-        RateSetting rateSetting = RateSetting.getInstance();
-        setVisbleRate(rateSetting.isUs(),textRateUs);
-        setVisbleRate(rateSetting.isUe(),textRateEu);
-        setVisbleRate(rateSetting.isCny(),textRateCny);
+        CurrenceSetting rateSetting = CurrenceSetting.getInstance();
+        setVisbleRate(rateSetting.isUs(),textRateUs,"us");
+        setVisbleRate(rateSetting.isUe(),textRateEu,"eu");
+        setVisbleRate(rateSetting.isCny(),textRateCny,"cny");
 
 
         listViewStage.getItems().removeAll();
@@ -179,7 +178,6 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
     }
-
     @FXML
     private  Button btnAtm;
     @FXML
@@ -201,27 +199,29 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
     }
+        CurrenceSettigController rsc = new CurrenceSettigController();
 
     public void settingRate(ActionEvent actionEvent){
-        try{
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("../scence/rateSettingForm.fxml"));
-            stage.setTitle("RateSetting");
-            stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            stage.setMinHeight(449);
-            stage.setMinWidth(244);
-            stage.setResizable(false);
-            stage.setScene(new Scene(root));
-            stage.show();
-            //Parent root = FXMLLoader.load(getClass().getResource
-
-        }catch (IOException e){
-            e.printStackTrace();
-        }
+                rsc.openView(actionEvent);
     }
-    private void setVisbleRate (boolean a, Text t ){
-        if (!a){
+
+
+
+    private void setVisbleRate (boolean a, Text t , String currenceName){
+        if (a){
+            t.setVisible(true);
+
+            Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                    t.setText(currenceReader.readBD(currenceName,"src/com/company/resources/BankApp/currence.txt"));
+
+            }
+        });
+            thread.start();
+        }else {
             t.setVisible(false);
-        }else t.setVisible(true);
+        }
     }
 }

@@ -11,15 +11,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.fxml.controller.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="518" minWidth="640" prefHeight="518.0" prefWidth="640.0"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.fxml.controller.Controller">
    <children>
-      <Pane layoutX="850.0" layoutY="27.0" prefHeight="300.0" prefWidth="150.0" />
-      <Label alignment="TOP_CENTER" layoutX="135.0" layoutY="27.0" prefHeight="36.0" prefWidth="307.0" text="Симулятор банка" textAlignment="CENTER">
+      <Label alignment="TOP_CENTER" layoutX="29.0" layoutY="27.0" prefHeight="36.0" prefWidth="307.0" text="Симулятор банка" textAlignment="CENTER">
          <font>
             <Font name="Calibri Bold" size="27.0" />
          </font>
       </Label>
-      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="550.0">
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="640.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -41,14 +41,14 @@
             </Menu>
         </menus>
       </MenuBar>
-      <Pane layoutY="63.0" prefHeight="291.0" prefWidth="343.0">
+      <Pane layoutY="63.0" prefHeight="291.0" prefWidth="193.0">
          <children>
             <Button fx:id="btnTerminal" layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#showTerminal" prefHeight="25.0" prefWidth="166.0" text="Terminal" />
             <Button layoutX="14.0" layoutY="53.0" mnemonicParsing="false" onAction="#btnTeller" prefHeight="25.0" prefWidth="166.0" text="Teller" />
             <Button fx:id="btnAtm" layoutX="14.0" layoutY="86.0" mnemonicParsing="false" onAction="#btnATM" prefHeight="25.0" prefWidth="166.0" text="ATM" />
          </children>
       </Pane>
-      <Pane layoutX="339.0" layoutY="101.0" prefHeight="291.0" prefWidth="207.0">
+      <Pane layoutX="433.0" layoutY="164.0" prefHeight="291.0" prefWidth="207.0">
          <children>
             <Label layoutX="79.0" layoutY="11.0" text="Очередь" />
             <ListView fx:id="listViewStage" layoutY="30.0" prefHeight="261.0" prefWidth="207.0" />
@@ -65,11 +65,23 @@
          </font>
       </Button>
       <Button layoutX="16.0" layoutY="464.0" mnemonicParsing="false" onAction="#btnAccount" prefHeight="47.0" prefWidth="166.0" text="Отдел управления счетами" textAlignment="CENTER" wrapText="true" />
-      <Button layoutX="466.0" layoutY="453.0" mnemonicParsing="false" onAction="#btnAddStaff" prefHeight="47.0" prefWidth="70.0" text="addStaff" textAlignment="CENTER" wrapText="true" />
-      <Text fx:id="textRateUs" layoutX="372.0" layoutY="97.0" visible="true" strokeType="OUTSIDE" strokeWidth="0.0" text="UD 99" />
-      <Text fx:id="textRateEu" layoutX="423.0" layoutY="97.0" visible="true" strokeType="OUTSIDE" strokeWidth="0.0" text="EU 111" />
-      <Label layoutX="331.0" layoutY="84.0" onKeyPressed="#settingRate" text="курс" />
-      <Text fx:id="textRateCny" layoutX="482.0" layoutY="97.0" visible="true" strokeType="OUTSIDE" strokeWidth="0.0" text="CNY 16" />
-      <Button layoutX="332.0" layoutY="53.0" mnemonicParsing="false" onAction="#settingRate" text="Button" />
+      <Button layoutX="550.0" layoutY="464.0" mnemonicParsing="false" onAction="#btnAddStaff" prefHeight="47.0" prefWidth="70.0" text="addStaff" textAlignment="CENTER" wrapText="true" />
+      <Pane layoutX="193.0" layoutY="1.0" prefHeight="518.0" prefWidth="239.0" />
+      <Pane layoutX="440.0" layoutY="26.0" prefHeight="136.0" prefWidth="200.0">
+         <children>
+            <Text fx:id="textRateCnySell" layoutX="154.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16" textAlignment="CENTER" visible="true" wrappingWidth="44.724609375" />
+            <Text fx:id="textRateCny" layoutX="155.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16" textAlignment="CENTER" visible="true" wrappingWidth="44.724609375" />
+            <Text fx:id="textRateUs111" layoutX="155.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CNY/RU" visible="true" />
+            <Text fx:id="textRateUs11" layoutX="113.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EU/RU" visible="true" />
+            <Text fx:id="textRateUs1" layoutX="65.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="US/RU" visible="true" />
+            <Text fx:id="textRateEuSell" layoutX="108.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" visible="true" wrappingWidth="43.13671875" />
+            <Text fx:id="textRateUsSell" layoutX="60.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" visible="true" wrappingWidth="43.13671875" />
+            <Text fx:id="textRateUs" layoutX="60.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" visible="true" wrappingWidth="43.13671875" />
+            <Text fx:id="textRateEu" layoutX="108.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" visible="true" wrappingWidth="43.13671875" />
+            <Button mnemonicParsing="false" onAction="#settingRate" text="Button" />
+            <Label layoutX="1.0" layoutY="68.0" onKeyPressed="#settingRate" text="продажа" />
+            <Label layoutX="3.0" layoutY="37.0" onKeyPressed="#settingRate" text="покупка" />
+         </children>
+      </Pane>
    </children>
 </Pane>

@@ -3,12 +3,10 @@ package com.company.fxml.controller.rate;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,12 +15,13 @@ import java.util.ResourceBundle;
 
 import static javafx.fxml.FXMLLoader.load;
 
-public class RateSettigController implements Initializable {
+public class CurrenceSettigController implements Initializable {
     public CheckBox cbUS;
     public CheckBox cbEU;
     public CheckBox cbCNY;
 
-    RateSetting rateSetting = RateSetting.getInstance();
+
+    CurrenceSetting rateSetting = CurrenceSetting.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -64,11 +63,29 @@ public class RateSettigController implements Initializable {
             Parent root = load(getClass().getResource("../../scence/Scence.fxml"));
             stage.setTitle("Main");
             stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            stage.setMinHeight(550);
+            stage.setMinHeight(640);
             stage.setMinWidth(518);
+            stage.setResizable(true);
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void openView(ActionEvent actionEvent){
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("../../scence/currenceSettingForm.fxml"));
+            stage.setTitle("RateSetting");
+            stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            stage.setMinHeight(449);
+            stage.setMinWidth(244);
             stage.setResizable(false);
             stage.setScene(new Scene(root));
             stage.show();
+            //Parent root = FXMLLoader.load(getClass().getResource
 
         }catch (IOException e){
             e.printStackTrace();
