@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class BDReadCredit  {
+public class DBReadCredit {
     private ArrayList<Credit> creditList = new ArrayList<>();
     private String creditName ;
     private String accountNumber ;
@@ -23,6 +23,18 @@ public class BDReadCredit  {
     private String idHolder;
 
     Credit credit;
+
+    private  static DBReadCredit bdReadCredit;
+
+    private DBReadCredit() {
+    }
+
+    public static DBReadCredit getInstance(){
+        if(bdReadCredit == null){
+            bdReadCredit = new DBReadCredit();
+        }return bdReadCredit;
+    }
+
     public void readBD(BankOffice bankOffice, String filebd) {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader( filebd))) {
             String currentLine = " ";

@@ -7,9 +7,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class BDWriteCredit {
-    //private String CLIENT_MAPA = "";
-    //Credit credit;
+public class DBWriteCredit {
+    private  static DBWriteCredit bdWriteCredit;
+
+    private DBWriteCredit() {
+    }
+
+    public static DBWriteCredit getInstance(){
+        if(bdWriteCredit == null){
+            bdWriteCredit = new DBWriteCredit();
+        }return bdWriteCredit;
+    }
+
     private String dir = "src/com/company/BD_Bank/resources/";
     public void writeCredit (BankOffice bankOffice, String fileBD){
         try (FileWriter fw = new FileWriter(fileBD)){

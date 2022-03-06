@@ -5,6 +5,7 @@ package com.company.fxml.controller;
         import com.company.bank.bankOffice.BankOffice;
         import com.company.bank.bankOffice.Ticket;
         import com.company.MainFxml;
+        import com.company.fxml.controller.rate.RateSetting;
         import javafx.event.ActionEvent;
         import javafx.fxml.FXML;
         import javafx.fxml.FXMLLoader;
@@ -14,7 +15,10 @@ package com.company.fxml.controller;
         import javafx.scene.Scene;
         import javafx.scene.control.Button;
         import javafx.scene.control.ListView;
+        import javafx.scene.input.MouseEvent;
+        import javafx.scene.text.Text;
         import javafx.stage.Stage;
+        import javafx.stage.Window;
 
         import java.io.*;
         import java.net.URL;
@@ -23,10 +27,13 @@ package com.company.fxml.controller;
         import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
+    public Text textRateUs;
+    public Text textRateEu;
+    public Text textRateCny;
     BankOffice bankOffice = MainFxml.getBankOffice();
 
-    BDReader bdReader = new BDReader();
-    BDWriter bdWriter = new BDWriter();
+    DBReader bdReader = new DBReader();
+    DBWriter bdWriter = new DBWriter();
     final private String NAME_BD_DIR = "BankApp";
 
 
@@ -51,6 +58,12 @@ public class Controller implements Initializable {
             listAdd.add(t);
 
         }
+        RateSetting rateSetting = RateSetting.getInstance();
+        setVisbleRate(rateSetting.isUs(),textRateUs);
+        setVisbleRate(rateSetting.isUe(),textRateEu);
+        setVisbleRate(rateSetting.isCny(),textRateCny);
+
+
         listViewStage.getItems().removeAll();
     listViewStage.getItems().addAll(listAdd);
     }
@@ -187,5 +200,28 @@ public class Controller implements Initializable {
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    public void settingRate(ActionEvent actionEvent){
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("../scence/rateSettingForm.fxml"));
+            stage.setTitle("RateSetting");
+            stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            stage.setMinHeight(449);
+            stage.setMinWidth(244);
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.show();
+            //Parent root = FXMLLoader.load(getClass().getResource
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+    private void setVisbleRate (boolean a, Text t ){
+        if (!a){
+            t.setVisible(false);
+        }else t.setVisible(true);
     }
 }

@@ -1,6 +1,7 @@
 package com.company.data;
 
 import com.company.bank.bankOffice.BankOffice;
+import com.company.bank.bankOffice.bankFactory.ProductBuilder;
 import com.company.bank.bankOffice.bankFactory.accountDertment.bankAccountFactory.AccountMoney;
 
 import java.io.BufferedReader;
@@ -9,7 +10,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class BDReadAccountMoney {
+public class DBReadAccountMoney {
     private String nameAccount;
     private String accountNumber;
     private int moneyInAccount;
@@ -22,6 +23,17 @@ public class BDReadAccountMoney {
 
     private ArrayList<AccountMoney> accountList = new ArrayList<>();
     AccountMoney accountMoney;
+
+    private static DBReadAccountMoney readAccountMoney;
+
+    private DBReadAccountMoney() {
+    }
+
+    public static DBReadAccountMoney getInstance(){
+        if(readAccountMoney == null){
+            readAccountMoney = new DBReadAccountMoney();
+        }return readAccountMoney;
+    }
 
     public  void readBD (BankOffice bankOffice, String filebd){
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(filebd))) {
@@ -52,9 +64,9 @@ public class BDReadAccountMoney {
             setPini(s);
             setIdHolderi(s);
         }
-        return new AccountMoney.Builder().setNameAccount(nameAccount).setAccountNumber(accountNumber)
-                .setMoneyInAccount(moneyInAccount).setCreditTerm(creditTerm).setPayment(payment).setCashBack(cashBack)
-                .setPin(pin).setIdHolder(idHolder).build();
+        return new ProductBuilder.Builder().setNameProduct(nameAccount).setNumber(accountNumber)
+                .setMoneyInAccount(moneyInAccount).setTerm(creditTerm).setPayment(payment).setCashBack(cashBack)
+                .setPin(pin).setClientId(idHolder).buildAccount();
     }
     private void setPini(String s) {
         if ( s!= null && s.contains("pin:")){

@@ -8,8 +8,20 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BdWriteClient {
-    private String CLIENT_MAPA = "com.company.BD_Bank.clients.txt";
+public class DBWriteClient {
+
+    private static DBWriteClient bdWriteClient;
+
+    private DBWriteClient() {
+    }
+
+    public static DBWriteClient getInstance(){
+        if (bdWriteClient == null) {
+            bdWriteClient = new DBWriteClient();
+        }
+        return bdWriteClient;
+    }
+
     Client client;
     public void writeClient (BankOffice bankOffice, String fileBD){
         try (FileWriter fw = new FileWriter(fileBD)){
