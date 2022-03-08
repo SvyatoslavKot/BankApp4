@@ -1,9 +1,19 @@
 package com.company.fxml.controller.rate;
 
-public class CurrenceSetting {
+import com.company.data.currencyReader.Currence;
+import com.company.data.currencyReader.CurrenceReader;
+import com.company.fxml.controller.MainScene;
+
+public class CurrenceSetting extends Thread {
     private  boolean us;
     private  boolean ue;
     private  boolean cny;
+
+    private Currence currence = new Currence();
+    CurrenceReader currenceReader = new CurrenceReader();
+
+
+
 
     private CurrenceSetting() {
     }

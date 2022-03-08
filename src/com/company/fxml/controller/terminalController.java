@@ -110,13 +110,11 @@ public class terminalController implements Initializable {
         }
 
     public void btnCancel (ActionEvent actionEvent) throws IOException {
-        Group group = new Group();
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("../scence/Scence.fxml"));
         stage.setTitle("Main");
-        group.getChildren().add(root);
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        stage.setMinHeight(640);
+        stage =(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        stage.setMinHeight(550);
         stage.setMinWidth(518);
         stage.setResizable(false);
         stage.setScene(new Scene(root));

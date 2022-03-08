@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static java.lang.Thread.currentThread;
+
 public class DBReadCredit {
     private ArrayList<Credit> creditList = new ArrayList<>();
     private String creditName ;
@@ -36,22 +38,31 @@ public class DBReadCredit {
     }
 
     public void readBD(BankOffice bankOffice, String filebd) {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader( filebd))) {
-            String currentLine = " ";
-            while (null != (currentLine = bufferedReader.readLine())) {
-                credit = convertStringToCredit(currentLine);
-                creditList.add(credit);
+        Thread a = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Thread t = currentThread();
+                System.out.println(t.getName()+ " - чтение списка кредитов из txt");
+                try (BufferedReader bufferedReader = new BufferedReader(new FileReader( filebd))) {
+                    String currentLine = " ";
+                    while (null != (currentLine = bufferedReader.readLine())) {
+                        credit = convertStringToCredit(currentLine);
+                        creditList.add(credit);
+                    }
+                    bankOffice.getBankCollections().getCreditList().removeAll(bankOffice.getBankCollections().getCreditList());
+                    bankOffice.getBankCollections().getCreditList().addAll(creditList);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (NumberFormatException e) {
+                    System.out.println("Не удалось преобразовать строку в Integer");
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-            bankOffice.getBankCollections().getCreditList().removeAll(bankOffice.getBankCollections().getCreditList());
-            bankOffice.getBankCollections().getCreditList().addAll(creditList);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (NumberFormatException e) {
-            System.out.println("Не удалось преобразовать строку в Integer");
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        });
+        a.start();
+
     }
 
     public Credit convertStringToCredit(String currentLine) {

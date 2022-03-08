@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static java.lang.Thread.currentThread;
+
 public class DBReadInsurance {
     private String nameInsurance;
     private int insuranceValue;
@@ -36,22 +38,31 @@ public class DBReadInsurance {
     }
 
     public void readBD(BankOffice bankOffice, String filebd) {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filebd))) {
-            String currentLine = " ";
-            while (null != (currentLine = bufferedReader.readLine())) {
-                insurance = convertStringToInsurance(currentLine);
-                insuranceList.add(insurance);
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Thread t = currentThread();
+                System.out.println(t.getName()+ " - чтение списка страховок из txt");
+                try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filebd))) {
+                    String currentLine = " ";
+                    while (null != (currentLine = bufferedReader.readLine())) {
+                        insurance = convertStringToInsurance(currentLine);
+                        insuranceList.add(insurance);
+                    }
+                    bankOffice.getBankCollections().getInsurensList().removeAll(bankOffice.getBankCollections().getInsurensList());
+                    bankOffice.getBankCollections().getInsurensList().addAll(insuranceList);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (NumberFormatException e) {
+                    System.out.println("Не удалось преобразовать строку в Integer");
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-            bankOffice.getBankCollections().getInsurensList().removeAll(bankOffice.getBankCollections().getInsurensList());
-            bankOffice.getBankCollections().getInsurensList().addAll(insuranceList);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (NumberFormatException e) {
-            System.out.println("Не удалось преобразовать строку в Integer");
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        });
+        thread.start();
+
     }
     public Insurance convertStringToInsurance(String currentLine) {
         String[] sp = currentLine.split(" ");

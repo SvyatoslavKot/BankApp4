@@ -59,6 +59,7 @@ public class InsuranceController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         btn_Calc.setDisable(true);
         btn_Send.setDisable(true);
         setClient(bankOffice.getInsuranceDepartment().startWork());
@@ -77,6 +78,7 @@ public class InsuranceController implements Initializable {
     }
 
     public void btnCalck(ActionEvent actionEvent) {
+
         if (!textFieldSum.getText().isEmpty() && !textFieldTerm.getText().isEmpty()) {
             if (combo == null) {
                 areaResult.setText("Выберите тип страховки");

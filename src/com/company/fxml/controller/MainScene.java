@@ -5,6 +5,7 @@ package com.company.fxml.controller;
         import com.company.bank.bankOffice.BankOffice;
         import com.company.bank.bankOffice.Ticket;
         import com.company.MainFxml;
+        import com.company.data.currencyReader.Currence;
         import com.company.data.currencyReader.CurrenceReader;
         import com.company.fxml.controller.rate.CurrenceSettigController;
         import com.company.fxml.controller.rate.CurrenceSetting;
@@ -26,13 +27,20 @@ package com.company.fxml.controller;
         import java.util.LinkedList;
         import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class MainScene implements Initializable {
     public Text textRateUs;
     public Text textRateEu;
     public Text textRateCny;
+    public Text textRateCnySell;
+    public Text textNameCNY;
+    public Text textNameEU;
+    public Text textNameUS;
+    public Text textRateEuSell;
+    public Text textRateUsSell;
     BankOffice bankOffice = MainFxml.getBankOffice();
 
     CurrenceReader currenceReader = new CurrenceReader();
+    Currence currence = new Currence();
 
     DBReader bdReader = new DBReader();
     DBWriter bdWriter = new DBWriter();
@@ -55,12 +63,13 @@ public class Controller implements Initializable {
         for (Ticket ticket:tic){
             String t = ticket.getNumberOfTicket();
             listAdd.add(t);
-
         }
+
         CurrenceSetting rateSetting = CurrenceSetting.getInstance();
-        setVisbleRate(rateSetting.isUs(),textRateUs,"us");
-        setVisbleRate(rateSetting.isUe(),textRateEu,"eu");
-        setVisbleRate(rateSetting.isCny(),textRateCny,"cny");
+        currenceReader.readBD(currence,"src/com/company/resources/BankApp/currence.txt");
+        setVisbleRate(rateSetting.isUs(),textRateUs,textNameUS,textRateUsSell,"us");
+        setVisbleRate(rateSetting.isUe(),textRateEu,textNameEU,textRateEuSell,"eu");
+        setVisbleRate(rateSetting.isCny(),textRateCny,textNameCNY,textRateCnySell,"cny");
 
 
         listViewStage.getItems().removeAll();
@@ -207,21 +216,24 @@ public class Controller implements Initializable {
 
 
 
-    private void setVisbleRate (boolean a, Text t , String currenceName){
-        if (a){
-            t.setVisible(true);
 
-            Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
 
-                    t.setText(currenceReader.readBD(currenceName,"src/com/company/resources/BankApp/currence.txt"));
-
+    private void setVisbleRate (boolean a, Text b ,Text n, Text s, String currenceName) {
+        if (a) {
+            b.setVisible(true);
+            n.setVisible(true);
+            s.setVisible(true);
+            if (currenceName.equals("us")) {
+                b.setText(currence.getUs());
+            } else if (currenceName.equals("eu")) {
+                b.setText(currence.getEu());
+            } else if (currenceName.equals("cny")) {
+                b.setText(currence.getCny());
             }
-        });
-            thread.start();
-        }else {
-            t.setVisible(false);
+            }else {
+                b.setVisible(false);
+            n.setVisible(false);
+            s.setVisible(false);
         }
     }
 }

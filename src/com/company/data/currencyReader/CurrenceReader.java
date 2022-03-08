@@ -13,46 +13,49 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class CurrenceReader {
+    Currence currence = new Currence();
 
-
-    public String readBD(String currence, String filebd) {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader( filebd))) {
+    public void readBD(Currence currences, String filebd) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filebd))) {
             String currentLine = " ";
             while (null != (currentLine = bufferedReader.readLine())) {
-                if (currence.equals("us")){
-                    System.out.println(getUS(currentLine));
-                    return  getUS(currentLine);
-                }else if (currence.equals("eu")){
-                    System.out.println(getEU(currentLine));
-                    return  getEU(currentLine);
-                }else if (currence.equals("cny")){
-                    System.out.println(getCNY(currentLine));
-                    return  getCNY(currentLine);
-                }
+
+                getValue(currence, currentLine);
+
             }
     } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        currences.setUs(currence.getUs());
+        currences.setEu(currence.getEu());
+        currences.setCny(currence.getCny());
+    }
+    private void getValue(Currence currence, String s){
+            if ( s!= null && s.contains("us/rub")){
+                String t = s.split(":")[1];
+               // System.out.println(t);
+                currence.setUs(t);
+               getCurrence().setUs(t);
+
+        }else if ( s!= null && s.contains("eu/rub")){
+                String t = s.split(":")[1];
+               // System.out.println(t);
+                currence.setEu(t);
+                getCurrence().setEu(t);
+        }else if  (s!= null && s.contains("cny/rub")){
+            String t = s.split(":")[1];
+           // System.out.println(t);
+                currence.setCny(t);
+            getCurrence().setCny(t);
+        }
     }
 
-    private String getUS(String s) {
-        if ( s!= null && s.contains("us/rub")){
-            return  s.split("us/rub:")[1];
-        }
-        return null;
-    }
-    private String getEU(String s) {
-        if ( s!= null && s.contains("eu/rub:")){
-            return  s.split("eu/rub:")[1];
-        }
-        return null;
-    }
-    private String getCNY(String s) {
-        if ( s!= null && s.contains("cny/rub:")){
-            return  s.split("cny/rub:")[1];
-        }
-        return null;
+
+    public Currence getCurrence() {
+        return currence;
     }
 
+    public void setCurrence(Currence currence) {
+        this.currence = currence;
+    }
 }
