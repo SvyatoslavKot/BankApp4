@@ -3,52 +3,75 @@ package com.company.fxml.controller.rate;
 import com.company.data.currencyReader.Currence;
 import com.company.data.currencyReader.CurrenceReader;
 import com.company.fxml.controller.MainScene;
+import javafx.scene.text.Text;
 
 public class CurrenceSetting extends Thread {
+    private static CurrenceSetting currenceSetting;
+    private  CurrenceSetting(){
+    }
+    public  static  CurrenceSetting getInstance(){
+        if (currenceSetting == null){
+            currenceSetting = new CurrenceSetting();
+        }return currenceSetting ;
+    }
     private  boolean us;
     private  boolean ue;
     private  boolean cny;
-
-    private Currence currence = new Currence();
     CurrenceReader currenceReader = new CurrenceReader();
-
-
-
-
-    private CurrenceSetting() {
-    }
-
-    private static CurrenceSetting rateSetting;
-
-    public static CurrenceSetting getInstance() {
-        if (rateSetting ==null){
-            rateSetting = new CurrenceSetting();
+    public void setVisbleRate ( Text b , Text n, Text s, String currenceName) {
+        if (currenceName.equals("us")) {
+            if (isUs()) {
+                b.setText(currenceReader.getCurrence().getUs());
+                s.setText(currenceReader.getCurrence().getUs());
+                b.setVisible(true);
+                n.setVisible(true);
+                s.setVisible(true);
+            } else {
+                b.setVisible(false);
+                n.setVisible(false);
+                s.setVisible(false);
+            }
+        } else if (currenceName.equals("eu")) {
+            if (isUe()) {
+                b.setText(currenceReader.getCurrence().getEu());
+                s.setText(currenceReader.getCurrence().getEu());
+                b.setVisible(true);
+                n.setVisible(true);
+                s.setVisible(true);
+            } else {
+                b.setVisible(false);
+                n.setVisible(false);
+                s.setVisible(false);
+            }
+        } else if (currenceName.equals("cny")) {
+            if (isCny()) {
+                b.setText(currenceReader.getCurrence().getCny());
+                s.setText(currenceReader.getCurrence().getCny());
+                b.setVisible(true);
+                n.setVisible(true);
+                s.setVisible(true);
+            } else {
+                b.setVisible(false);
+                n.setVisible(false);
+                s.setVisible(false);
+            }
         }
-        return rateSetting;
     }
-
-
-
     public boolean isUs() {
         return us;
     }
-
     public void setUs(boolean us) {
         this.us = us;
     }
-
     public boolean isUe() {
         return ue;
     }
-
     public void setUe(boolean ue) {
         this.ue = ue;
     }
-
     public boolean isCny() {
         return cny;
     }
-
     public void setCny(boolean cny) {
         this.cny = cny;
     }

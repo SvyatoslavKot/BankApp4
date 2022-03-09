@@ -76,6 +76,7 @@ public class InsuranceController implements Initializable {
         comboBoxType.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
         });
     }
+    Thread t = new Thread();
 
     public void btnCalck(ActionEvent actionEvent) {
 

@@ -1,6 +1,17 @@
 package com.company.data.currencyReader;
 
 public class Currence {
+    private static Currence currence;
+
+    private Currence() {
+    }
+
+    public static Currence getInstance(){
+        if (currence == null){
+            currence = new Currence();
+        } return currence;
+    }
+
     String us;
     String eu;
     String cny;
