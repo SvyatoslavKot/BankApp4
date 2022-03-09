@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -112,7 +113,7 @@ public class terminalController implements Initializable {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("../scence/Scence.fxml"));
         stage.setTitle("Main");
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage =(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         stage.setMinHeight(550);
         stage.setMinWidth(518);
         stage.setResizable(false);

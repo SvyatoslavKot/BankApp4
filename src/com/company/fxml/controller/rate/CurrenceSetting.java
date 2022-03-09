@@ -1,18 +1,28 @@
 package com.company.fxml.controller.rate;
 
-public class RateSetting {
+import com.company.data.currencyReader.Currence;
+import com.company.data.currencyReader.CurrenceReader;
+import com.company.fxml.controller.MainScene;
+
+public class CurrenceSetting extends Thread {
     private  boolean us;
     private  boolean ue;
     private  boolean cny;
 
-    private RateSetting() {
+    private Currence currence = new Currence();
+    CurrenceReader currenceReader = new CurrenceReader();
+
+
+
+
+    private CurrenceSetting() {
     }
 
-    private static RateSetting rateSetting;
+    private static CurrenceSetting rateSetting;
 
-    public static RateSetting getInstance() {
+    public static CurrenceSetting getInstance() {
         if (rateSetting ==null){
-            rateSetting = new RateSetting();
+            rateSetting = new CurrenceSetting();
         }
         return rateSetting;
     }

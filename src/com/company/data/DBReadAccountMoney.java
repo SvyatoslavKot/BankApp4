@@ -10,7 +10,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class DBReadAccountMoney {
+import static java.lang.Thread.currentThread;
+
+public class DBReadAccountMoney{
     private String nameAccount;
     private String accountNumber;
     private int moneyInAccount;
@@ -29,26 +31,39 @@ public class DBReadAccountMoney {
     private DBReadAccountMoney() {
     }
 
+
+
+
     public static DBReadAccountMoney getInstance(){
         if(readAccountMoney == null){
             readAccountMoney = new DBReadAccountMoney();
         }return readAccountMoney;
     }
 
+
     public  void readBD (BankOffice bankOffice, String filebd){
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(filebd))) {
-            String currentLine = " ";
-            while (null != (currentLine = bufferedReader.readLine())) {
-                accountMoney = convertStringToClient(currentLine);
-                accountList.add(accountMoney);
+        Thread thread2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Thread t = currentThread();
+                System.out.println(t.getName()+ " - чтение списка счетов из txt");
+                try(BufferedReader bufferedReader = new BufferedReader(new FileReader(filebd))) {
+                    String currentLine = " ";
+                    while (null != (currentLine = bufferedReader.readLine())) {
+                        accountMoney = convertStringToClient(currentLine);
+                        accountList.add(accountMoney);
+                    }
+                    bankOffice.getBankCollections().getAccountList().removeAll(bankOffice.getBankCollections().getAccountList());
+                    bankOffice.getBankCollections().getAccountList().addAll(accountList);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-            bankOffice.getBankCollections().getAccountList().removeAll(bankOffice.getBankCollections().getAccountList());
-            bankOffice.getBankCollections().getAccountList().addAll(accountList);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        });
+        thread2.start();
     }
     public AccountMoney convertStringToClient ( String currentLine){
         String[] sp = currentLine.split(" ");

@@ -59,6 +59,7 @@ public class InsuranceController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         btn_Calc.setDisable(true);
         btn_Send.setDisable(true);
         setClient(bankOffice.getInsuranceDepartment().startWork());
@@ -77,6 +78,7 @@ public class InsuranceController implements Initializable {
     }
 
     public void btnCalck(ActionEvent actionEvent) {
+
         if (!textFieldSum.getText().isEmpty() && !textFieldTerm.getText().isEmpty()) {
             if (combo == null) {
                 areaResult.setText("Выберите тип страховки");
@@ -113,7 +115,7 @@ public class InsuranceController implements Initializable {
             root = FXMLLoader.load(getClass().getResource("../scence/Scence.fxml"));
             stage.setTitle("Main");
             stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            stage.setMinHeight(550);
+            stage.setMinHeight(640);
             stage.setMinWidth(518);
             stage.setResizable(false);
             stage.setScene(new Scene(root));

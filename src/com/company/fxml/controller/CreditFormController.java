@@ -104,7 +104,7 @@ public class CreditFormController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("../scence/Scence.fxml"));
         stage.setTitle("Main");
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setMinHeight(550);
+        stage.setMinHeight(640);
         stage.setMinWidth(518);
         stage.setResizable(false);
         stage.setScene(new Scene(root));
@@ -126,7 +126,7 @@ public class CreditFormController implements Initializable {
             Parent root = FXMLLoader.load(getClass().getResource("../scence/Scence.fxml"));
             stage.setTitle("Main");
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setMinHeight(550);
+            stage.setMinHeight(640);
             stage.setMinWidth(518);
             stage.setResizable(false);
             stage.setScene(new Scene(root));

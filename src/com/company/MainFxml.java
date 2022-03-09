@@ -28,7 +28,11 @@ public class MainFxml extends Application {
         BorderPane root = new BorderPane();
         root.setCenter(content);
         group.getChildren().add(root);
-        primaryStage.setScene(new Scene(group,550,518));
+        primaryStage.setScene(new Scene(group,640,518));
+        primaryStage.setMinWidth(518);
+        primaryStage.setMinHeight(640);
+        primaryStage.setResizable(false);
+
         primaryStage.show();
     }
 }

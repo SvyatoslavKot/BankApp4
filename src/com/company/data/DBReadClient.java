@@ -25,19 +25,29 @@ public class DBReadClient {
     HashMap<String, Client> clientHashMap = new HashMap<>();
     Client client;
     public  void readBD (BankOffice bankOffice, String filebd){
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(filebd))) {
-            String currentLine = " ";
-            while (null != (currentLine = bufferedReader.readLine())) {
-                client = convertStringToClient(currentLine);
-                clientHashMap.put(client.getId(), client);
+        Thread t = new Thread(new Runnable() {
 
+            @Override
+            public void run() {
+                try(BufferedReader bufferedReader = new BufferedReader(new FileReader(filebd))) {
+                    String currentLine = " ";
+                    while (null != (currentLine = bufferedReader.readLine())) {
+                        client = convertStringToClient(currentLine);
+                        clientHashMap.put(client.getId(), client);
+
+                    }
+                    bankOffice.getBankCollections().getClientHashMap().putAll(clientHashMap);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Thread a = Thread.currentThread();
+                System.out.println(a.getName()+" -  чтение списка клиентов из txt");
             }
-            bankOffice.getBankCollections().getClientHashMap().putAll(clientHashMap);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        });
+        t.start();
+
     }
 
     public Client convertStringToClient ( String currentLine){
