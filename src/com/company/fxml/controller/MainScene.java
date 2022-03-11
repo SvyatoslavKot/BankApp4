@@ -38,12 +38,11 @@ public class MainScene implements Initializable {
     public Text textRateEuSell;
     public Text textRateUsSell;
     BankOffice bankOffice = MainFxml.getBankOffice();
-
     CurrenceReader currenceReader = new CurrenceReader();
-    Currence currence = new Currence();
-
+    CurrenceSetting currenceSetting = CurrenceSetting.getInstance();
     DBReader bdReader = new DBReader();
     DBWriter bdWriter = new DBWriter();
+
     final private String NAME_BD_DIR = "BankApp";
     @FXML
     ListView<String> listViewStage;
@@ -64,14 +63,12 @@ public class MainScene implements Initializable {
             String t = ticket.getNumberOfTicket();
             listAdd.add(t);
         }
-
-        CurrenceSetting rateSetting = CurrenceSetting.getInstance();
-        currenceReader.readBD(currence,"src/com/company/resources/BankApp/currence.txt");
-        setVisbleRate(rateSetting.isUs(),textRateUs,textNameUS,textRateUsSell,"us");
-        setVisbleRate(rateSetting.isUe(),textRateEu,textNameEU,textRateEuSell,"eu");
-        setVisbleRate(rateSetting.isCny(),textRateCny,textNameCNY,textRateCnySell,"cny");
-
-
+        currenceReader.start();
+        currenceSetting.setVisbleRate(textRateUs,textNameUS,textRateUsSell,"us");
+        currenceSetting.setVisbleRate(textRateEu,textNameEU,textRateEuSell,"eu");
+        currenceSetting.setVisbleRate(textRateCny,textNameCNY,textRateCnySell,"cny");
+        Thread t = Thread.currentThread();
+        System.out.println(t.getName());
         listViewStage.getItems().removeAll();
     listViewStage.getItems().addAll(listAdd);
     }
@@ -213,22 +210,17 @@ public class MainScene implements Initializable {
     public void settingRate(ActionEvent actionEvent){
                 rsc.openView(actionEvent);
     }
-
-
-
-
-
     private void setVisbleRate (boolean a, Text b ,Text n, Text s, String currenceName) {
         if (a) {
             b.setVisible(true);
             n.setVisible(true);
             s.setVisible(true);
             if (currenceName.equals("us")) {
-                b.setText(currence.getUs());
+                b.setText(currenceReader.getCurrence().getUs() );
             } else if (currenceName.equals("eu")) {
-                b.setText(currence.getEu());
+                b.setText(currenceReader.getCurrence().getEu());
             } else if (currenceName.equals("cny")) {
-                b.setText(currence.getCny());
+                b.setText(currenceReader.getCurrence().getCny());
             }
             }else {
                 b.setVisible(false);

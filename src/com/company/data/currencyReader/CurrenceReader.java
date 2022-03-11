@@ -12,23 +12,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class CurrenceReader {
-    Currence currence = new Currence();
-
-    public void readBD(Currence currences, String filebd) {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filebd))) {
+public class CurrenceReader extends Thread {
+    Currence currence = Currence.getInstance();
+    @Override
+    public synchronized void run() {
+        System.out.println(currentThread().getName()+ " начал работу");
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/com/company/resources/BankApp/currence.txt"))) {
             String currentLine = " ";
             while (null != (currentLine = bufferedReader.readLine())) {
-
                 getValue(currence, currentLine);
-
             }
-    } catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        currences.setUs(currence.getUs());
-        currences.setEu(currence.getEu());
-        currences.setCny(currence.getCny());
+        System.out.println(currentThread().getName()+ "Закончил работу");
     }
     private void getValue(Currence currence, String s){
             if ( s!= null && s.contains("us/rub")){
@@ -49,13 +46,7 @@ public class CurrenceReader {
             getCurrence().setCny(t);
         }
     }
-
-
     public Currence getCurrence() {
         return currence;
-    }
-
-    public void setCurrence(Currence currence) {
-        this.currence = currence;
     }
 }

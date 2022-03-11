@@ -41,15 +41,12 @@ public class CurrenceSettigController implements Initializable {
         }else rateSetting.setUs(false);
         System.out.println(rateSetting.isUs());
     }
-
     public void changeEU(ActionEvent actionEvent) {
         if (cbEU.isSelected()){
             rateSetting.setUe(true);
         }else rateSetting.setUe(false);
         System.out.println(rateSetting.isUe());
     }
-
-
     public void changeCNY(ActionEvent actionEvent) {
         if (cbCNY.isSelected()){
             rateSetting.setCny(true);
