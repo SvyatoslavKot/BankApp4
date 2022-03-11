@@ -1,11 +1,14 @@
 package com.company.fxml.controller.rate;
 
+import com.company.MainFxml;
+import com.company.bank.bankOffice.BankOffice;
 import com.company.data.currencyReader.Currence;
 import com.company.data.currencyReader.CurrenceReader;
 import com.company.fxml.controller.MainScene;
 import javafx.scene.text.Text;
 
 public class CurrenceSetting extends Thread {
+    BankOffice bankOffice = MainFxml.getBankOffice();
     private static CurrenceSetting currenceSetting;
     private  CurrenceSetting(){
     }
@@ -21,8 +24,8 @@ public class CurrenceSetting extends Thread {
     public void setVisbleRate ( Text b , Text n, Text s, String currenceName) {
         if (currenceName.equals("us")) {
             if (isUs()) {
-                b.setText(currenceReader.getCurrence().getUs());
-                s.setText(currenceReader.getCurrence().getUs());
+                b.setText(bankOffice.getBankCollections().getCurrencyCBR().get("840").getValues());
+                s.setText("0");
                 b.setVisible(true);
                 n.setVisible(true);
                 s.setVisible(true);
@@ -33,8 +36,8 @@ public class CurrenceSetting extends Thread {
             }
         } else if (currenceName.equals("eu")) {
             if (isUe()) {
-                b.setText(currenceReader.getCurrence().getEu());
-                s.setText(currenceReader.getCurrence().getEu());
+                b.setText(bankOffice.getBankCollections().getCurrencyCBR().get("978").getValues());
+                s.setText("0");
                 b.setVisible(true);
                 n.setVisible(true);
                 s.setVisible(true);
@@ -45,8 +48,8 @@ public class CurrenceSetting extends Thread {
             }
         } else if (currenceName.equals("cny")) {
             if (isCny()) {
-                b.setText(currenceReader.getCurrence().getCny());
-                s.setText(currenceReader.getCurrence().getCny());
+                b.setText(bankOffice.getBankCollections().getCurrencyCBR().get("156").getValues());
+                s.setText("0");
                 b.setVisible(true);
                 n.setVisible(true);
                 s.setVisible(true);

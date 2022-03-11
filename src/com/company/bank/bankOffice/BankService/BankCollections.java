@@ -15,7 +15,7 @@ public class BankCollections  implements Serializable {
     private ArrayList<Insurance> insurensList = new ArrayList<>();
     private ArrayList<Credit> CreditList = new ArrayList<>();
     private ArrayList<AccountMoney> AccountList = new ArrayList<>();
-    private ArrayList<CurElement> currencyCBR = new ArrayList<>();
+    private HashMap<String, CurElement> currencyCBR = new HashMap<>();
 
 
     public ArrayList<Credit> getCreditList() {
@@ -30,7 +30,8 @@ public class BankCollections  implements Serializable {
     public ArrayList<Insurance> getInsurensList() {
         return insurensList;
     }
-    public ArrayList<CurElement> getCurrencyCBR() {
+
+    public HashMap<String, CurElement> getCurrencyCBR() {
         return currencyCBR;
     }
 }

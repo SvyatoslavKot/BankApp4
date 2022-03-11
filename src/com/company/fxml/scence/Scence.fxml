@@ -66,18 +66,36 @@
       <Button layoutX="16.0" layoutY="464.0" mnemonicParsing="false" onAction="#btnAccount" prefHeight="47.0" prefWidth="166.0" text="Отдел управления счетами" textAlignment="CENTER" wrapText="true" />
       <Button layoutX="550.0" layoutY="464.0" mnemonicParsing="false" onAction="#btnAddStaff" prefHeight="47.0" prefWidth="70.0" text="addStaff" textAlignment="CENTER" wrapText="true" />
       <Pane layoutX="193.0" layoutY="1.0" prefHeight="518.0" prefWidth="239.0" />
-      <Pane layoutX="440.0" layoutY="26.0" prefHeight="136.0" prefWidth="200.0">
+      <Pane layoutX="333.0" layoutY="26.0" prefHeight="136.0" prefWidth="307.0">
          <children>
-            <Text fx:id="textRateCnySell" layoutX="154.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16" textAlignment="CENTER" visible="true" wrappingWidth="44.724609375" />
-            <Text fx:id="textRateCny" layoutX="155.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16" textAlignment="CENTER" visible="true" wrappingWidth="44.724609375" />
-            <Text fx:id="textNameCNY" layoutX="155.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CNY/RU" visible="true" />
-            <Text fx:id="textNameEU" layoutX="113.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EU/RU" visible="true" />
-            <Text fx:id="textNameUS" layoutX="65.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="US/RU" visible="true" />
-            <Text fx:id="textRateEuSell" layoutX="108.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" visible="true" wrappingWidth="43.13671875" />
-            <Text fx:id="textRateUsSell" layoutX="60.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" visible="true" wrappingWidth="43.13671875" />
-            <Text fx:id="textRateUs" layoutX="60.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" visible="true" wrappingWidth="43.13671875" />
-            <Text fx:id="textRateEu" layoutX="108.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" visible="true" wrappingWidth="43.13671875" />
-            <Button mnemonicParsing="false" onAction="#settingRate" text="Button" />
+            <Text fx:id="textRateCnySell" layoutX="206.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16" textAlignment="CENTER" visible="true" wrappingWidth="44.724609375">
+               <font>
+                  <Font size="10.0" />
+               </font></Text>
+            <Text fx:id="textRateCny" layoutX="206.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16" textAlignment="CENTER" visible="true" wrappingWidth="44.724609375">
+               <font>
+                  <Font size="10.0" />
+               </font></Text>
+            <Text fx:id="textNameCNY" layoutX="207.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CNY/RU" visible="true" />
+            <Text fx:id="textNameEU" layoutX="147.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EU/RU" visible="true" />
+            <Text fx:id="textNameUS" layoutX="82.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="US/RU" visible="true" />
+            <Text fx:id="textRateEuSell" layoutX="142.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" visible="true" wrappingWidth="43.13671875">
+               <font>
+                  <Font size="10.0" />
+               </font></Text>
+            <Text fx:id="textRateUsSell" layoutX="77.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" visible="true" wrappingWidth="43.13671875">
+               <font>
+                  <Font size="10.0" />
+               </font></Text>
+            <Text fx:id="textRateUs" layoutX="77.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" visible="true" wrappingWidth="43.13671875">
+               <font>
+                  <Font size="10.0" />
+               </font></Text>
+            <Text fx:id="textRateEu" layoutX="142.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" visible="true" wrappingWidth="43.13671875">
+               <font>
+                  <Font size="10.0" />
+               </font></Text>
+            <Button mnemonicParsing="false" onAction="#settingRate" text="валюта" />
             <Label layoutX="1.0" layoutY="68.0" onKeyPressed="#settingRate" text="продажа" />
             <Label layoutX="3.0" layoutY="37.0" onKeyPressed="#settingRate" text="покупка" />
          </children>

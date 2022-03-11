@@ -24,7 +24,6 @@ public class ParserCurrency extends Thread{
 
     @Override
     public void run() {
-        bankOffice.getBankCollections().getCurrencyCBR().removeAll(bankOffice.getBankCollections().getCurrencyCBR());
        System.out.println(bankOffice.getBankCollections().getCurrencyCBR().size());
         Document page = null;
         try {
@@ -59,9 +58,9 @@ public class ParserCurrency extends Thread{
                 }
             }
             System.out.println(element);
-            bankOffice.getBankCollections().getCurrencyCBR().add(element);
+            bankOffice.getBankCollections().getCurrencyCBR().put(element.getCod(), element);
         }
-        System.out.println(bankOffice.getBankCollections().getCurrencyCBR().size());
+
         // System.out.println(curs);
     }
 }
