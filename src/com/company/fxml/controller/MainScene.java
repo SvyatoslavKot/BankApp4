@@ -9,6 +9,7 @@ package com.company.fxml.controller;
         import com.company.data.currencyReader.CurrenceReader;
         import com.company.fxml.controller.rate.CurrenceSettigController;
         import com.company.fxml.controller.rate.CurrenceSetting;
+        import com.company.service.Parser.ParserCurrency;
         import javafx.event.ActionEvent;
         import javafx.fxml.FXML;
         import javafx.fxml.FXMLLoader;
@@ -38,6 +39,8 @@ public class MainScene implements Initializable {
     public Text textRateEuSell;
     public Text textRateUsSell;
     BankOffice bankOffice = MainFxml.getBankOffice();
+
+    ParserCurrency parserCurrency = new ParserCurrency(bankOffice);
     CurrenceReader currenceReader = new CurrenceReader();
     CurrenceSetting currenceSetting = CurrenceSetting.getInstance();
     DBReader bdReader = new DBReader();
@@ -51,6 +54,7 @@ public class MainScene implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (bankOffice.getBankCollections().getClientHashMap().isEmpty()){
 
+            parserCurrency.start();
             bdReader.bdRead(bankOffice,NAME_BD_DIR);
         }
         listViewStage.getItems().addAll(listAdd);
